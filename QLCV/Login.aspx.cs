@@ -13,15 +13,15 @@ public partial class Admin_Login : System.Web.UI.Page
     }
     protected void btnDangNhap_Click(object sender, EventArgs e)
     {
-        u.Ten = txtEmail.Text;
+        u.TenUser = txtTen.Text;
         u.MatKhau = txtMatKhau.Text;
-        if ((string.IsNullOrWhiteSpace(txtMatKhau.Text) == false) && (string.IsNullOrWhiteSpace(txtEmail.Text) == false))
+        if ((string.IsNullOrWhiteSpace(txtMatKhau.Text) == false) && (string.IsNullOrWhiteSpace(txtTen.Text) == false))
         {
             if (u.DangNhap() == true)
             {
                 //Session["MaNV"] = nv.Ma;
-                //Session["HoTenNV"] = nv.HoNV + " " + nv.TenNV;
-                Session["Email"] = u.Ten;
+               // Session["HoTenNV"] = nv.HoNVa + " " + nv.TenNV;
+                //Session["Ten"] = nv.Ten;
                 //Session["MaPB"] = nv.MaPB;
                 //Session["TenPB"] = nv.TenPB;
                 Response.Redirect("~/Default.aspx");

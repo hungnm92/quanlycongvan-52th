@@ -14,20 +14,20 @@ public partial class DMK : System.Web.UI.Page
     }
     protected void btnDoiMatKhau_Click(object sender, EventArgs e)
     {
-        bool bEmail = string.IsNullOrWhiteSpace(txtEmail.Text);
+        bool bTenUser = string.IsNullOrWhiteSpace(txtTenUser.Text);
         bool bMatKhauCu = string.IsNullOrWhiteSpace(txtMatKhauCu.Text);
         bool bMatKhauMoi = string.IsNullOrWhiteSpace(txtMatKhauMoi.Text);
         bool bMatKhauXN = string.IsNullOrWhiteSpace(txtMatKhauXN.Text);
-        if (bEmail == false && bMatKhauCu == false && bMatKhauMoi == false & bMatKhauXN == false)
+        if (bTenUser == false && bMatKhauCu == false && bMatKhauMoi == false & bMatKhauXN == false)
         {
-            u.Ten = txtEmail.Text;
+            u.TenUser = txtTenUser.Text;
             u.MatKhauCu = txtMatKhauCu.Text;
             u.MatKhauMoi = txtMatKhauMoi.Text;
             u.MatKhauXN = txtMatKhauXN.Text;
             u.DoiMatKhau();
             lblTB.Visible = true;
             lblTB.Text = u.ThongBao;
-            txtEmail.Text = "";
+            txtTenUser.Text = "";
             //Response.Redirect("http://google.com.vn");
         }
         else

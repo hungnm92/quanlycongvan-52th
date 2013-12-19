@@ -10,7 +10,7 @@ namespace lanhnt
     {
         public string Ma;
         public int So;
-        public string Ten;
+        public string TenCV;
         public string TrichYeu;
         public string TenFile;
         public string NgayPH;
@@ -27,7 +27,7 @@ namespace lanhnt
                 Lenh.CommandType = CommandType.StoredProcedure;
                 SqlParameter ThamSo = new SqlParameter();
                 ThamSo = Lenh.Parameters.AddWithValue("@Ma_LCV", Ma_LCV);
-                ThamSo = Lenh.Parameters.AddWithValue("@Ten", Ten);
+                ThamSo = Lenh.Parameters.AddWithValue("@TenCV", TenCV);
                 ThamSo = Lenh.Parameters.AddWithValue("@TrichYeu", TrichYeu);
                 ThamSo = Lenh.Parameters.AddWithValue("@TenFile", TenFile);
                 ThamSo = Lenh.Parameters.AddWithValue("@NgayPH", NgayPH);
@@ -73,7 +73,7 @@ namespace lanhnt
                 ThamSo = Lenh.Parameters.AddWithValue("@Ma", Ma);
                 ThamSo = Lenh.Parameters.AddWithValue("@So", So);
                 ThamSo = Lenh.Parameters.AddWithValue("@Ma_LCV", Ma_LCV);
-                ThamSo = Lenh.Parameters.AddWithValue("@Ten", Ten);
+                ThamSo = Lenh.Parameters.AddWithValue("@TenCV", TenCV);
                 ThamSo = Lenh.Parameters.AddWithValue("@TrichYeu", TrichYeu);
                 ThamSo = Lenh.Parameters.AddWithValue("@TenFile", TenFile);
                 ThamSo = Lenh.Parameters.AddWithValue("@NgayPH", NgayPH);
@@ -102,7 +102,7 @@ namespace lanhnt
                 Ma = DocDL["Ma"].ToString();
                 So = int.Parse(DocDL["So"].ToString());
                 Ma_LCV = int.Parse(DocDL["Ma_LCV"].ToString());
-                Ten = DocDL["Ten"].ToString();
+                TenCV = DocDL["TenCV"].ToString();
                 TrichYeu = DocDL["NgayDang"].ToString();
                 TenFile = DocDL["AnhMH"].ToString();
                 NgayPH = DocDL["NoiBat"].ToString();
@@ -129,7 +129,7 @@ namespace lanhnt
     {
         public int Ma;
         public int Ma_NV;
-        public string Ten;
+        public string TenUser;
         public string MatKhau;
         public string MatKhauCu;
         public string MatKhauMoi;
@@ -141,10 +141,10 @@ namespace lanhnt
             try
             {
                 SqlConnection BaoVe = new SqlConnection("server=(local)\\SQLEXPRESS;uid=sa;pwd=123456;database=QuanLyCongVan");
-                SqlCommand Lenh = new SqlCommand("USER_DangNhap", BaoVe);
+                SqlCommand Lenh = new SqlCommand("UserN_DangNhap", BaoVe);
                 Lenh.CommandType = CommandType.StoredProcedure;
                 SqlParameter ThamSo = new SqlParameter();
-                ThamSo = Lenh.Parameters.AddWithValue("@Ten", Ten);
+                ThamSo = Lenh.Parameters.AddWithValue("@TenUser", TenUser);
                 ThamSo = Lenh.Parameters.AddWithValue("@MatKhau", MatKhau);
                 SqlDataReader DocDL;
                 BaoVe.Open();
@@ -153,7 +153,7 @@ namespace lanhnt
                 {
                     Ma = int.Parse(DocDL["Ma"].ToString());
                     Ma_NV = int.Parse(DocDL["Ma_NV"].ToString());
-                    Ten = DocDL["Ten"].ToString();
+                    TenUser = DocDL["TenUser"].ToString();
                     MatKhau = DocDL["MatKhau"].ToString();
                     //MaPB = int.Parse(DocDL["MaPB"].ToString());
                     //TenPB = DocDL["TenPB"].ToString();
@@ -171,16 +171,49 @@ namespace lanhnt
                 ThongBao = ex.Message;
             }
             return false;
-        }
+        } 
+       /* public bool DangNhap()
+        {
+            try
+            {
+                SqlConnection BaoVe = new SqlConnection("server=(local)\\SQLEXPRESS;uid=sa;pwd=123456;database=QuanLyCongVan");
+                SqlCommand Lenh = new SqlCommand("UserN_DangNhap", BaoVe);
+                Lenh.CommandType = CommandType.StoredProcedure;
+                SqlParameter ThamSo = new SqlParameter();
+                ThamSo = Lenh.Parameters.AddWithValue("@Ten", Ten);
+                ThamSo = Lenh.Parameters.AddWithValue("@MatKhau", MatKhau);
+                SqlDataReader DocDL;
+                BaoVe.Open();
+                DocDL = Lenh.ExecuteReader();
+                if (DocDL.Read() == true)
+                {
+                    Ten = DocDL["Ten"].ToString();
+                    MatKhau = DocDL["MatKhau"].ToString();
+                    BaoVe.Close();
+                    return true;
+                }
+                else
+                {
+                    BaoVe.Close();
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                ThongBao = ex.Message;
+            }
+            return false;
+        }*/
+
         public void DoiMatKhau()
         {
             try
             {
                 SqlConnection BaoVe = new SqlConnection("server=(local)\\SQLEXPRESS;uid=sa;pwd=123456;database=QuanLyCongVan");
-                SqlCommand Lenh = new SqlCommand("USER_DoiMatKhau", BaoVe);
+                SqlCommand Lenh = new SqlCommand("UserN_DoiMatKhau", BaoVe);
                 Lenh.CommandType = CommandType.StoredProcedure;
                 SqlParameter ThamSo = new SqlParameter();
-                ThamSo = Lenh.Parameters.AddWithValue("@Ten", Ten);
+                ThamSo = Lenh.Parameters.AddWithValue("@TenUser", TenUser);
                 ThamSo = Lenh.Parameters.AddWithValue("@MatKhauCu", MatKhauCu);
                 ThamSo = Lenh.Parameters.AddWithValue("@MatKhauMoi", MatKhauMoi);
                 ThamSo = Lenh.Parameters.AddWithValue("@MatKhauXN", MatKhauXN);
@@ -205,7 +238,7 @@ namespace lanhnt
         public int Ma_User;
         public int Ma_UserNhan;
         public string TenUser;
-        public string Ten;
+        public string TenCV;
         public string TrichYeu;
         public string TenFile;
         public string NgayPH;
@@ -272,7 +305,7 @@ namespace lanhnt
                 Ma_CV = DocDL["Ma_CV"].ToString();
                 So = int.Parse(DocDL["So"].ToString());
                 So_CV = int.Parse(DocDL["So_CV"].ToString());
-                Ten = DocDL["Ten"].ToString();
+                TenCV = DocDL["TenCV"].ToString();
                 TenTT = DocDL["TenTT"].ToString();
                 TenUser = DocDL["TenUser"].ToString();
                 Ma_User = int.Parse(DocDL["Ma_User"].ToString());
