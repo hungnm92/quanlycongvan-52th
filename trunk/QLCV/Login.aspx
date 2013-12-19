@@ -47,7 +47,7 @@
             <tr>
                 <td class="auto-style4" style="background-color: #0099FF">Email đăng nhập: </td>
                 <td class="auto-style5" style="background-color: #99CCFF">&nbsp;&nbsp;
-                    <asp:TextBox ID="txtEmail" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtTen" runat="server"></asp:TextBox>
                 </td>
             </tr>
             <tr>
