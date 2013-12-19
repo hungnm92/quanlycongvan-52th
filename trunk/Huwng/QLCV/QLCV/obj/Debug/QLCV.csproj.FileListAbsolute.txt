@@ -1,0 +1,6 @@
+c:\users\hung\documents\visual studio 2013\Projects\QLCV\QLCV\bin\QLCV.dll.config
+c:\users\hung\documents\visual studio 2013\Projects\QLCV\QLCV\bin\QLCV.dll
+c:\users\hung\documents\visual studio 2013\Projects\QLCV\QLCV\bin\QLCV.pdb
+c:\users\hung\documents\visual studio 2013\Projects\QLCV\QLCV\obj\Debug\QLCV.csprojResolveAssemblyReference.cache
+c:\users\hung\documents\visual studio 2013\Projects\QLCV\QLCV\obj\Debug\QLCV.dll
+c:\users\hung\documents\visual studio 2013\Projects\QLCV\QLCV\obj\Debug\QLCV.pdb
