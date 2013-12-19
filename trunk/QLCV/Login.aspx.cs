@@ -5,37 +5,45 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class Admin_Login : System.Web.UI.Page
-{
-    lanhnt.UserN u = new lanhnt.UserN();
-    protected void Page_Load(object sender, EventArgs e)
+namespace QLCV.Account
+{ 
+    public partial class Login : System.Web.UI.Page
     {
-    }
-    protected void btnDangNhap_Click(object sender, EventArgs e)
-    {
-        u.TenUser = txtTen.Text;
-        u.MatKhau = txtMatKhau.Text;
-        if ((string.IsNullOrWhiteSpace(txtMatKhau.Text) == false) && (string.IsNullOrWhiteSpace(txtTen.Text) == false))
+        UserN u = new UserN();
+        protected void Page_Load(object sender, EventArgs e)
         {
-            if (u.DangNhap() == true)
+            Session["Ma"] = null;
+            Session["Ten"] = null;
+            Session["MatKhau"] = null;
+        }
+
+        public int PhanQuyen(string input)
+        {
+
+            return 0;
+        }
+        protected void btnDangNhap_Click(object sender, EventArgs e)
+        {
+            u.Ten = txtEmail.Text;
+            u.MatKhau = txtMatKhau.Text;
+            if ((txtEmail.Text != "") && (txtMatKhau.Text != ""))
             {
-                //Session["MaNV"] = nv.Ma;
-               // Session["HoTenNV"] = nv.HoNVa + " " + nv.TenNV;
-                //Session["Ten"] = nv.Ten;
-                //Session["MaPB"] = nv.MaPB;
-                //Session["TenPB"] = nv.TenPB;
-                Response.Redirect("~/Default.aspx");
+                if (u.DangNhap() == true)
+                {
+                    Session["Email"] = u.Ten;
+                    Response.Redirect("~/Account/Default.aspx");
+                }
+                else
+                {
+                    lblThongBao.Visible = true;
+                    lblThongBao.Text = u.ThongBao;
+                }
             }
             else
             {
-                lblTB.Visible = true;
-                lblTB.Text = u.ThongBao;
+                lblThongBao.Visible = true;
+                lblThongBao.Text = "Email hoặc mật khẩu không hợp lệ.";
             }
-        }
-        else
-        {
-            lblTB.Visible = true;
-            lblTB.Text = "Bạn chưa nhập email hoặc mật khẩu.";
         }
     }
 }
