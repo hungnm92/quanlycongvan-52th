@@ -22,7 +22,10 @@
                         </label>
                     </p>
                     <p class="submit"><asp:Button ID="btnDangNhap" runat="server" Text="Đăng Nhập" OnClick="btnDangNhap_Click" /></p>
-                <asp:Label ID="lblTB" runat="server" ForeColor="Red"></asp:Label>
+                &nbsp;&nbsp;&nbsp;
+                <div>
+                    <asp:Label ID="lblTB" runat="server" ForeColor="Red"></asp:Label>
+                </div>
             </form>
         </div>
     </section>

@@ -17,6 +17,9 @@
                         <asp:BoundField HeaderText="Ngày gửi" />
                     </Columns>
                 </asp:GridView>
+                <br />
+                <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Button" />
+                <asp:Label ID="Label4" runat="server" ForeColor="Red" Text="sfgbgsdfgd" ViewStateMode="Enabled" Visible="False"></asp:Label>
             </td>
         </tr>
     </table>
