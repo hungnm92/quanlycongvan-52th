@@ -11,4 +11,9 @@ public partial class _Default : System.Web.UI.Page
     {
 
     }
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        Label4.Text = DateTime.Now.ToString();
+        Label4.Visible = true;
+    }
 }

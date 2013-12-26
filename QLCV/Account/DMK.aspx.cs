@@ -27,8 +27,7 @@ public partial class DMK : System.Web.UI.Page
             u.DoiMatKhau();
             lblTB.Visible = true;
             lblTB.Text = u.ThongBao;
-            txtTenUser.Text = "";
-            //Response.Redirect("http://google.com.vn");
+            txtTenUser.Text = "";      
         }
         else
         {

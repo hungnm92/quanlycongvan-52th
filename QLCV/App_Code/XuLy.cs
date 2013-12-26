@@ -6,6 +6,107 @@ using System.Data;//chứa các đối tượng dataset.
 using System.Data.SqlClient;//chứa các đối tượng SqlConnection, SqlCommand.
 namespace lanhnt
 {
+    public class LoaiCV
+    {
+        public int Ma;
+        public string TenCV;
+        public string ThongBao;
+        public void CT()
+        {
+            SqlConnection BaoVe = new SqlConnection("server=(local)\\SQLEXPRESS;uid=sa;pwd=123456;database=QuanLyCongVan");
+            SqlCommand Lenh = new SqlCommand("LoaiCV_CT", BaoVe);
+            Lenh.CommandType = CommandType.StoredProcedure;
+            SqlParameter ThamSo = new SqlParameter();
+            ThamSo = Lenh.Parameters.AddWithValue("@Ma", Ma);
+            SqlDataReader DocDL;
+            BaoVe.Open();
+            DocDL = Lenh.ExecuteReader();
+            if (DocDL.Read() == true)//nếu có dữ liệu để đọc
+            {
+                Ma = int.Parse(DocDL["Ma"].ToString());
+                TenCV = DocDL["TenCV"].ToString();
+            }
+            BaoVe.Close();
+        }
+        public DataTable DS()
+        {
+            SqlConnection BaoVe = new SqlConnection("server=(local)\\SQLEXPRESS;uid=sa;pwd=123456;database=QuanLyCongVan");
+            SqlDataAdapter XeTai = new SqlDataAdapter("LoaiCV_DS", BaoVe);
+            DataTable ThungChua = new DataTable();
+            BaoVe.Open();
+            XeTai.Fill(ThungChua);
+            BaoVe.Close();
+            return ThungChua;
+        }
+    }
+    public class TinhTrang
+    {
+        public int Ma;
+        public string TenTT;
+        public string ThongBao;
+        public void CT()
+        {
+            SqlConnection BaoVe = new SqlConnection("server=(local)\\SQLEXPRESS;uid=sa;pwd=123456;database=QuanLyCongVan");
+            SqlCommand Lenh = new SqlCommand("TinhTrang_CT", BaoVe);
+            Lenh.CommandType = CommandType.StoredProcedure;
+            SqlParameter ThamSo = new SqlParameter();
+            ThamSo = Lenh.Parameters.AddWithValue("@Ma", Ma);
+            SqlDataReader DocDL;
+            BaoVe.Open();
+            DocDL = Lenh.ExecuteReader();
+            if (DocDL.Read() == true)//nếu có dữ liệu để đọc
+            {
+                Ma = int.Parse(DocDL["Ma"].ToString());
+                TenTT = DocDL["TenTT"].ToString();
+            }
+            BaoVe.Close();
+        }
+        public DataTable DS()
+        {
+            SqlConnection BaoVe = new SqlConnection("server=(local)\\SQLEXPRESS;uid=sa;pwd=123456;database=QuanLyCongVan");
+            SqlDataAdapter XeTai = new SqlDataAdapter("TinhTrang_DS", BaoVe);
+            DataTable ThungChua = new DataTable();
+            BaoVe.Open();
+            XeTai.Fill(ThungChua);
+            BaoVe.Close();
+            return ThungChua;
+        }
+    }
+    public class NhomUser
+      {
+        public int Ma;
+        public string TenNhom;
+        public int Ma_User;
+        public string ThongBao;
+        public void CT()
+        {
+            SqlConnection BaoVe = new SqlConnection("server=(local)\\SQLEXPRESS;uid=sa;pwd=123456;database=QuanLyCongVan");
+            SqlCommand Lenh = new SqlCommand("NhomUser_CT", BaoVe);
+            Lenh.CommandType = CommandType.StoredProcedure;
+            SqlParameter ThamSo = new SqlParameter();
+            ThamSo = Lenh.Parameters.AddWithValue("@Ma", Ma);
+            SqlDataReader DocDL;
+            BaoVe.Open();
+            DocDL = Lenh.ExecuteReader();
+            if (DocDL.Read() == true)//nếu có dữ liệu để đọc
+            {
+                Ma = int.Parse(DocDL["Ma"].ToString());
+                TenNhom = DocDL["TenNhom"].ToString();
+                Ma_User = int.Parse(DocDL["Ma_User"].ToString());
+            }
+            BaoVe.Close();
+        }
+        public DataTable DS()
+        {
+            SqlConnection BaoVe = new SqlConnection("server=(local)\\SQLEXPRESS;uid=sa;pwd=123456;database=QuanLyCongVan");
+            SqlDataAdapter XeTai = new SqlDataAdapter("NhomUser_DS", BaoVe);
+            DataTable ThungChua = new DataTable();
+            BaoVe.Open();
+            XeTai.Fill(ThungChua);
+            BaoVe.Close();
+            return ThungChua;
+        }
+    }
     public class CongVan
     {
         public string Ma;
@@ -125,6 +226,7 @@ namespace lanhnt
             return ThungChua;
         }
     }
+
     public class UserN
     {
         public int Ma;
@@ -135,6 +237,9 @@ namespace lanhnt
         public string MatKhauMoi;
         public string MatKhauXN;
         public bool IsUser;
+        public string Ho;
+        public string TenNV;
+        public int MaNhom;
         public string ThongBao;
         public bool DangNhap()
         {
@@ -155,8 +260,9 @@ namespace lanhnt
                     Ma_NV = int.Parse(DocDL["Ma_NV"].ToString());
                     TenUser = DocDL["TenUser"].ToString();
                     MatKhau = DocDL["MatKhau"].ToString();
-                    //MaPB = int.Parse(DocDL["MaPB"].ToString());
-                    //TenPB = DocDL["TenPB"].ToString();
+                    MaNhom = int.Parse(DocDL["MaNhom"].ToString());
+                    Ho = DocDL["Ho"].ToString();
+                    TenNV = DocDL["TenNV"].ToString();
                     BaoVe.Close();
                     return true;
                 }
@@ -172,39 +278,6 @@ namespace lanhnt
             }
             return false;
         } 
-       /* public bool DangNhap()
-        {
-            try
-            {
-                SqlConnection BaoVe = new SqlConnection("server=(local)\\SQLEXPRESS;uid=sa;pwd=123456;database=QuanLyCongVan");
-                SqlCommand Lenh = new SqlCommand("UserN_DangNhap", BaoVe);
-                Lenh.CommandType = CommandType.StoredProcedure;
-                SqlParameter ThamSo = new SqlParameter();
-                ThamSo = Lenh.Parameters.AddWithValue("@Ten", Ten);
-                ThamSo = Lenh.Parameters.AddWithValue("@MatKhau", MatKhau);
-                SqlDataReader DocDL;
-                BaoVe.Open();
-                DocDL = Lenh.ExecuteReader();
-                if (DocDL.Read() == true)
-                {
-                    Ten = DocDL["Ten"].ToString();
-                    MatKhau = DocDL["MatKhau"].ToString();
-                    BaoVe.Close();
-                    return true;
-                }
-                else
-                {
-                    BaoVe.Close();
-                    return false;
-                }
-            }
-            catch (Exception ex)
-            {
-                ThongBao = ex.Message;
-            }
-            return false;
-        }*/
-
         public void DoiMatKhau()
         {
             try

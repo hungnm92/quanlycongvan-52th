@@ -19,11 +19,9 @@ public partial class Admin_Login : System.Web.UI.Page
         {
             if (u.DangNhap() == true)
             {
-                //Session["MaNV"] = nv.Ma;
-               // Session["HoTenNV"] = nv.HoNVa + " " + nv.TenNV;
-                //Session["Ten"] = nv.Ten;
-                //Session["MaPB"] = nv.MaPB;
-                //Session["TenPB"] = nv.TenPB;
+                /*Session["MaUser"] = u.Ma;
+                Session["HoTenNV"] = u.Ho + " " + u.TenNV;
+                Session["MaNhom"] = u.MaNhom;*/
                 Response.Redirect("~/Default.aspx");
             }
             else
