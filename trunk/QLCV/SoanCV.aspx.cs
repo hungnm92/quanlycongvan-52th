@@ -32,16 +32,36 @@ public partial class SoanCV : System.Web.UI.Page
     {
 
     }
-    protected void btnGui_Click(object sender, EventArgs e)
-    {
-
-    }
     protected void btnThoat_Click(object sender, EventArgs e)
     {
-
+        cv.TenCV = txtTenCV.Text.Trim().Replace("  ", " ");
+        cv.TrichYeu = txtTomTat.Text.Trim().Replace("  ", " ");
+        cv.YKienCV = txtGopY.Text.Trim().Replace("  ", " ");
+        //tt.ChiTiet = fckTinTuc.Text;
+        cv.Ma = txtMaCV.Text;
+        //cv.So = int.Parse(txtSoCV.Text);
+        cv.Ma_LCV = int.Parse(droLCV.SelectedValue);
+        cv.NgayPH = txtNgayPH.Text;
+        string DuongDan = "";
+        DuongDan = Server.MapPath("~/src/product/");
+        DuongDan = DuongDan + fileTep.FileName;
+        fileTep.SaveAs(DuongDan);
+        cv.TenFile = fileTep.FileName;
+        cut.Ma_User = int.Parse(Session["Ma"].ToString());
+        cut.DuThao();
+        cv.Them();
+        txtTenCV.Text = "";
+        txtTomTat.Text = "";
+        txtGopY.Text = "";
+        txtMaCV.Text = "";
+        txtSoCV.Text = "";
+        // droLCV.Text = "";
+        txtNgayPH.Text = "";
+        //fileTep. = "";
+        Response.Redirect("~/Default.aspx");
     }
 }
-    protected void griTinTuc_SelectedIndexChanged(object sender, EventArgs e)
+  /*  protected void griTinTuc_SelectedIndexChanged(object sender, EventArgs e)
     {
         if(Convert.ToInt16(Session["MaPB"])==1)
         {
@@ -182,7 +202,7 @@ public partial class SoanCV : System.Web.UI.Page
             /*txtTieuDe.Text = "";
             txtTomTat.Text = "";
             txtChiTiet.Text = "";*/
-            pnlCapNhat.Visible = false;
+          /*  pnlCapNhat.Visible = false;
             lbtThemMoi.Visible = true;
         }
         else
@@ -210,7 +230,7 @@ public partial class SoanCV : System.Web.UI.Page
         /*txtMaTT.Text = "";
         txtTomTat.Text = "";
         txtChiTiet.Text = "";*/
-        pnlCapNhat.Visible = false;
+       /* pnlCapNhat.Visible = false;
         lbtThemMoi.Visible = true;
         chkKQDuyet.Visible = false;
         chkNoiBat.Visible = false;
@@ -244,7 +264,7 @@ public partial class SoanCV : System.Web.UI.Page
                     /*txtMaTT.Text = "";
                     txtTomTat.Text = "";
                     txtChiTiet.Text = "";*/
-                    pnlCapNhat.Visible = false;
+                  /*  pnlCapNhat.Visible = false;
                     lbtThemMoi.Visible = true;
                     chkKQDuyet.Visible = false;
                     chkNoiBat.Visible = false;
@@ -273,7 +293,7 @@ public partial class SoanCV : System.Web.UI.Page
                     txtTieuDe.Text = "";
                     txtTomTat.Text = "";
                     txtChiTiet.Text = "";*/
-                    pnlCapNhat.Visible = false;
+                  /*  pnlCapNhat.Visible = false;
                     lbtThemMoi.Visible = true;
                     chkKQDuyet.Visible = false;
                     chkNoiBat.Visible = false;
@@ -307,7 +327,7 @@ public partial class SoanCV : System.Web.UI.Page
         /*txtMaTT.Text = "";
         txtTomTat.Text = "";
         txtChiTiet.Text = "";*/
-        pnlCapNhat.Visible  = false;
+       /* pnlCapNhat.Visible  = false;
         lbtThemMoi.Visible = true;
         chkKQDuyet.Visible = false;
         chkNoiBat.Visible = false;
@@ -318,4 +338,4 @@ public partial class SoanCV : System.Web.UI.Page
         griTinTuc.PageIndex = e.NewPageIndex;
         griTinTuc.DataSource = tt.DS();
         griTinTuc.DataBind();
-    }
+    }*/
