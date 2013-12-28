@@ -13,7 +13,7 @@
                                                     :
                                                 </td>
                         <td class="auto-style81" __designer:mapid="5d">
-                            <asp:TextBox ID="txtTieuDe" runat="server" Height="37px" TextMode="MultiLine" Width="429px"></asp:TextBox>
+                            <asp:TextBox ID="txtTenCV" runat="server" Height="37px" TextMode="MultiLine" Width="429px"></asp:TextBox>
                         </td>
                         <td class="auto-style4" rowspan="3" style="vertical-align: top" __designer:mapid="5f">
                             <table style="width: 100%; height: 224px;" __designer:mapid="60">

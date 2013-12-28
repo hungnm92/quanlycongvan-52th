@@ -137,7 +137,7 @@ namespace lanhnt
                 BaoVe.Open();
                 Lenh.ExecuteNonQuery();
                 BaoVe.Close();
-                ThongBao = "THÊM THÀNH CÔNG!.";
+                ThongBao = "Thêm thành công!.";
             }
             catch (Exception ex)
             {
@@ -156,7 +156,7 @@ namespace lanhnt
                 BaoVe.Open();
                 Lenh.ExecuteNonQuery();
                 BaoVe.Close();
-                ThongBao = "XÓA THÀNH CÔNG!.";
+                ThongBao = "Xóa thành công!.";
             }
             catch (Exception ex)
             {
@@ -181,7 +181,7 @@ namespace lanhnt
                 BaoVe.Open();
                 Lenh.ExecuteNonQuery();
                 BaoVe.Close();
-                ThongBao = "SỬA THÀNH CÔNG!.";
+                ThongBao = "Sửa thành công!.";
             }
             catch (Exception ex)
             {
@@ -293,7 +293,7 @@ namespace lanhnt
                 BaoVe.Open();
                 Lenh.ExecuteNonQuery();
                 BaoVe.Close();
-                ThongBao = "ĐỔI THÀNH CÔNG!.";
+                ThongBao = "Đổi thành công!.";
             }
             catch (Exception ex)
             {
@@ -337,7 +337,7 @@ namespace lanhnt
                 BaoVe.Open();
                 Lenh.ExecuteNonQuery();
                 BaoVe.Close();
-                ThongBao = "THÊM THÀNH CÔNG!.";
+                ThongBao = "Thêm thành công!.";
             }
             catch (Exception ex)
             {
@@ -356,7 +356,7 @@ namespace lanhnt
                 BaoVe.Open();
                 Lenh.ExecuteNonQuery();
                 BaoVe.Close();
-                ThongBao = "XÓA THÀNH CÔNG!.";
+                ThongBao = "Xóa thành công!.";
             }
             catch (Exception ex)
             {
@@ -402,6 +402,29 @@ namespace lanhnt
             XeTai.Fill(ThungChua);
             BaoVe.Close();
             return ThungChua;
+        }
+        public void DuThao()
+        {
+            try
+            {
+                SqlConnection BaoVe = new SqlConnection("server=(local)\\SQLEXPRESS;uid=sa;pwd=123456;database=QuanLyCongVan");
+                SqlCommand Lenh = new SqlCommand("CongVan_DuThao", BaoVe);
+                Lenh.CommandType = CommandType.StoredProcedure;
+                SqlParameter ThamSo = new SqlParameter();
+                ThamSo = Lenh.Parameters.AddWithValue("@So_CV", So_CV);
+                ThamSo = Lenh.Parameters.AddWithValue("@Ma_User", Ma_User);
+                ThamSo = Lenh.Parameters.AddWithValue("@Ma_UserNhan", Ma_UserNhan);
+                ThamSo = Lenh.Parameters.AddWithValue("@ThoiGianNhan", ThoiGianNhan);
+                ThamSo = Lenh.Parameters.AddWithValue("@ThoiGianGui", ThoiGianGui);
+                BaoVe.Open();
+                Lenh.ExecuteNonQuery();
+                BaoVe.Close();
+                ThongBao = "Đã lưu vào dự thảo!.";
+            }
+            catch (Exception ex)
+            {
+                ThongBao = ex.Message;
+            }
         }
     }
 }
