@@ -18,10 +18,12 @@ public partial class SoanCV : System.Web.UI.Page
         {
             droLCV.DataSource = lcv.DS();
             droLCV.DataBind();
-            txtMaCV.ReadOnly = true;
-            txtSoCV.ReadOnly = true;
-            txtNgayPH.ReadOnly = true;
-
+            droUserN.DataSource = u.DS();
+            droUserN.DataBind();
+           // txtMaCV.ReadOnly = true;
+           // txtSoCV.ReadOnly = true;
+          //  txtNgayPH.ReadOnly = true;
+          
         }
     }
     protected void btnTrinhDuyet_Click(object sender, EventArgs e)
@@ -33,23 +35,40 @@ public partial class SoanCV : System.Web.UI.Page
 
     }
     protected void btnThoat_Click(object sender, EventArgs e)
-    {
-        cv.TenCV = txtTenCV.Text.Trim().Replace("  ", " ");
-        cv.TrichYeu = txtTomTat.Text.Trim().Replace("  ", " ");
-        cv.YKienCV = txtGopY.Text.Trim().Replace("  ", " ");
-        //tt.ChiTiet = fckTinTuc.Text;
-        cv.Ma = txtMaCV.Text;
+    { 
+
+        cv.TenCV = txtTenCV.Text;
+        bool bTrichYeu = string.IsNullOrWhiteSpace(txtTomTat.Text);
+        if (bTrichYeu == true)
+            cv.TrichYeu = " ";
+        else
+            cv.TrichYeu = txtTomTat.Text;
+        bool bYKienCV = string.IsNullOrWhiteSpace(txtGopY.Text);
+        if (bYKienCV == true)
+            cv.YKienCV = " ";
+        else 
+            cv.YKienCV = txtGopY.Text;
+        bool bYKienLD = string.IsNullOrWhiteSpace(txtYKienLD.Text);
+        if (bYKienLD == true)
+            cv.YKienLD = " ";
+        else
+            cv.YKienLD = txtYKienLD.Text;    
+        //cv.Ma = txtMaCV.Text;
         //cv.So = int.Parse(txtSoCV.Text);
         cv.Ma_LCV = int.Parse(droLCV.SelectedValue);
-        cv.NgayPH = txtNgayPH.Text;
+        //cv.NgayPH = DateTime.Parse(txtNgayPH.Text);
         string DuongDan = "";
-        DuongDan = Server.MapPath("~/src/product/");
+        DuongDan = Server.MapPath("~/src/products/");
         DuongDan = DuongDan + fileTep.FileName;
         fileTep.SaveAs(DuongDan);
         cv.TenFile = fileTep.FileName;
         cut.Ma_User = int.Parse(Session["Ma"].ToString());
-        cut.DuThao();
+        cut.Ma_UserNhan = int.Parse(droUserN.SelectedValue);
         cv.Them();
+        cut.So_CV = cv.LayMa();
+        cut.DuThao();
+        lblTB.Text = cv.ThongBao;
+        lblTB1.Text = cut.ThongBao;
         txtTenCV.Text = "";
         txtTomTat.Text = "";
         txtGopY.Text = "";
@@ -58,7 +77,7 @@ public partial class SoanCV : System.Web.UI.Page
         // droLCV.Text = "";
         txtNgayPH.Text = "";
         //fileTep. = "";
-        Response.Redirect("~/Default.aspx");
+       // Response.Redirect("~/Default.aspx");
     }
 }
   /*  protected void griTinTuc_SelectedIndexChanged(object sender, EventArgs e)

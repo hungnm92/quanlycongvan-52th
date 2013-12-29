@@ -24,8 +24,7 @@
         }
         .auto-style6 {
             height: 26px;
-            text-align: right;
-        }
+            }
         </style>
 </head>
 <body>
@@ -38,15 +37,17 @@
                 </td>
             </tr>
             <tr>
-                <td class="auto-style6" style="vertical-align: top; background-color: #339933; color: #FFFFFF;" colspan="2">
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <asp:HyperLink ID="HyperLink12" runat="server" Font-Bold="True" Font-Size="Large" Font-Underline="False" ForeColor="Black" NavigateUrl="~/user/default.aspx">TRANG CH&#7910;</asp:HyperLink>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<asp:TextBox ID="TextBox1" runat="server" Width="259px"></asp:TextBox>
+                <td class="auto-style6" style="vertical-align: middle; text-align: center;">
+                    <asp:HyperLink ID="HyperLink12" runat="server" Font-Bold="True" Font-Size="Large" Font-Underline="False" ForeColor="Black" NavigateUrl="~/user/default.aspx" style="text-align: center">TRANG CH&#7910;</asp:HyperLink>
+                </td>
+                <td class="auto-style6" style="vertical-align: middle; text-align: right;">
+                    
+                    <asp:TextBox ID="TextBox1" runat="server" Width="293px"></asp:TextBox>
                     &nbsp;
                     <asp:Label ID="Label1" runat="server" Text="Tìm ki&#7871;m"></asp:Label>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="Label2" runat="server" Text="Ng&#432;&#7901;i dùng"></asp:Label>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="Label3" runat="server" Text="Thoát"></asp:Label>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:Label ID="Label2" runat="server" Text="Ng&#432;&#7901;i dùng"></asp:Label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:Label ID="Label3" runat="server" Text="Thoát"></asp:Label>
+                    &nbsp;&nbsp;
                 </td>
             </tr>
             <tr>
@@ -62,26 +63,31 @@
                                     <td>
                                       <div id="sidebar">
         <ul id="nav">
-                   <li><a href="#">So&#7841;n</a></li>
-                   <li><a href="#">Công v&#259;n »</a>
+                   <li><a href="SoanCV.aspx">So&#7841;n</a></li>
+
+            <li><a href="#">Công v&#259;n &#273;&#7871;n »</a> 
+            <ul>
+                           <li><a href="#">Ch&#432;a &#273;&#7885;c</a></li>
+                           <li><a href="#">&#272;ã &#273;&#7885;c</a></li>
+                         </ul>
+                </li> 
+            <li><a href="#">Phê duy&#7879;t »</a>
                         <ul>
                            <li><a href="#">Ch&#7901; duy&#7879;t</a></li>
                            <li><a href="#">Không duy&#7879;t</a></li>
                            <li><a href="#">&#272;ã duy&#7879;t</a></li>
-                           <li><a href="#">&#272;ã g&#7917;i</a></li>
-                        </ul>
+                         </ul>
                    
-                   </li>
-            <li><a href="#">Công v&#259;n &#273;&#7871;n</a></li>            
+                   </li>          
             <li><a href="#">Phát hành »</a>
                         <ul>
                            <li><a href="#">Ch&#7901; phát hành</a></li>
                            <li><a href="#">&#272;ã phát hành</a></li>
                         </ul>
                    </li>
+            <li><a href="#">D&#7921; th&#7843;o</a>
             <li><a href="#">H&#7879; th&#7889;ng »</a>
                         <ul>
-                           <li><a href="#">&#272;&#7893;i m&#7853;t kh&#7849;u</a></li>
                            <li><a href="#">Phân quy&#7873;n</a></li>
                         </ul>
                   </li>
@@ -176,14 +182,13 @@
             <tr>
                 <td colspan="2" style="text-align: center; color: #FFFFFF; font-size: large; font-weight: bolder; background-color: #008000;">
                     <asp:HyperLink ID="HyperLink7" runat="server" Font-Underline="False" ForeColor="White">Gi&#7899;i thi&#7879;u</asp:HyperLink>
-                    &nbsp;&nbsp;&nbsp; <span class="auto-style5"><strong>|&nbsp;&nbsp;&nbsp; nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;
-                    <asp:HyperLink ID="HyperLink9" runat="server" Font-Underline="False" ForeColor="White" NavigateUrl="http://52th.hnsv.com">52TH Forum</asp:HyperLink>
-&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;
-                    <asp:HyperLink ID="HyperLink10" runat="server" Font-Underline="False" ForeColor="White" NavigateUrl="http://hùngcơ.vn">LIÊN HỆ</asp:HyperLink>
+                    &nbsp;&nbsp;&nbsp; <span class="auto-style5"><strong>|&nbsp;&nbsp;&nbsp; nbsp;&nbsp; |&nbsp;&nbsp;&nbsp; <asp:HyperLink ID="HyperLink9" runat="server" Font-Underline="False" ForeColor="White" NavigateUrl="http://52th.hnsv.com">52TH Forum</asp:HyperLink>
+                    &nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;
+                    <asp:HyperLink ID="HyperLink10" runat="server" Font-Underline="False" ForeColor="White" NavigateUrl="http://hùngc&#417;.vn">LIÊN H&#7878;</asp:HyperLink>
                 </td>
             </tr>
             <tr>
-                <td colspan="2" style="text-align: right; color: #0000FF; font-size: medium; font-weight: bolder; ">ĐỊA CHỈ: 52TH - NHA TRANG UNIVERSITY - KHÁNH HÒA.<br />
+                <td colspan="2" style="text-align: right; color: #0000FF; font-size: medium; font-weight: bolder; ">&#272;&#7882;A CH&#7880;: 52TH - NHA TRANG UNIVERSITY - KHÁNH HÒA.<br />
                     Email: <a href="mailto:nguyenthilanh52th@gmail.com">manhhung.it9x@gmail.com</a>.</td>
             </tr>
         </table>

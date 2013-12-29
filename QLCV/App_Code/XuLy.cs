@@ -119,6 +119,17 @@ namespace lanhnt
         public string YKienCV;
         public int Ma_LCV;
         public string ThongBao;
+        public int LayMa()
+        {
+            SqlConnection BaoVe = new SqlConnection("server=(local)\\SQLEXPRESS;uid=sa;pwd=123456;database=QuanLyCongVan");
+            SqlDataAdapter XeTai = new SqlDataAdapter("CongVan_Ma", BaoVe);
+            DataColumn ThungChua = new DataColumn();
+            BaoVe.Open();
+
+            int MaSo = int.Parse(XeTai.ThungChua);
+            BaoVe.Close();
+            return MaSo;
+        }
         public void Them()
         {
             try
@@ -127,11 +138,12 @@ namespace lanhnt
                 SqlCommand Lenh = new SqlCommand("CongVan_Them", BaoVe);
                 Lenh.CommandType = CommandType.StoredProcedure;
                 SqlParameter ThamSo = new SqlParameter();
+                //ThamSo = Lenh.Parameters.AddWithValue("@Ma", Ma);
                 ThamSo = Lenh.Parameters.AddWithValue("@Ma_LCV", Ma_LCV);
                 ThamSo = Lenh.Parameters.AddWithValue("@TenCV", TenCV);
                 ThamSo = Lenh.Parameters.AddWithValue("@TrichYeu", TrichYeu);
                 ThamSo = Lenh.Parameters.AddWithValue("@TenFile", TenFile);
-                ThamSo = Lenh.Parameters.AddWithValue("@NgayPH", NgayPH);
+                //ThamSo = Lenh.Parameters.AddWithValue("@NgayPH", NgayPH);
                 ThamSo = Lenh.Parameters.AddWithValue("@YKienLD", YKienLD);
                 ThamSo = Lenh.Parameters.AddWithValue("@YKienCV", YKienCV);
                 BaoVe.Open();
@@ -241,6 +253,16 @@ namespace lanhnt
         public string TenNV;
         public int MaNhom;
         public string ThongBao;
+        public DataTable DS()
+        {
+            SqlConnection BaoVe = new SqlConnection("server=(local)\\SQLEXPRESS;uid=sa;pwd=123456;database=QuanLyCongVan");
+            SqlDataAdapter XeTai = new SqlDataAdapter("UserN_DS", BaoVe);
+            DataTable ThungChua = new DataTable();
+            BaoVe.Open();
+            XeTai.Fill(ThungChua);
+            BaoVe.Close();
+            return ThungChua;
+        }
         public bool DangNhap()
         {
             try
@@ -317,8 +339,10 @@ namespace lanhnt
         public string NgayPH;
         public string YKienLD;
         public string YKienCV;
+        public string ThoiGianSoan;
         public string ThoiGianGui;
-        public string ThoiGianNhan;
+        public string ThoiGianDoc;
+        public string ThoiGianDuyet;
         public string ThongBao;
         public void Them()
         {
@@ -332,7 +356,7 @@ namespace lanhnt
                 ThamSo = Lenh.Parameters.AddWithValue("@Ma_TT", Ma_TT);
                 ThamSo = Lenh.Parameters.AddWithValue("@Ma_User", Ma_User);
                 ThamSo = Lenh.Parameters.AddWithValue("@Ma_UserNhan", Ma_UserNhan);
-                ThamSo = Lenh.Parameters.AddWithValue("@ThoiGianNhan", ThoiGianNhan);
+                ThamSo = Lenh.Parameters.AddWithValue("@ThoiGianSoan", ThoiGianSoan);
                 ThamSo = Lenh.Parameters.AddWithValue("@ThoiGianGui", ThoiGianGui);
                 BaoVe.Open();
                 Lenh.ExecuteNonQuery();
@@ -388,8 +412,10 @@ namespace lanhnt
                 NgayPH = DocDL["NgayPH"].ToString();
                 YKienLD = DocDL["YKienLD"].ToString();
                 YKienCV = DocDL["YKienCV"].ToString();
+                ThoiGianSoan = DocDL["ThoiGianSoan"].ToString();
                 ThoiGianGui = DocDL["ThoiGianGui"].ToString();
-                ThoiGianNhan = DocDL["ThoiGianNhan"].ToString();
+                ThoiGianDoc = DocDL["ThoiGianDoc"].ToString();
+                ThoiGianDuyet = DocDL["ThoiGianDuyet"].ToString();
             }
             BaoVe.Close();
         }
@@ -414,8 +440,7 @@ namespace lanhnt
                 ThamSo = Lenh.Parameters.AddWithValue("@So_CV", So_CV);
                 ThamSo = Lenh.Parameters.AddWithValue("@Ma_User", Ma_User);
                 ThamSo = Lenh.Parameters.AddWithValue("@Ma_UserNhan", Ma_UserNhan);
-                ThamSo = Lenh.Parameters.AddWithValue("@ThoiGianNhan", ThoiGianNhan);
-                ThamSo = Lenh.Parameters.AddWithValue("@ThoiGianGui", ThoiGianGui);
+                //ThamSo = Lenh.Parameters.AddWithValue("@ThoiGianSoan", ThoiGianSoan);
                 BaoVe.Open();
                 Lenh.ExecuteNonQuery();
                 BaoVe.Close();
