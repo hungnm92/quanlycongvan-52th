@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Text;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.UI;
 using System.Data;//chứa các đối tượng dataset.
 using System.Data.SqlClient;//chứa các đối tượng SqlConnection, SqlCommand.
 namespace lanhnt
@@ -110,7 +113,7 @@ namespace lanhnt
     public class CongVan
     {
         public string Ma;
-        public int So;
+        public int So;        
         public string TenCV;
         public string TrichYeu;
         public string TenFile;
@@ -119,16 +122,20 @@ namespace lanhnt
         public string YKienCV;
         public int Ma_LCV;
         public string ThongBao;
-        public int LayMa()
+        public string SoCV;
+        public string LayMa()
         {
             SqlConnection BaoVe = new SqlConnection("server=(local)\\SQLEXPRESS;uid=sa;pwd=123456;database=QuanLyCongVan");
             SqlDataAdapter XeTai = new SqlDataAdapter("CongVan_Ma", BaoVe);
-            DataColumn ThungChua = new DataColumn();
+            DataTable ThungChua = new DataTable();
             BaoVe.Open();
-
-            int MaSo = int.Parse(XeTai.ThungChua);
+            XeTai.Fill(ThungChua);
+            //for (int i = 0; i < ThungChua.Rows.Count; )
+            //{
+                SoCV = ThungChua.Rows[0][0].ToString();
+           // }
             BaoVe.Close();
-            return MaSo;
+            return SoCV;
         }
         public void Them()
         {
@@ -329,7 +336,7 @@ namespace lanhnt
         public string Ma_CV;
         public int Ma_TT;
         public string TenTT;
-        public int So_CV;
+        public string So_CV;
         public int Ma_User;
         public int Ma_UserNhan;
         public string TenUser;
@@ -401,7 +408,7 @@ namespace lanhnt
             {
                 Ma_CV = DocDL["Ma_CV"].ToString();
                 So = int.Parse(DocDL["So"].ToString());
-                So_CV = int.Parse(DocDL["So_CV"].ToString());
+                So_CV = DocDL["So_CV"].ToString();
                 TenCV = DocDL["TenCV"].ToString();
                 TenTT = DocDL["TenTT"].ToString();
                 TenUser = DocDL["TenUser"].ToString();
@@ -434,7 +441,7 @@ namespace lanhnt
             try
             {
                 SqlConnection BaoVe = new SqlConnection("server=(local)\\SQLEXPRESS;uid=sa;pwd=123456;database=QuanLyCongVan");
-                SqlCommand Lenh = new SqlCommand("CongVan_DuThao", BaoVe);
+                SqlCommand Lenh = new SqlCommand("CV_UserN_TT_DuThao", BaoVe);
                 Lenh.CommandType = CommandType.StoredProcedure;
                 SqlParameter ThamSo = new SqlParameter();
                 ThamSo = Lenh.Parameters.AddWithValue("@So_CV", So_CV);
@@ -450,6 +457,79 @@ namespace lanhnt
             {
                 ThongBao = ex.Message;
             }
+        }
+        public void TrinhDuyet()
+        {
+            try
+            {
+                SqlConnection BaoVe = new SqlConnection("server=(local)\\SQLEXPRESS;uid=sa;pwd=123456;database=QuanLyCongVan");
+                SqlCommand Lenh = new SqlCommand("CV_UserN_TT_TrinhDuyet", BaoVe);
+                Lenh.CommandType = CommandType.StoredProcedure;
+                SqlParameter ThamSo = new SqlParameter();
+                ThamSo = Lenh.Parameters.AddWithValue("@So_CV", So_CV);
+                ThamSo = Lenh.Parameters.AddWithValue("@Ma_User", Ma_User);
+                ThamSo = Lenh.Parameters.AddWithValue("@Ma_UserNhan", Ma_UserNhan);
+                //ThamSo = Lenh.Parameters.AddWithValue("@ThoiGianSoan", ThoiGianSoan);
+                BaoVe.Open();
+                Lenh.ExecuteNonQuery();
+                BaoVe.Close();
+                ThongBao = "Đã gửi tới Lãnh đạo!.";
+            }
+            catch (Exception ex)
+            {
+                ThongBao = ex.Message;
+            }
+        }
+    }
+    public class WebMsgBox
+    {
+        protected Hashtable handlerPages = new Hashtable();
+
+        protected void CurrentPageUnload(object sender, EventArgs e)
+        {
+            Queue queue = ((Queue)(handlerPages[HttpContext.Current.Handler]));
+            if (queue != null)
+            {
+                StringBuilder builder = new StringBuilder();
+                int iMsgCount = queue.Count;
+                builder.Append("<script language='javascript'>");
+                string sMsg;
+                while ((iMsgCount > 0))
+                {
+                    iMsgCount = iMsgCount - 1;
+                    sMsg = System.Convert.ToString(queue.Dequeue());
+                    sMsg = sMsg.Replace("\"", "'");
+                    builder.Append("alert( \"" + sMsg + "\" );");
+                }
+                builder.Append("</script>");
+                handlerPages.Remove(HttpContext.Current.Handler);
+                HttpContext.Current.Response.Write(builder.ToString());
+            }
+        }
+
+        public void Show(string Message)
+        {
+            if (!(handlerPages.Contains(HttpContext.Current.Handler)))
+            {
+                Page currentPage = (Page)HttpContext.Current.Handler;
+                if (!((currentPage == null)))
+                {
+                    Queue messageQueue = new Queue();
+                    messageQueue.Enqueue(Message);
+                    handlerPages.Add(HttpContext.Current.Handler, messageQueue);
+                    currentPage.Unload += new EventHandler(CurrentPageUnload);
+                }
+            }
+            else
+            {
+                Queue queue = ((Queue)(handlerPages[HttpContext.Current.Handler]));
+                queue.Enqueue(Message);
+            }
+        }
+
+        public void ShowAndRedirect(string Message)
+        {
+            HttpContext.Current.Response.Write("<script>alert('" + Message + "') ; window.location.href='" + HttpContext.Current.Request.Url.PathAndQuery + "'</script>");
         }
     }
 }

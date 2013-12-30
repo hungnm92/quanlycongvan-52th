@@ -17,5 +17,3 @@ public partial class _Default : System.Web.UI.Page
         Label4.Visible = true;
     }
 }
-
-//store công văn đến.

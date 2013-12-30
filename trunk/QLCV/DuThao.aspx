@@ -1,0 +1,27 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="DuThao.aspx.cs" Inherits="_Default" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder2" Runat="Server">
+    <table style="width:100%;">
+        <tr>
+            <td style="font-weight: 700; font-size: 20px; text-align: center; color: #FFFFFF; background-image: none;">
+                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
+                    <Columns>
+                        <asp:CommandField EditText="Chọn" HeaderText="Chọn" ShowSelectButton="True">
+                        <ControlStyle Font-Underline="False" />
+                        </asp:CommandField>
+                        <asp:BoundField HeaderText="Người gửi" />
+                        <asp:BoundField HeaderText="Tiêu đề" />
+                        <asp:BoundField HeaderText="Trích yếu" />
+                        <asp:BoundField HeaderText="Ngày gửi" />
+                    </Columns>
+                </asp:GridView>
+                <br />
+                <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Button" />
+                <asp:Label ID="Label4" runat="server" ForeColor="Red" Text="sfgbgsdfgd" ViewStateMode="Enabled" Visible="False"></asp:Label>
+            </td>
+        </tr>
+    </table>
+</asp:Content>
+

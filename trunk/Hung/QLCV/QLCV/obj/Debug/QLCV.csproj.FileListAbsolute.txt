@@ -4,3 +4,8 @@ c:\users\hung\documents\visual studio 2013\Projects\QLCV\QLCV\bin\QLCV.pdb
 c:\users\hung\documents\visual studio 2013\Projects\QLCV\QLCV\obj\Debug\QLCV.csprojResolveAssemblyReference.cache
 c:\users\hung\documents\visual studio 2013\Projects\QLCV\QLCV\obj\Debug\QLCV.dll
 c:\users\hung\documents\visual studio 2013\Projects\QLCV\QLCV\obj\Debug\QLCV.pdb
+C:\Users\PC\Desktop\Thuc Tap\quanlycongvan-52th\Hung\QLCV\QLCV\bin\QLCV.dll
+C:\Users\PC\Desktop\Thuc Tap\quanlycongvan-52th\Hung\QLCV\QLCV\bin\QLCV.pdb
+C:\Users\PC\Desktop\Thuc Tap\quanlycongvan-52th\Hung\QLCV\QLCV\obj\Debug\QLCV.csprojResolveAssemblyReference.cache
+C:\Users\PC\Desktop\Thuc Tap\quanlycongvan-52th\Hung\QLCV\QLCV\obj\Debug\QLCV.dll
+C:\Users\PC\Desktop\Thuc Tap\quanlycongvan-52th\Hung\QLCV\QLCV\obj\Debug\QLCV.pdb
