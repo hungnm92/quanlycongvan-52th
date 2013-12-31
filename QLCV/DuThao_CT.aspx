@@ -72,7 +72,7 @@
                                                     :
                                                 </td>
                         <td class="auto-style100" style="height: 19px; vertical-align: top;" __designer:mapid="73">
-                            <asp:TextBox ID="txtTomTat" runat="server" Height="140px" TextMode="MultiLine" Width="715px" OnTextChanged="txtTomTat_TextChanged"></asp:TextBox>
+                            <asp:TextBox ID="txtTomTat" runat="server" Height="140px" TextMode="MultiLine" Width="715px"></asp:TextBox>
                         </td>
                     </tr>
                     <tr __designer:mapid="70">
@@ -102,6 +102,7 @@
                             <asp:Label ID="lblTB1" runat="server" Text="Thông báo" Visible="False"></asp:Label>
                             <asp:Button ID="btnTrinhDuyet" runat="server" Font-Bold="True" Height="32px" Text="Trình duyệt" Width="100px" OnClick="btnTrinhDuyet_Click" />
                             <asp:Button ID="btnHuyDuThao" runat="server" Font-Bold="True" Height="32px" Text="Hủy dự thảo" Width="100px" OnClick="btnHuyDuThao_Click" />
+                            <asp:Button ID="btnLuuDuThao" runat="server" Font-Bold="True" Height="32px" Text="Lưu dự thảo" Width="100px" OnClick="btnLuuDuThao_Click" />
                             <asp:Button ID="btnThoat" runat="server" Font-Bold="True" Height="32px" Text="Thoát" Width="100px" OnClick="btnThoat_Click" />
                             <asp:Label ID="lblTB" runat="server" Text="Thông báo" Visible="False"></asp:Label>
                         </td>

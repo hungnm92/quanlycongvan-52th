@@ -45,8 +45,9 @@
                     <asp:TextBox ID="TextBox1" runat="server" Width="293px"></asp:TextBox>
                     &nbsp;
                     <asp:Label ID="Label1" runat="server" Text="Tìm ki&#7871;m"></asp:Label>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:Label ID="Label2" runat="server" Text="Ng&#432;&#7901;i dùng"></asp:Label>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:Label ID="Label3" runat="server" Text="Thoát"></asp:Label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:Label ID="lblUser" runat="server"></asp:Label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <asp:HyperLink ID="lnkThoat" runat="server" NavigateUrl="~/Account/Login.aspx">Thoát</asp:HyperLink>
                     &nbsp;&nbsp;
                 </td>
             </tr>
@@ -85,7 +86,7 @@
                            <li><a href="#">&#272;ã phát hành</a></li>
                         </ul>
                    </li>
-            <li><a href="#">D&#7921; th&#7843;o</a>
+            <li><a href="DuThao.aspx">D&#7921; th&#7843;o</a></li>
             <li><a href="#">H&#7879; th&#7889;ng »</a>
                         <ul>
                            <li><a href="#">Phân quy&#7873;n</a></li>

@@ -9,6 +9,9 @@ public partial class MasterPage : System.Web.UI.MasterPage
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (Session["Ma"] == null)
+            Response.Redirect("~/Login.aspx");
+        lblUser.Text = "Xin chào " + Session["HoTenNV"].ToString() + ".";
     }
     
 }
