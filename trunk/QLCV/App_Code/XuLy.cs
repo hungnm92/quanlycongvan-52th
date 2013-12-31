@@ -279,7 +279,7 @@ namespace lanhnt
         }
         public DataTable ChoPhatHanh_DS(int MaUser)
         {
-            string SelectSQL = "SELECT DISTINCT CV.So,CV.Ma, TenCV,TrichYeu, TenFile, NgayPH,YKienLD, YKienCV, TenTT, TenUser AS NguoiGui, ThoiGianGui, ThoiGianSoan,(SELECT u.TenUser FROM CV_UserN_TT CT, UserN U WHERE CT.So = CUT.So and  U.Ma = CUT.Ma_UserNhan) AS NguoiNhan FROM CongVan CV, TinhTrang TT, UserN U,  CV_UserN_TT CUT WHERE CV.So = CUT.So_CV AND CUT.Ma_TT = TT.Ma AND CUT.Ma_User = U.Ma AND TT.Ma = 4 AND (Ma_UserNhan = @Ma or CUT.Ma_User = @Ma) ORDER BY ThoiGianGui DESC";
+            string SelectSQL = "SELECT DISTINCT CV.So,CV.Ma, TenCV,TrichYeu, TenFile, NgayPH,YKienLD, YKienCV, TenTT, TenUser AS NguoiGui, ThoiGianGui, ThoiGianSoan,(SELECT u.TenUser FROM CV_UserN_TT CT, UserN U WHERE CT.So = CUT.So and  U.Ma = CUT.Ma_UserNhan) AS NguoiNhan FROM CongVan CV, TinhTrang TT, UserN U,  CV_UserN_TT CUT WHERE CV.So = CUT.So_CV AND CUT.Ma_TT = TT.Ma AND CUT.Ma_User = U.Ma AND TT.Ma = 4 AND (Ma_UserNhan = @MaUser or CUT.Ma_User = @MaUser) ORDER BY ThoiGianGui DESC";
             SqlConnection BaoVe = new SqlConnection("server=(local)\\SQLEXPRESS;uid=sa;pwd=123456;database=QuanLyCongVan");
             DataTable ThungChua = new DataTable();
             BaoVe.Open();
@@ -295,7 +295,7 @@ namespace lanhnt
         }
         public DataTable ChuaDoc_DS(int MaUser)
         {
-            string SelectSQL = "SELECT CV.Ma,CV.So, TenCV,TrichYeu, TenFile, NgayPH,YKienLD, YKienCV, TenTT, TenUser AS NguoiGoi, ThoiGianGui, ThoiGianDoc FROM CongVan CV, TinhTrang TT, UserN U, CV_UserN_TT CUT WHERE CV.So = CUT.So_CV AND CUT.Ma_TT = TT.Ma AND CUT.Ma_User = U.Ma AND Ma_UserNhan = @Ma AND TT.Ma =8 ORDER BY ThoiGianGui DESC";
+            string SelectSQL = "SELECT CV.Ma,CV.So, TenCV,TrichYeu, TenFile, NgayPH,YKienLD, YKienCV, TenTT, TenUser AS NguoiGoi, ThoiGianGui, ThoiGianDoc FROM CongVan CV, TinhTrang TT, UserN U, CV_UserN_TT CUT WHERE CV.So = CUT.So_CV AND CUT.Ma_TT = TT.Ma AND CUT.Ma_User = U.Ma AND Ma_UserNhan = @MaUser AND TT.Ma =8 ORDER BY ThoiGianGui DESC";
             SqlConnection BaoVe = new SqlConnection("server=(local)\\SQLEXPRESS;uid=sa;pwd=123456;database=QuanLyCongVan");
             DataTable ThungChua = new DataTable();
             BaoVe.Open();
@@ -311,7 +311,7 @@ namespace lanhnt
         }
         public DataTable DaDoc_DS(int MaUser)
         {
-            string SelectSQL = "SELECT CV.Ma,CV.So, TenCV,TrichYeu, TenFile, NgayPH,YKienLD, YKienCV, TenTT, TenUser AS NguoiGoi, ThoiGianGui, ThoiGianDoc FROM CongVan CV, TinhTrang TT, UserN U, CV_UserN_TT CUT WHERE CV.So = CUT.So_CV AND CUT.Ma_TT = TT.Ma AND CUT.Ma_User = U.Ma AND Ma_UserNhan = @Ma AND TT.Ma = 7 ORDER BY ThoiGianGui DESC ";
+            string SelectSQL = "SELECT CV.Ma,CV.So, TenCV,TrichYeu, TenFile, NgayPH,YKienLD, YKienCV, TenTT, TenUser AS NguoiGoi, ThoiGianGui, ThoiGianDoc FROM CongVan CV, TinhTrang TT, UserN U, CV_UserN_TT CUT WHERE CV.So = CUT.So_CV AND CUT.Ma_TT = TT.Ma AND CUT.Ma_User = U.Ma AND Ma_UserNhan = @MaUser AND TT.Ma = 7 ORDER BY ThoiGianGui DESC ";
             SqlConnection BaoVe = new SqlConnection("server=(local)\\SQLEXPRESS;uid=sa;pwd=123456;database=QuanLyCongVan");
             DataTable ThungChua = new DataTable();
             BaoVe.Open();
@@ -327,7 +327,7 @@ namespace lanhnt
         }
         public DataTable DaDuyet_DS(int MaUser)
         {
-            string SelectSQL = "SELECT DISTINCT CV.So,CV.Ma, TenCV,TrichYeu, TenFile, NgayPH,YKienLD, YKienCV, TenTT, TenUser AS NguoiGui, ThoiGianGui, ThoiGianSoan,ThoiGianDuyet,(SELECT u.TenUser FROM CV_UserN_TT CT, UserN U WHERE CT.So = CUT.So and  U.Ma = CUT.Ma_UserNhan) AS NguoiNhan FROM CongVan CV, TinhTrang TT, UserN U,  CV_UserN_TT CUT WHERE CV.So = CUT.So_CV AND CUT.Ma_TT = TT.Ma AND CUT.Ma_User = U.Ma AND TT.Ma = 1 AND (Ma_UserNhan = @Ma or CUT.Ma_User = @Ma) ORDER BY ThoiGianDuyet DESC ";
+            string SelectSQL = "SELECT DISTINCT CV.So,CV.Ma, TenCV,TrichYeu, TenFile, NgayPH,YKienLD, YKienCV, TenTT, TenUser AS NguoiGui, ThoiGianGui, ThoiGianSoan,ThoiGianDuyet,(SELECT u.TenUser FROM CV_UserN_TT CT, UserN U WHERE CT.So = CUT.So and  U.Ma = CUT.Ma_UserNhan) AS NguoiNhan FROM CongVan CV, TinhTrang TT, UserN U,  CV_UserN_TT CUT WHERE CV.So = CUT.So_CV AND CUT.Ma_TT = TT.Ma AND CUT.Ma_User = U.Ma AND TT.Ma = 1 AND (Ma_UserNhan = @MaUser or CUT.Ma_User = @MaUser) ORDER BY ThoiGianDuyet DESC ";
             SqlConnection BaoVe = new SqlConnection("server=(local)\\SQLEXPRESS;uid=sa;pwd=123456;database=QuanLyCongVan");
             DataTable ThungChua = new DataTable();
             BaoVe.Open();
@@ -343,7 +343,7 @@ namespace lanhnt
         }
         public DataTable DaPhatHanh_DS(int MaUser)
         {
-            string SelectSQL = "SELECT DISTINCT CV.So,CV.Ma, TenCV,TrichYeu, TenFile, NgayPH,YKienLD, YKienCV, TenTT, TenUser AS NguoiGui, ThoiGianGui, ThoiGianSoan,ThoiGianDuyet,(SELECT u.TenUser FROM CV_UserN_TT CT, UserN U WHERE CT.So = CUT.So and  U.Ma = CUT.Ma_UserNhan) AS NguoiNhan FROM CongVan CV, TinhTrang TT, UserN U,  CV_UserN_TT CUT, NhomUser WHERE CV.So = CUT.So_CV AND CUT.Ma_TT = TT.Ma AND CUT.Ma_User = U.Ma AND TT.Ma = 5 and (CUT.Ma_User = @Ma or NhomUser.Ma = 1) ORDER BY CV.So ";
+            string SelectSQL = "SELECT DISTINCT CV.So,CV.Ma, TenCV,TrichYeu, TenFile, NgayPH,YKienLD, YKienCV, TenTT, TenUser AS NguoiGui, ThoiGianGui, ThoiGianSoan,ThoiGianDuyet,(SELECT u.TenUser FROM CV_UserN_TT CT, UserN U WHERE CT.So = CUT.So and  U.Ma = CUT.Ma_UserNhan) AS NguoiNhan FROM CongVan CV, TinhTrang TT, UserN U,  CV_UserN_TT CUT, NhomUser WHERE CV.So = CUT.So_CV AND CUT.Ma_TT = TT.Ma AND CUT.Ma_User = U.Ma AND TT.Ma = 5 and (CUT.Ma_User = @MaUser or NhomUser.Ma = 1) ORDER BY CV.So ";
             SqlConnection BaoVe = new SqlConnection("server=(local)\\SQLEXPRESS;uid=sa;pwd=123456;database=QuanLyCongVan");
             DataTable ThungChua = new DataTable();
             BaoVe.Open();
@@ -359,7 +359,23 @@ namespace lanhnt
         }
         public DataTable Den_DS(int MaUser)
         {
-            string SelectSQL = "SELECT CV.Ma,CV.So, TenCV,TrichYeu, TenFile, NgayPH,YKienLD, YKienCV, TenTT, TenUser AS NguoiGoi, ThoiGianGui, ThoiGianDoc FROM CongVan CV, TinhTrang TT, UserN U, CV_UserN_TT CUT WHERE CV.So = CUT.So_CV AND CUT.Ma_TT = TT.Ma AND CUT.Ma_User = U.Ma AND Ma_UserNhan = @Ma ORDER BY ThoiGianGui DESC ";
+            string SelectSQL = "SELECT CV.Ma,CV.So, TenCV,TrichYeu, TenFile, NgayPH,YKienLD, YKienCV, TenTT, TenUser AS NguoiGui, ThoiGianGui, ThoiGianDoc FROM CongVan CV, TinhTrang TT, UserN U, CV_UserN_TT CUT WHERE CV.So = CUT.So_CV AND CUT.Ma_TT = TT.Ma AND CUT.Ma_User = U.Ma AND Ma_UserNhan = @MaUser AND TT.Ma in ( 2, 3, 4, 7 ,8) ORDER BY ThoiGianGui DESC ";
+            SqlConnection BaoVe = new SqlConnection("server=(local)\\SQLEXPRESS;uid=sa;pwd=123456;database=QuanLyCongVan");
+            DataTable ThungChua = new DataTable();
+            BaoVe.Open();
+            if (BaoVe.State == ConnectionState.Open)
+            {
+                SqlCommand Lenh = new SqlCommand(SelectSQL, BaoVe);
+                Lenh.Parameters.Add("@MaUser", SqlDbType.Int).Value = MaUser;
+                SqlDataAdapter XeTai = new SqlDataAdapter(Lenh);
+                XeTai.Fill(ThungChua);
+                BaoVe.Close();
+            }
+            return ThungChua;
+        }
+        public DataTable DaGui_DS(int MaUser)
+        {
+            string SelectSQL = "SELECT CV.Ma,CV.So, TenCV,TrichYeu, TenFile, NgayPH,YKienLD, YKienCV, TenTT, TenUser AS NguoiGui, ThoiGianGui, ThoiGianDoc FROM CongVan CV, TinhTrang TT, UserN U, CV_UserN_TT CUT WHERE CV.So = CUT.So_CV AND CUT.Ma_TT = TT.Ma AND CUT.Ma_User = U.Ma AND CUT.Ma_User = @MaUser AND TT.Ma in ( 2, 3, 4, 7 ,8) ORDER BY ThoiGianGui DESC ";
             SqlConnection BaoVe = new SqlConnection("server=(local)\\SQLEXPRESS;uid=sa;pwd=123456;database=QuanLyCongVan");
             DataTable ThungChua = new DataTable();
             BaoVe.Open();
@@ -644,6 +660,42 @@ namespace lanhnt
                 ThongBao = ex.Message;
             }
         }
+        public void PheDuyet()
+        {
+            try
+            {
+                SqlConnection BaoVe = new SqlConnection("server=(local)\\SQLEXPRESS;uid=sa;pwd=123456;database=QuanLyCongVan");
+                SqlCommand Lenh = new SqlCommand("CV_UserN_TT_PheDuyet", BaoVe);
+                Lenh.CommandType = CommandType.StoredProcedure;
+                SqlParameter ThamSo = new SqlParameter();
+                ThamSo = Lenh.Parameters.AddWithValue("@So_CV", So_CV);
+                ThamSo = Lenh.Parameters.AddWithValue("@Ma_User", Ma_User);
+                ThamSo = Lenh.Parameters.AddWithValue("@Ma_UserNhan", Ma_UserNhan);
+                //ThamSo = Lenh.Parameters.AddWithValue("@ThoiGianSoan", ThoiGianSoan);
+                BaoVe.Open();
+                Lenh.ExecuteNonQuery();
+                BaoVe.Close();
+                ThongBao = "Đã gửi tới Văn thư, đang chờ Văn thư phát hành.";
+            }
+            catch (Exception ex)
+            {
+                ThongBao = ex.Message;
+            }
+        }
+        public void PheDuyet_ChoPH()
+        {
+                SqlConnection BaoVe = new SqlConnection("server=(local)\\SQLEXPRESS;uid=sa;pwd=123456;database=QuanLyCongVan");
+                SqlCommand Lenh = new SqlCommand("CV_UserN_TT_PheDuyet_ChoPH", BaoVe);
+                Lenh.CommandType = CommandType.StoredProcedure;
+                SqlParameter ThamSo = new SqlParameter();
+                ThamSo = Lenh.Parameters.AddWithValue("@So_CV", So_CV);
+                ThamSo = Lenh.Parameters.AddWithValue("@Ma_User", Ma_User);
+                ThamSo = Lenh.Parameters.AddWithValue("@Ma_UserNhan", Ma_UserNhan);
+                //ThamSo = Lenh.Parameters.AddWithValue("@ThoiGianSoan", ThoiGianSoan);
+                BaoVe.Open();
+                Lenh.ExecuteNonQuery();
+                BaoVe.Close();
+        }
         public void LaySo(string So_CV)
         {
             SqlConnection BaoVe = new SqlConnection("server=(local)\\SQLEXPRESS;uid=sa;pwd=123456;database=QuanLyCongVan");
@@ -670,6 +722,25 @@ namespace lanhnt
                 SqlParameter ThamSo = new SqlParameter();
                 ThamSo = Lenh.Parameters.AddWithValue("@So", So);
                 ThamSo = Lenh.Parameters.AddWithValue("@Ma_UserNhan", Ma_UserNhan);
+                BaoVe.Open();
+                Lenh.ExecuteNonQuery();
+                BaoVe.Close();
+                ThongBao = "Sửa thành công!.";
+            }
+            catch (Exception ex)
+            {
+                ThongBao = ex.Message;
+            }
+        }
+        public void Update_TGDoc()
+        {
+            try
+            {
+                SqlConnection BaoVe = new SqlConnection("server=(local)\\SQLEXPRESS;uid=sa;pwd=123456;database=QuanLyCongVan");
+                SqlCommand Lenh = new SqlCommand("CUT_Update_TGDoc", BaoVe);
+                Lenh.CommandType = CommandType.StoredProcedure;
+                SqlParameter ThamSo = new SqlParameter();
+                ThamSo = Lenh.Parameters.AddWithValue("@So", So);
                 BaoVe.Open();
                 Lenh.ExecuteNonQuery();
                 BaoVe.Close();
