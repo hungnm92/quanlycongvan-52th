@@ -191,13 +191,11 @@ namespace lanhnt
                 SqlCommand Lenh = new SqlCommand("CongVan_Sua", BaoVe);
                 Lenh.CommandType = CommandType.StoredProcedure;
                 SqlParameter ThamSo = new SqlParameter();
-                ThamSo = Lenh.Parameters.AddWithValue("@Ma", Ma);
                 ThamSo = Lenh.Parameters.AddWithValue("@So", So);
                 ThamSo = Lenh.Parameters.AddWithValue("@Ma_LCV", Ma_LCV);
                 ThamSo = Lenh.Parameters.AddWithValue("@TenCV", TenCV);
                 ThamSo = Lenh.Parameters.AddWithValue("@TrichYeu", TrichYeu);
                 ThamSo = Lenh.Parameters.AddWithValue("@TenFile", TenFile);
-                ThamSo = Lenh.Parameters.AddWithValue("@NgayPH", NgayPH);
                 ThamSo = Lenh.Parameters.AddWithValue("@YKienCV", YKienCV);
                 BaoVe.Open();
                 Lenh.ExecuteNonQuery();
@@ -545,7 +543,7 @@ namespace lanhnt
             try
             {
                 SqlConnection BaoVe = new SqlConnection("server=(local)\\SQLEXPRESS;uid=sa;pwd=123456;database=QuanLyCongVan");
-                SqlCommand Lenh = new SqlCommand("CV_UserN_TT_DT_Sua", BaoVe);
+                SqlCommand Lenh = new SqlCommand("CV_UserN_TT_DT_Sua_TrinhDuyet", BaoVe);
                 Lenh.CommandType = CommandType.StoredProcedure;
                 SqlParameter ThamSo = new SqlParameter();    
                 ThamSo = Lenh.Parameters.AddWithValue("@So", So);
@@ -629,7 +627,7 @@ namespace lanhnt
             try
             {
                 SqlConnection BaoVe = new SqlConnection("server=(local)\\SQLEXPRESS;uid=sa;pwd=123456;database=QuanLyCongVan");
-                SqlCommand Lenh = new SqlCommand("CV_UserN_TT_TrinhDuyet", BaoVe);
+                SqlCommand Lenh = new SqlCommand("CV_UserN_TT_Soan_TrinhDuyet", BaoVe);
                 Lenh.CommandType = CommandType.StoredProcedure;
                 SqlParameter ThamSo = new SqlParameter();
                 ThamSo = Lenh.Parameters.AddWithValue("@So_CV", So_CV);
@@ -661,6 +659,26 @@ namespace lanhnt
                 So = int.Parse(DocDL["So"].ToString());
             }
             BaoVe.Close();
+        }
+        public void LuuDuThao()
+        {
+            try
+            {
+                SqlConnection BaoVe = new SqlConnection("server=(local)\\SQLEXPRESS;uid=sa;pwd=123456;database=QuanLyCongVan");
+                SqlCommand Lenh = new SqlCommand("CV_UserN_TT_LuuDuThao", BaoVe);
+                Lenh.CommandType = CommandType.StoredProcedure;
+                SqlParameter ThamSo = new SqlParameter();
+                ThamSo = Lenh.Parameters.AddWithValue("@So", So);
+                ThamSo = Lenh.Parameters.AddWithValue("@Ma_UserNhan", Ma_UserNhan);
+                BaoVe.Open();
+                Lenh.ExecuteNonQuery();
+                BaoVe.Close();
+                ThongBao = "Sửa thành công!.";
+            }
+            catch (Exception ex)
+            {
+                ThongBao = ex.Message;
+            }
         }
     }
     public class WebMsgBox

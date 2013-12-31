@@ -1,9 +1,0 @@
-﻿Công văn phải có tình trạng đang soạn trong bảng công văn luôn thì khi thêm mới mới có thể lưu thời gian đang soạn được.
-Đến hiện tại:
-+ đã xong mô tả.nhưng chưa sửa theo sườn chính báo cáo của khoa.
-+ đã xong sơ đồ logic.
-+ đã thiết kế lại giao diện.
-+ đã thiết kế các bảng trong SQL.
-+ đang thiết kế các thủ tục store.
-Vấn đề đang gặp phải:với giao diện đó, khi ta click nút soạn tức là thủ tục thêm mới một công văn thì ta không lưu được tình trạng công văn đó được, tức là công văn đó  đang soạn cũng như user soạn vì nó phải thông qua bảng CV-User-TT mới có thể lấy được tên User cũng như tên tình trạng công văn. Thủ tục thêm ta không thể kết nối bằng where như các thủ tục danh sách hay chi tiết được, tương tự cho thủ tục sửa. Nhóm đã gởi mail lại cho chú vấn đề đang gặp phải này, trong thời gian này vẫn đang thực hiện các thủ tục SQL khác, và tìm hiểu tham khảo code của google về thuật toán tìm kiếm cũng như cách để lưu thời gian bên này gởi bên kia biết.
-
