@@ -15,6 +15,7 @@
                         <asp:BoundField DataField="TrichYeu" HeaderText="Trích yếu" />
                         <asp:BoundField DataField="TenFile" HeaderText="File" />
                         <asp:BoundField DataField="ThoiGianSoan" HeaderText="Thời gian soạn" />
+                        <asp:BoundField DataField="ThoiGianGui" HeaderText="Thời gian gửi" />
                     </Columns>
                     <EditRowStyle BackColor="#2461BF" />
                     <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
