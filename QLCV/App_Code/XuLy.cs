@@ -430,6 +430,56 @@ namespace lanhnt
             BaoVe.Close();
             return ThungChua;
         }
+        public DataTable LanhDao_DS()
+        {
+            SqlConnection BaoVe = new SqlConnection("server=(local)\\SQLEXPRESS;uid=sa;pwd=123456;database=QuanLyCongVan");
+            SqlDataAdapter XeTai = new SqlDataAdapter("UserN_LanhDao_DS", BaoVe);
+            DataTable ThungChua = new DataTable();
+            BaoVe.Open();
+            XeTai.Fill(ThungChua);
+            BaoVe.Close();
+            return ThungChua;
+        }
+        public DataTable ChuyenVien_DS()
+        {
+            SqlConnection BaoVe = new SqlConnection("server=(local)\\SQLEXPRESS;uid=sa;pwd=123456;database=QuanLyCongVan");
+            SqlDataAdapter XeTai = new SqlDataAdapter("UserN_ChuyenVien_DS", BaoVe);
+            DataTable ThungChua = new DataTable();
+            BaoVe.Open();
+            XeTai.Fill(ThungChua);
+            BaoVe.Close();
+            return ThungChua;
+        }
+        public DataTable VanThu_DS()
+        {
+            SqlConnection BaoVe = new SqlConnection("server=(local)\\SQLEXPRESS;uid=sa;pwd=123456;database=QuanLyCongVan");
+            SqlDataAdapter XeTai = new SqlDataAdapter("UserN_VanThu_DS", BaoVe);
+            DataTable ThungChua = new DataTable();
+            BaoVe.Open();
+            XeTai.Fill(ThungChua);
+            BaoVe.Close();
+            return ThungChua;
+        }
+        public DataTable VT_CV_DS()
+        {
+            SqlConnection BaoVe = new SqlConnection("server=(local)\\SQLEXPRESS;uid=sa;pwd=123456;database=QuanLyCongVan");
+            SqlDataAdapter XeTai = new SqlDataAdapter("UserN_VT_CV_DS", BaoVe);
+            DataTable ThungChua = new DataTable();
+            BaoVe.Open();
+            XeTai.Fill(ThungChua);
+            BaoVe.Close();
+            return ThungChua;
+        }
+        public DataTable NhanVien_DS()
+        {
+            SqlConnection BaoVe = new SqlConnection("server=(local)\\SQLEXPRESS;uid=sa;pwd=123456;database=QuanLyCongVan");
+            SqlDataAdapter XeTai = new SqlDataAdapter("UserN_NhanVien_DS", BaoVe);
+            DataTable ThungChua = new DataTable();
+            BaoVe.Open();
+            XeTai.Fill(ThungChua);
+            BaoVe.Close();
+            return ThungChua;
+        }
         public bool DangNhap()
         {
             try
@@ -493,6 +543,7 @@ namespace lanhnt
     public class CV_User_TT
     {
         public int So;
+        public int SoCUT;
         public string Ma_CV;
         public int Ma_TT;
         public string TenTT;
@@ -671,11 +722,34 @@ namespace lanhnt
                 ThamSo = Lenh.Parameters.AddWithValue("@So_CV", So_CV);
                 ThamSo = Lenh.Parameters.AddWithValue("@Ma_User", Ma_User);
                 ThamSo = Lenh.Parameters.AddWithValue("@Ma_UserNhan", Ma_UserNhan);
-                //ThamSo = Lenh.Parameters.AddWithValue("@ThoiGianSoan", ThoiGianSoan);
+                ThamSo = Lenh.Parameters.AddWithValue("@SoCUT", So);
                 BaoVe.Open();
                 Lenh.ExecuteNonQuery();
                 BaoVe.Close();
                 ThongBao = "Đã gửi tới Văn thư, đang chờ Văn thư phát hành.";
+            }
+            catch (Exception ex)
+            {
+                ThongBao = ex.Message;
+            }
+        }
+        public void KhongDuyet()
+        {
+            try
+            {
+                SqlConnection BaoVe = new SqlConnection("server=(local)\\SQLEXPRESS;uid=sa;pwd=123456;database=QuanLyCongVan");
+                SqlCommand Lenh = new SqlCommand("CV_UserN_TT_KhongDuyet", BaoVe);
+                Lenh.CommandType = CommandType.StoredProcedure;
+                SqlParameter ThamSo = new SqlParameter();
+                ThamSo = Lenh.Parameters.AddWithValue("@So_CV", So_CV);
+                ThamSo = Lenh.Parameters.AddWithValue("@Ma_User", Ma_User);
+                ThamSo = Lenh.Parameters.AddWithValue("@Ma_UserNhan", Ma_UserNhan);
+                ThamSo = Lenh.Parameters.AddWithValue("@SoCUT", So);
+                //ThamSo = Lenh.Parameters.AddWithValue("@ThoiGianSoan", ThoiGianSoan);
+                BaoVe.Open();
+                Lenh.ExecuteNonQuery();
+                BaoVe.Close();
+                ThongBao = "Đã gửi trả lại Chuyên viên, vui lòng chờ Chuyên viên soạn lại.";
             }
             catch (Exception ex)
             {
@@ -691,18 +765,20 @@ namespace lanhnt
                 ThamSo = Lenh.Parameters.AddWithValue("@So_CV", So_CV);
                 ThamSo = Lenh.Parameters.AddWithValue("@Ma_User", Ma_User);
                 ThamSo = Lenh.Parameters.AddWithValue("@Ma_UserNhan", Ma_UserNhan);
+                ThamSo = Lenh.Parameters.AddWithValue("@SoCUT", So);
                 //ThamSo = Lenh.Parameters.AddWithValue("@ThoiGianSoan", ThoiGianSoan);
                 BaoVe.Open();
                 Lenh.ExecuteNonQuery();
                 BaoVe.Close();
         }
-        public void LaySo(string So_CV)
+        public void LaySo(string So_CV, int Ma_User)
         {
             SqlConnection BaoVe = new SqlConnection("server=(local)\\SQLEXPRESS;uid=sa;pwd=123456;database=QuanLyCongVan");
             SqlCommand Lenh = new SqlCommand("CUT_LaySo", BaoVe);
             Lenh.CommandType = CommandType.StoredProcedure;
             SqlParameter ThamSo = new SqlParameter();
             ThamSo = Lenh.Parameters.AddWithValue("@So_CV", So_CV);
+            ThamSo = Lenh.Parameters.AddWithValue("@Ma_User", Ma_User);
             SqlDataReader DocDL;
             BaoVe.Open();
             DocDL = Lenh.ExecuteReader();

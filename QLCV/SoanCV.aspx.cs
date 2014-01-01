@@ -19,7 +19,7 @@ public partial class SoanCV : System.Web.UI.Page
         {
             droLCV.DataSource = lcv.DS();
             droLCV.DataBind();
-            droUserN.DataSource = u.DS();
+            droUserN.DataSource = u.LanhDao_DS();
             droUserN.DataBind();
            //lblTB1.Text = cv.LayMa().ToString();
             txtMaCV.ReadOnly = true;
