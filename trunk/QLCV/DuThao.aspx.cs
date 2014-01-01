@@ -38,7 +38,7 @@ public partial class _Default : System.Web.UI.Page
         pnlChiTiet.Visible = true;
         cv.So = griDuThao.SelectedValue.ToString();
         cv.CT();
-        cut.LaySo(cv.So);
+        cut.LaySo(cv.So, int.Parse(Session["Ma"].ToString()));
         cut.CT();
         txtSoCV.ReadOnly = true;
         txtTenCV.Text = cv.TenCV;
@@ -86,7 +86,7 @@ public partial class _Default : System.Web.UI.Page
             cut.Ma_User = int.Parse(Session["Ma"].ToString());
             cut.Ma_UserNhan = int.Parse(droUserN.SelectedValue);
             cv.Sua();
-            cut.LaySo(cv.So);
+            cut.LaySo(cv.So, cut.Ma_User);
             cut.Sua();
             lblTB.Visible = true;
             lblTB1.Visible = true;
@@ -129,7 +129,7 @@ public partial class _Default : System.Web.UI.Page
             cut.Ma_User = int.Parse(Session["Ma"].ToString());
             cut.Ma_UserNhan = int.Parse(droUserN.SelectedValue);          
             cv.Sua();
-            cut.LaySo(cv.So);
+            cut.LaySo(cv.So, cut.Ma_User);
             cut.Sua();
             lblTB.Visible = true;
             lblTB1.Visible = true;
@@ -149,7 +149,7 @@ public partial class _Default : System.Web.UI.Page
     {
         cv.So = griDuThao.SelectedValue.ToString();
         cv.CT();
-        cut.LaySo(cv.So);
+        cut.LaySo(cv.So, cut.Ma_User);
         cut.Xoa();
         lblTB1.Visible = true;
         lblTB1.Text = cut.ThongBao;
@@ -204,7 +204,7 @@ public partial class _Default : System.Web.UI.Page
             cut.Ma_User = int.Parse(Session["Ma"].ToString());
             cut.Ma_UserNhan = int.Parse(droUserN.SelectedValue);
             cv.Sua();
-            cut.LaySo(cv.So);
+            cut.LaySo(cv.So, cut.Ma_User);
             cut.LuuDuThao();
             lblTB.Visible = true;
             lblTB1.Visible = true;
@@ -217,6 +217,7 @@ public partial class _Default : System.Web.UI.Page
             txtSoCV.Text = "";
             // droLCV.Text = "";
             txtNgayPH.Text = "";
+            Response.Redirect("~/DuThao.aspx");
             //fileTep.;
         }
         else
@@ -247,7 +248,7 @@ public partial class _Default : System.Web.UI.Page
             cut.Ma_User = int.Parse(Session["Ma"].ToString());
             cut.Ma_UserNhan = int.Parse(droUserN.SelectedValue);
             cv.Sua();
-            cut.LaySo(cv.So);
+            cut.LaySo(cv.So, cut.Ma_User);
             cut.LuuDuThao();
             lblTB.Text = cv.ThongBao;
             lblTB1.Text = cut.ThongBao;
@@ -258,6 +259,7 @@ public partial class _Default : System.Web.UI.Page
             txtSoCV.Text = "";
             // droLCV.Text = "";
             txtNgayPH.Text = "";
+            Response.Redirect("~/DuThao.aspx");
             //fileTep.;
         }
     }
