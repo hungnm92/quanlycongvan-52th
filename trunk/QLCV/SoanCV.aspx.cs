@@ -70,7 +70,7 @@ public partial class SoanCV : System.Web.UI.Page
             //Redirect("~/Default.aspx");
         }
         else
-            lblTB.Text = "Bạn chưa nhập đầy đủ thông tin bắt buộc";
+        msg.Show("Bạn chưa nhập đầy đủ thông tin bắt buộc");
     }
     protected void btnThoat_Click(object sender, EventArgs e)
     {
