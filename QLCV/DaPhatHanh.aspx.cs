@@ -32,10 +32,10 @@ public partial class _Default : System.Web.UI.Page
     {
         griDaPhatHanh.Visible = false;
         pnlChiTiet.Visible = true;
-        cv.So = griDaPhatHanh.SelectedValue.ToString();
-        cv.CT();
-        cut.LaySo(cv.So, cut.Ma_User);
+        cut.So = int.Parse(griDaPhatHanh.SelectedValue.ToString());
         cut.CT();
+        cv.So = cut.So_CV;
+        cv.CT();
         txtSoCV.ReadOnly = true;
         txtTenCV.Text = cv.TenCV;
         txtTomTat.Text = cv.TrichYeu;
@@ -43,8 +43,8 @@ public partial class _Default : System.Web.UI.Page
         txtGopY.Text = cv.YKienCV;
         txtMaCV.Text = cv.Ma;
         txtSoCV.Text = cv.So;
-        //u.Ma = cut.Ma_UserNhan;
-        //droUserN.SelectedValue = u.Ma.ToString();
+        u.Ma = cut.Ma_UserNhan;
+        droUserN.SelectedValue = u.Ma.ToString();
         lcv.Ma = cv.Ma_LCV;
         droLCV.SelectedValue = lcv.Ma.ToString();
         txtNgayPH.Text = cut.NgayPH;

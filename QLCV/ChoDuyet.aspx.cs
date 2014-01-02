@@ -30,11 +30,11 @@ public partial class _Default : System.Web.UI.Page
     }
     protected void btnPheDuyet_Click(object sender, EventArgs e)
     {
+        cut.So = int.Parse(griChoDuyet.SelectedValue.ToString());
+        cut.CT();
         cut.Ma_User = int.Parse(Session["Ma"].ToString());
         cut.Ma_UserNhan = int.Parse(droUserN.SelectedValue);
-        cv.So = griChoDuyet.SelectedValue.ToString();
-        cut.So_CV = cv.So;
-        cut.LaySo(cv.So, cut.Ma_User);
+        cv.So = cut.So_CV;
         cut.PheDuyet();
         cut.PheDuyet_ChoPH();
         msg.Show(cut.ThongBao);
@@ -42,11 +42,11 @@ public partial class _Default : System.Web.UI.Page
     }
     protected void btnKhongDuyet_Click(object sender, EventArgs e)
     {
+        cut.So = int.Parse(griChoDuyet.SelectedValue.ToString());
+        cut.CT();
         cut.Ma_User = int.Parse(Session["Ma"].ToString());
         cut.Ma_UserNhan = int.Parse(droUserN.SelectedValue);
-        cv.So = griChoDuyet.SelectedValue.ToString();
-        cut.So_CV = cv.So;
-        cut.LaySo(cv.So, cut.Ma_User);
+        cv.So = cut.So_CV;
         cut.KhongDuyet();
         msg.Show(cut.ThongBao);
         //Response.Redirect("~/Default.aspx");
@@ -62,10 +62,10 @@ public partial class _Default : System.Web.UI.Page
         }
         griChoDuyet.Visible = false;
         pnlChiTiet.Visible = true;
-        cv.So = griChoDuyet.SelectedValue.ToString();
-        cv.CT();
-        cut.LaySo(cv.So, cut.Ma_User);
+        cut.So = int.Parse(griChoDuyet.SelectedValue.ToString());
         cut.CT();
+        cv.So = cut.So_CV;
+        cv.CT();
         txtSoCV.ReadOnly = true;
         txtTenCV.Text = cv.TenCV;
         txtTomTat.Text = cv.TrichYeu;
@@ -84,4 +84,3 @@ public partial class _Default : System.Web.UI.Page
             cut.Update_TGDoc();
     }
 }
-//store công văn đến.

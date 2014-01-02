@@ -36,7 +36,7 @@
                             <td class="auto-style7" style="vertical-align: top; color: #000000;">
                                 <table style="width:100%; height: 56px;">
                                     <tr>
-                                        <td class="auto-style64" style="white-space: nowrap">Người nhận:&nbsp; </td>
+                                        <td class="auto-style64" style="white-space: nowrap">Gửi tới:&nbsp; </td>
                                         <td class="auto-style81">
                                             <asp:DropDownList ID="droUserN" runat="server" DataTextField="TenUser" DataValueField="Ma" Height="30px" Width="715px" ForeColor="Black">
                                             </asp:DropDownList>
@@ -118,12 +118,12 @@
                                     </tr>
                                     <tr>
                                         <td colspan="3" style="text-align: center">
-                                            <asp:Label ID="lblTB1" runat="server" Text="Thông báo" Visible="False"></asp:Label>
-                                            <asp:Button ID="btnTrinhDuyet" runat="server" Font-Bold="True" Height="32px" Text="Trình duyệt" Width="100px" OnClick="btnTrinhDuyet_Click" Visible="False" />
-                                            <asp:Button ID="btnHuyDuThao" runat="server" Font-Bold="True" Height="32px" Text="Hủy dự thảo" Width="100px" OnClick="btnHuyDuThao_Click" Visible="False" />
+                                            <asp:Button ID="btnTrinhDuyet" runat="server" Font-Bold="True" Height="32px" OnClick="btnTrinhDuyet_Click" Text="Trình duyệt" Width="100px" Visible="False" />
+                                            <asp:Button ID="btnPheDuyet" runat="server" Font-Bold="True" Height="32px" Text="Phê duyệt" Width="100px" OnClick="btnPheDuyet_Click" Visible="False" />
+                                            <asp:Button ID="btnKhongDuyet" runat="server" Font-Bold="True" Height="32px" Text="Không duyệt" Width="100px" OnClick="btnKhongDuyet_Click" Visible="False" />
+                                            <asp:Button ID="btnPhatHanh" runat="server" Font-Bold="True" Height="32px" Text="Phát hành" Width="100px" OnClick="btnPhatHanh_Click" Visible="False" />
                                             <asp:Button ID="btnLuuDuThao" runat="server" Font-Bold="True" Height="32px" Text="Lưu dự thảo" Width="100px" OnClick="btnLuuDuThao_Click" Visible="False" />
                                             <asp:Button ID="btnThoat" runat="server" Font-Bold="True" Height="32px" Text="Thoát" Width="100px" OnClick="btnThoat_Click" />
-                                            <asp:Label ID="lblTB" runat="server" Text="Thông báo" Visible="False"></asp:Label>
                                         </td>
                                     </tr>
                                 </table>
@@ -132,8 +132,6 @@
                     </table>
                 </asp:Panel>
                 <br />
-                <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Button" />
-                <asp:Label ID="Label4" runat="server" ForeColor="Red" Text="sfgbgsdfgd" ViewStateMode="Enabled" Visible="False"></asp:Label>
             </td>
         </tr>
     </table>

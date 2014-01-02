@@ -68,22 +68,22 @@
 
             <li><a href="Default.aspx">Công v&#259;n &#273;&#7871;n »</a> 
             <ul>
-                           <li><a href="#">Ch&#432;a &#273;&#7885;c</a></li>
-                           <li><a href="#">&#272;ã &#273;&#7885;c</a></li>
+                           <li><a href="ChuaDoc.aspx">Ch&#432;a &#273;&#7885;c</a></li>
+                           <li><a href="DaDoc.aspx">&#272;ã &#273;&#7885;c</a></li>
                          </ul>
                 </li> 
             <li><a href="#">Phê duy&#7879;t »</a>
                         <ul>
-                           <li><a href="#">Ch&#7901; duy&#7879;t</a></li>
-                           <li><a href="#">Không duy&#7879;t</a></li>
-                           <li><a href="#">&#272;ã duy&#7879;t</a></li>
+                           <li><a href="ChoDuyet.aspx">Ch&#7901; duy&#7879;t</a></li>
+                           <li><a href="KhongDuyet.aspx">Không duy&#7879;t</a></li>
+                           <li><a href="DaDuyet.aspx">&#272;ã duy&#7879;t</a></li>
                          </ul>
                    
                    </li>          
             <li><a href="#">Phát hành »</a>
                         <ul>
-                           <li><a href="#">Ch&#7901; phát hành</a></li>
-                           <li><a href="#">&#272;ã phát hành</a></li>
+                           <li><a href="ChoPhatHanh.aspx">Ch&#7901; phát hành</a></li>
+                           <li><a href="DaPhatHanh.aspx">&#272;ã phát hành</a></li>
                         </ul>
                    </li>
             <li><a href="DuThao.aspx">D&#7921; th&#7843;o</a></li>

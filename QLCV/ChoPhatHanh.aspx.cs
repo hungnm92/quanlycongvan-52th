@@ -32,7 +32,9 @@ public partial class _Default : System.Web.UI.Page
     {
         if (fileTep.HasFile == true)
         {
-            cv.So = griChoPhatHanh.SelectedValue.ToString();
+            cut.So = int.Parse(griChoPhatHanh.SelectedValue.ToString());
+            cut.CT();
+            cv.So = cut.So_CV;
             cv.TenCV = txtTenCV.Text;
             bool bTrichYeu = string.IsNullOrWhiteSpace(txtTomTat.Text);
             if (bTrichYeu == true)
@@ -60,12 +62,8 @@ public partial class _Default : System.Web.UI.Page
             cut.Ma_User = int.Parse(Session["Ma"].ToString());
             cut.Ma_UserNhan = int.Parse(droUserN.SelectedValue);
             cv.Them_NgayPH();
-            cut.So_CV = cv.So;
             cut.PhatHanh();
-            lblTB.Visible = true;
-            lblTB1.Visible = true;
-            lblTB.Text = cv.ThongBao;
-            lblTB1.Text = cut.ThongBao;
+            msg.Show(cut.ThongBao);
             txtTenCV.Text = "";
             txtTomTat.Text = "";
             txtGopY.Text = "";
@@ -77,7 +75,9 @@ public partial class _Default : System.Web.UI.Page
         }
         else
         {
-            cv.So = griChoPhatHanh.SelectedValue.ToString();
+            cut.So = int.Parse(griChoPhatHanh.SelectedValue.ToString());
+            cut.CT();
+            cv.So = cut.So_CV;
             cv.CT();
             string temp = cv.TenFile.ToString();
             cv.TenCV = txtTenCV.Text;
@@ -103,12 +103,8 @@ public partial class _Default : System.Web.UI.Page
             cut.Ma_User = int.Parse(Session["Ma"].ToString());
             cut.Ma_UserNhan = int.Parse(droUserN.SelectedValue);
             cv.Them_NgayPH();
-            cut.So_CV = cv.So;
             cut.PhatHanh();
-            lblTB.Visible = true;
-            lblTB1.Visible = true;
-            lblTB.Text = cv.ThongBao;
-            lblTB1.Text = cut.ThongBao;
+            msg.Show(cut.ThongBao);
             txtTenCV.Text = "";
             txtTomTat.Text = "";
             txtGopY.Text = "";
@@ -129,10 +125,10 @@ public partial class _Default : System.Web.UI.Page
         }
         griChoPhatHanh.Visible = false;
         pnlChiTiet.Visible = true;
-        cv.So = griChoPhatHanh.SelectedValue.ToString();
-        cv.CT();
-        cut.LaySo(cv.So, cut.Ma_User);
+        cut.So = int.Parse(griChoPhatHanh.SelectedValue.ToString());
         cut.CT();
+        cv.So = cut.So_CV;
+        cv.CT();
         txtSoCV.ReadOnly = true;
         txtTenCV.Text = cv.TenCV;
         txtTomTat.Text = cv.TrichYeu;
