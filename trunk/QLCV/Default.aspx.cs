@@ -24,11 +24,7 @@ public partial class _Default : System.Web.UI.Page
             droLCV.DataBind();
         }
     }
-    protected void Button1_Click(object sender, EventArgs e)
-    {
-        Label4.Text = DateTime.Now.ToString();
-        Label4.Visible = true;
-    }
+   
     protected void griCongVanDen_SelectedIndexChanged(object sender, EventArgs e)
     {
         if (Convert.ToInt16(Session["MaNhom"]) == 1)
@@ -53,11 +49,10 @@ public partial class _Default : System.Web.UI.Page
         }
         griCongVanDen.Visible = false;
         pnlChiTiet.Visible = true;
-        cv.So = griCongVanDen.SelectedValue.ToString();
-        //cut.So = griCongVanDen.SelectedValue.ToString();
-        cv.CT();
-        cut.LaySo(cv.So, cut.Ma_User);
+        cut.So = int.Parse(griCongVanDen.SelectedValue.ToString());
         cut.CT();
+        cv.So = cut.So_CV;
+        cv.CT();
         txtSoCV.ReadOnly = true;
         txtTenCV.Text = cv.TenCV;
         txtTomTat.Text = cv.TrichYeu;
@@ -82,11 +77,11 @@ public partial class _Default : System.Web.UI.Page
     }
     protected void btnPheDuyet_Click(object sender, EventArgs e)
     {
+        cut.So = int.Parse(griCongVanDen.SelectedValue.ToString());
+        cut.CT();
         cut.Ma_User = int.Parse(Session["Ma"].ToString());
         cut.Ma_UserNhan = int.Parse(droUserN.SelectedValue);
-        cv.So = griCongVanDen.SelectedValue.ToString();
-        cut.So_CV = cv.So;
-        cut.LaySo(cv.So, cut.Ma_User);
+        cv.So = cut.So_CV;
         cut.PheDuyet();
         cut.PheDuyet_ChoPH();
         msg.Show(cut.ThongBao);
@@ -94,11 +89,11 @@ public partial class _Default : System.Web.UI.Page
     }
     protected void btnKhongDuyet_Click(object sender, EventArgs e)
     {
+        cut.So = int.Parse(griCongVanDen.SelectedValue.ToString());
+        cut.CT();
         cut.Ma_User = int.Parse(Session["Ma"].ToString());
         cut.Ma_UserNhan = int.Parse(droUserN.SelectedValue);
-        cv.So = griCongVanDen.SelectedValue.ToString();
-        cut.So_CV = cv.So;
-        cut.LaySo(cv.So, cut.Ma_User);
+        cv.So = cut.So_CV;
         cut.KhongDuyet();
         msg.Show(cut.ThongBao);
         //Response.Redirect("~/Default.aspx");
@@ -107,7 +102,9 @@ public partial class _Default : System.Web.UI.Page
     {
         if (fileTep.HasFile == true)
         {
-            cv.So = griCongVanDen.SelectedValue.ToString();
+            cut.So = int.Parse(griCongVanDen.SelectedValue.ToString());
+            cut.CT();
+            cv.So = cut.So_CV;
             cv.TenCV = txtTenCV.Text;
             bool bTrichYeu = string.IsNullOrWhiteSpace(txtTomTat.Text);
             if (bTrichYeu == true)
@@ -135,12 +132,8 @@ public partial class _Default : System.Web.UI.Page
             cut.Ma_User = int.Parse(Session["Ma"].ToString());
             cut.Ma_UserNhan = int.Parse(droUserN.SelectedValue);
             cv.Sua();
-            cut.So_CV = cv.So;
             cut.TrinhDuyet();
-            lblTB.Visible = true;
-            lblTB1.Visible = true;
-            lblTB.Text = cv.ThongBao;
-            lblTB1.Text = cut.ThongBao;
+            msg.Show(cut.ThongBao);
             txtTenCV.Text = "";
             txtTomTat.Text = "";
             txtGopY.Text = "";
@@ -152,7 +145,9 @@ public partial class _Default : System.Web.UI.Page
         }
         else
         {
-            cv.So = griCongVanDen.SelectedValue.ToString();
+            cut.So = int.Parse(griCongVanDen.SelectedValue.ToString());
+            cut.CT();
+            cv.So = cut.So_CV;
             cv.CT();
             string temp = cv.TenFile.ToString();
             cv.TenCV = txtTenCV.Text;
@@ -178,12 +173,8 @@ public partial class _Default : System.Web.UI.Page
             cut.Ma_User = int.Parse(Session["Ma"].ToString());
             cut.Ma_UserNhan = int.Parse(droUserN.SelectedValue);
             cv.Sua();
-            cut.So_CV = cv.So;
             cut.TrinhDuyet();
-            lblTB.Visible = true;
-            lblTB1.Visible = true;
-            lblTB.Text = cv.ThongBao;
-            lblTB1.Text = cut.ThongBao;
+            msg.Show(cut.ThongBao);
             txtTenCV.Text = "";
             txtTomTat.Text = "";
             txtGopY.Text = "";
@@ -198,7 +189,9 @@ public partial class _Default : System.Web.UI.Page
     {
         if (fileTep.HasFile == true)
         {
-            cv.So = griCongVanDen.SelectedValue.ToString();
+            cut.So = int.Parse(griCongVanDen.SelectedValue.ToString());
+            cut.CT();
+            cv.So = cut.So_CV;
             cv.TenCV = txtTenCV.Text;
             bool bTrichYeu = string.IsNullOrWhiteSpace(txtTomTat.Text);
             if (bTrichYeu == true)
@@ -226,12 +219,8 @@ public partial class _Default : System.Web.UI.Page
             cut.Ma_User = int.Parse(Session["Ma"].ToString());
             cut.Ma_UserNhan = int.Parse(droUserN.SelectedValue);
             cv.Them_NgayPH();
-            cut.So_CV = cv.So;
             cut.PhatHanh();
-            lblTB.Visible = true;
-            lblTB1.Visible = true;
-            lblTB.Text = cv.ThongBao;
-            lblTB1.Text = cut.ThongBao;
+            msg.Show(cut.ThongBao);
             txtTenCV.Text = "";
             txtTomTat.Text = "";
             txtGopY.Text = "";
@@ -243,7 +232,9 @@ public partial class _Default : System.Web.UI.Page
         }
         else
         {
-            cv.So = griCongVanDen.SelectedValue.ToString();
+            cut.So = int.Parse(griCongVanDen.SelectedValue.ToString());
+            cut.CT();
+            cv.So = cut.So_CV;
             cv.CT();
             string temp = cv.TenFile.ToString();
             cv.TenCV = txtTenCV.Text;
@@ -269,12 +260,8 @@ public partial class _Default : System.Web.UI.Page
             cut.Ma_User = int.Parse(Session["Ma"].ToString());
             cut.Ma_UserNhan = int.Parse(droUserN.SelectedValue);
             cv.Them_NgayPH();
-            cut.So_CV = cv.So;
             cut.PhatHanh();
-            lblTB.Visible = true;
-            lblTB1.Visible = true;
-            lblTB.Text = cv.ThongBao;
-            lblTB1.Text = cut.ThongBao;
+            msg.Show(cut.ThongBao);
             txtTenCV.Text = "";
             txtTomTat.Text = "";
             txtGopY.Text = "";
@@ -290,7 +277,9 @@ public partial class _Default : System.Web.UI.Page
 
         if (fileTep.HasFile == true)
         {
-            cv.So = griCongVanDen.SelectedValue.ToString();
+            cut.So = int.Parse(griCongVanDen.SelectedValue.ToString());
+            cut.CT();
+            cv.So = cut.So_CV;
             cv.Ma = " ";
             cv.TenCV = txtTenCV.Text;
             bool bTrichYeu = string.IsNullOrWhiteSpace(txtTomTat.Text);
@@ -318,12 +307,8 @@ public partial class _Default : System.Web.UI.Page
             cut.Ma_User = int.Parse(Session["Ma"].ToString());
             cut.Ma_UserNhan = int.Parse(droUserN.SelectedValue);
             cv.Sua();
-            cut.So_CV = cv.So;
             cut.DuThao();
-            lblTB.Visible = true;
-            lblTB1.Visible = true;
-            lblTB.Text = cv.ThongBao;
-            lblTB1.Text = cut.ThongBao;
+            msg.Show(cut.ThongBao);
             txtTenCV.Text = "";
             txtTomTat.Text = "";
             txtGopY.Text = "";
@@ -336,7 +321,9 @@ public partial class _Default : System.Web.UI.Page
         }
         else
         {
-            cv.So = griCongVanDen.SelectedValue.ToString();
+            cut.So = int.Parse(griCongVanDen.SelectedValue.ToString());
+            cut.CT();
+            cv.So = cut.So_CV;
             cv.CT();
             cv.Ma = " ";
             string temp = cv.TenFile.ToString();
@@ -362,10 +349,8 @@ public partial class _Default : System.Web.UI.Page
             cut.Ma_User = int.Parse(Session["Ma"].ToString());
             cut.Ma_UserNhan = int.Parse(droUserN.SelectedValue);
             cv.Sua();
-            cut.So_CV = cv.So;
             cut.DuThao();
-            lblTB.Text = cv.ThongBao;
-            lblTB1.Text = cut.ThongBao;
+            msg.Show(cut.ThongBao);
             txtTenCV.Text = "";
             txtTomTat.Text = "";
             txtGopY.Text = "";

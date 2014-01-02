@@ -108,8 +108,7 @@ public partial class SoanCV : System.Web.UI.Page
             cv.Them();
             cut.So_CV = cv.LayMa().ToString();
             cut.DuThao();
-            lblTB.Text = cv.ThongBao;
-            lblTB1.Text = cut.ThongBao;
+            msg.ShowAndRedirect(cut.ThongBao);
             txtTenCV.Text = "";
             txtTomTat.Text = "";
             txtGopY.Text = "";

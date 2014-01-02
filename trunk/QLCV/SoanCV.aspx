@@ -99,10 +99,8 @@
                     </tr>
                     <tr>
                         <td colspan="3" style="text-align: center">
-                            <asp:Label ID="lblTB1" runat="server" Text="Thông báo"></asp:Label>
                             <asp:Button ID="btnTrinhDuyet" runat="server" Font-Bold="True" Height="32px" Text="Trình duyệt" Width="100px" OnClick="btnTrinhDuyet_Click" />
                             <asp:Button ID="btnThoat" runat="server" Font-Bold="True" Height="32px" Text="Thoát" Width="100px" OnClick="btnThoat_Click" />
-                            <asp:Label ID="lblTB" runat="server" Text="Thông báo"></asp:Label>
                         </td>
                     </tr>
                 </table>

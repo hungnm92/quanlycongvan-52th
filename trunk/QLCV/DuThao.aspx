@@ -118,12 +118,10 @@
                                     </tr>
                                     <tr>
                                         <td colspan="3" style="text-align: center">
-                                            <asp:Label ID="lblTB1" runat="server" Text="Thông báo" Visible="False"></asp:Label>
                                             <asp:Button ID="btnTrinhDuyet" runat="server" Font-Bold="True" Height="32px" Text="Trình duyệt" Width="100px" OnClick="btnTrinhDuyet_Click" />
                                             <asp:Button ID="btnHuyDuThao" runat="server" Font-Bold="True" Height="32px" Text="Hủy dự thảo" Width="100px" OnClick="btnHuyDuThao_Click" />
                                             <asp:Button ID="btnLuuDuThao" runat="server" Font-Bold="True" Height="32px" Text="Lưu dự thảo" Width="100px" OnClick="btnLuuDuThao_Click" />
                                             <asp:Button ID="btnThoat" runat="server" Font-Bold="True" Height="32px" Text="Thoát" Width="100px" OnClick="btnThoat_Click" />
-                                            <asp:Label ID="lblTB" runat="server" Text="Thông báo" Visible="False"></asp:Label>
                                         </td>
                                     </tr>
                                 </table>
@@ -132,8 +130,6 @@
                     </table>
                 </asp:Panel>
                 <br />
-                <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Button" />
-                <asp:Label ID="Label4" runat="server" ForeColor="Red" Text="sfgbgsdfgd" ViewStateMode="Enabled" Visible="False"></asp:Label>
             </td>
         </tr>
     </table>
