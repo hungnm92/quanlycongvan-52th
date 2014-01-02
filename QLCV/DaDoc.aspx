@@ -1,15 +1,12 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="DaDoc.aspx.cs" Inherits="_Default" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder2" Runat="Server">
-    <table style="width:100%;">
+    <table style="width:100%; color: #000000;">
         <tr>
             <td style="font-weight: 700; font-size: 20px; text-align: center; color: #FFFFFF; background-image: none;">
-                <table style="width:100%; color: #000000;">
-        <tr>
-            <td style="font-weight: 700; font-size: 20px; text-align: center; color: #FFFFFF; background-image: none;">
-                <asp:GridView ID="griCongVanDen" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Font-Bold="False" DataKeyNames="So,SoCUT" OnSelectedIndexChanged="griCongVanDen_SelectedIndexChanged" AllowPaging="True">
+                <asp:GridView ID="griDaDoc" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Font-Bold="False" OnSelectedIndexChanged="griDaDoc_SelectedIndexChanged" DataKeyNames="So" AllowPaging="True">
                     <AlternatingRowStyle BackColor="White" />
                     <Columns>
                         <asp:CommandField ButtonType="Button" SelectText="Chọn" ShowSelectButton="True" />
@@ -17,8 +14,8 @@
                         <asp:BoundField DataField="TenCV" HeaderText="Tên Công văn" />
                         <asp:BoundField DataField="TrichYeu" HeaderText="Trích yếu" />
                         <asp:BoundField DataField="TenFile" HeaderText="File" />
+                        <asp:BoundField DataField="ThoiGianSoan" HeaderText="Thời gian soạn" />
                         <asp:BoundField DataField="ThoiGianGui" HeaderText="Thời gian gửi" />
-                        <asp:BoundField DataField="ThoiGianDoc" HeaderText="Thời gian đọc" />
                     </Columns>
                     <EditRowStyle BackColor="#2461BF" />
                     <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
@@ -39,7 +36,7 @@
                             <td class="auto-style7" style="vertical-align: top; color: #000000;">
                                 <table style="width:100%; height: 56px;">
                                     <tr>
-                                        <td class="auto-style64" style="white-space: nowrap">Gửi tới:&nbsp; </td>
+                                        <td class="auto-style64" style="white-space: nowrap">Người nhận:&nbsp; </td>
                                         <td class="auto-style81">
                                             <asp:DropDownList ID="droUserN" runat="server" DataTextField="TenUser" DataValueField="Ma" Height="30px" Width="715px" ForeColor="Black">
                                             </asp:DropDownList>
@@ -122,10 +119,8 @@
                                     <tr>
                                         <td colspan="3" style="text-align: center">
                                             <asp:Label ID="lblTB1" runat="server" Text="Thông báo" Visible="False"></asp:Label>
-                                            <asp:Button ID="btnTrinhDuyet" runat="server" Font-Bold="True" Height="32px" OnClick="btnTrinhDuyet_Click" Text="Trình duyệt" Width="100px" Visible="False" />
-                                            <asp:Button ID="btnPheDuyet" runat="server" Font-Bold="True" Height="32px" Text="Phê duyệt" Width="100px" OnClick="btnPheDuyet_Click" Visible="False" />
-                                            <asp:Button ID="btnKhongDuyet" runat="server" Font-Bold="True" Height="32px" Text="Không duyệt" Width="100px" OnClick="btnKhongDuyet_Click" Visible="False" />
-                                            <asp:Button ID="btnPhatHanh" runat="server" Font-Bold="True" Height="32px" Text="Phát hành" Width="100px" OnClick="btnPhatHanh_Click" Visible="False" />
+                                            <asp:Button ID="btnTrinhDuyet" runat="server" Font-Bold="True" Height="32px" Text="Trình duyệt" Width="100px" OnClick="btnTrinhDuyet_Click" Visible="False" />
+                                            <asp:Button ID="btnHuyDuThao" runat="server" Font-Bold="True" Height="32px" Text="Hủy dự thảo" Width="100px" OnClick="btnHuyDuThao_Click" Visible="False" />
                                             <asp:Button ID="btnLuuDuThao" runat="server" Font-Bold="True" Height="32px" Text="Lưu dự thảo" Width="100px" OnClick="btnLuuDuThao_Click" Visible="False" />
                                             <asp:Button ID="btnThoat" runat="server" Font-Bold="True" Height="32px" Text="Thoát" Width="100px" OnClick="btnThoat_Click" />
                                             <asp:Label ID="lblTB" runat="server" Text="Thông báo" Visible="False"></asp:Label>
@@ -136,9 +131,6 @@
                         </tr>
                     </table>
                 </asp:Panel>
-            </td>
-        </tr>
-    </table>
                 <br />
                 <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Button" />
                 <asp:Label ID="Label4" runat="server" ForeColor="Red" Text="sfgbgsdfgd" ViewStateMode="Enabled" Visible="False"></asp:Label>
