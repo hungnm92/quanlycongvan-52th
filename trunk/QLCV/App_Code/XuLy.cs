@@ -207,6 +207,25 @@ namespace lanhnt
                 ThongBao = ex.Message;
             }
         }
+        public void Them_NgayPH()
+        {
+            try
+            {
+                SqlConnection BaoVe = new SqlConnection("server=(local)\\SQLEXPRESS;uid=sa;pwd=123456;database=QuanLyCongVan");
+                SqlCommand Lenh = new SqlCommand("CongVan_Them_NgayPH", BaoVe);
+                Lenh.CommandType = CommandType.StoredProcedure;
+                SqlParameter ThamSo = new SqlParameter();
+                ThamSo = Lenh.Parameters.AddWithValue("@So", So);
+                BaoVe.Open();
+                Lenh.ExecuteNonQuery();
+                BaoVe.Close();
+                ThongBao = "Sửa thành công!.";
+            }
+            catch (Exception ex)
+            {
+                ThongBao = ex.Message;
+            }
+        }
         public void CT()
         {
             SqlConnection BaoVe = new SqlConnection("server=(local)\\SQLEXPRESS;uid=sa;pwd=123456;database=QuanLyCongVan");
@@ -295,7 +314,7 @@ namespace lanhnt
         }
         public DataTable ChuaDoc_DS(int MaUser)
         {
-            string SelectSQL = "SELECT CV.Ma,CV.So, TenCV,TrichYeu, TenFile, NgayPH,YKienLD, YKienCV, TenTT, TenUser AS NguoiGoi, ThoiGianGui, ThoiGianDoc FROM CongVan CV, TinhTrang TT, UserN U, CV_UserN_TT CUT WHERE CV.So = CUT.So_CV AND CUT.Ma_TT = TT.Ma AND CUT.Ma_User = U.Ma AND Ma_UserNhan = @MaUser AND TT.Ma =8 ORDER BY ThoiGianGui DESC";
+            string SelectSQL = "SELECT CV.Ma,CV.So, TenCV,TrichYeu, TenFile, NgayPH,YKienLD, YKienCV, TenTT, TenUser AS NguoiGoi, ThoiGianGui, ThoiGianDoc FROM CongVan CV, TinhTrang TT, UserN U, CV_UserN_TT CUT WHERE CV.So = CUT.So_CV AND CUT.Ma_TT = TT.Ma AND CUT.Ma_User = U.Ma AND Ma_UserNhan = @MaUser AND TT.Ma <> 7 ORDER BY ThoiGianGui DESC";
             SqlConnection BaoVe = new SqlConnection("server=(local)\\SQLEXPRESS;uid=sa;pwd=123456;database=QuanLyCongVan");
             DataTable ThungChua = new DataTable();
             BaoVe.Open();
@@ -359,7 +378,7 @@ namespace lanhnt
         }
         public DataTable Den_DS(int MaUser)
         {
-            string SelectSQL = "SELECT CV.Ma,CV.So, TenCV,TrichYeu, TenFile, NgayPH,YKienLD, YKienCV, TenTT, TenUser AS NguoiGui, ThoiGianGui, ThoiGianDoc FROM CongVan CV, TinhTrang TT, UserN U, CV_UserN_TT CUT WHERE CV.So = CUT.So_CV AND CUT.Ma_TT = TT.Ma AND CUT.Ma_User = U.Ma AND Ma_UserNhan = @MaUser AND TT.Ma in ( 2, 3, 4, 7 ,8) ORDER BY ThoiGianGui DESC ";
+            string SelectSQL = "SELECT CV.Ma,CV.So, TenCV,TrichYeu, TenFile, NgayPH,YKienLD, YKienCV, TenTT, TenUser AS NguoiGui, ThoiGianGui, ThoiGianDoc FROM CongVan CV, TinhTrang TT, UserN U, CV_UserN_TT CUT WHERE CV.So = CUT.So_CV AND CUT.Ma_TT = TT.Ma AND CUT.Ma_User = U.Ma AND Ma_UserNhan = @MaUser AND TT.Ma in ( 2, 3, 4, 5, 7 ,8) ORDER BY ThoiGianGui DESC ";
             SqlConnection BaoVe = new SqlConnection("server=(local)\\SQLEXPRESS;uid=sa;pwd=123456;database=QuanLyCongVan");
             DataTable ThungChua = new DataTable();
             BaoVe.Open();
@@ -770,6 +789,28 @@ namespace lanhnt
                 BaoVe.Open();
                 Lenh.ExecuteNonQuery();
                 BaoVe.Close();
+        }
+        public void PhatHanh()
+        {
+            try
+            {
+                SqlConnection BaoVe = new SqlConnection("server=(local)\\SQLEXPRESS;uid=sa;pwd=123456;database=QuanLyCongVan");
+                SqlCommand Lenh = new SqlCommand("CV_UserN_TT_PhatHanh", BaoVe);
+                Lenh.CommandType = CommandType.StoredProcedure;
+                SqlParameter ThamSo = new SqlParameter();
+                ThamSo = Lenh.Parameters.AddWithValue("@So_CV", So_CV);
+                ThamSo = Lenh.Parameters.AddWithValue("@Ma_User", Ma_User);
+                ThamSo = Lenh.Parameters.AddWithValue("@Ma_UserNhan", Ma_UserNhan);
+                ThamSo = Lenh.Parameters.AddWithValue("@SoCUT", So);
+                BaoVe.Open();
+                Lenh.ExecuteNonQuery();
+                BaoVe.Close();
+                ThongBao = "Đã phát hành tới các nhân viên.";
+            }
+            catch (Exception ex)
+            {
+                ThongBao = ex.Message;
+            }
         }
         public void LaySo(string So_CV, int Ma_User)
         {

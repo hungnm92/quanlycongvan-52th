@@ -20,7 +20,6 @@ public partial class _Default : System.Web.UI.Page
             pnlChiTiet.Visible = false;
             griCongVanDen.DataSource = cv.Den_DS(int.Parse(Session["Ma"].ToString()));
             griCongVanDen.DataBind();
-
             droLCV.DataSource = lcv.DS();
             droLCV.DataBind();
         }
@@ -55,6 +54,7 @@ public partial class _Default : System.Web.UI.Page
         griCongVanDen.Visible = false;
         pnlChiTiet.Visible = true;
         cv.So = griCongVanDen.SelectedValue.ToString();
+        //cut.So = griCongVanDen.SelectedValue.ToString();
         cv.CT();
         cut.LaySo(cv.So, cut.Ma_User);
         cut.CT();
@@ -196,7 +196,94 @@ public partial class _Default : System.Web.UI.Page
     }
     protected void btnPhatHanh_Click(object sender, EventArgs e)
     {
-
+        if (fileTep.HasFile == true)
+        {
+            cv.So = griCongVanDen.SelectedValue.ToString();
+            cv.TenCV = txtTenCV.Text;
+            bool bTrichYeu = string.IsNullOrWhiteSpace(txtTomTat.Text);
+            if (bTrichYeu == true)
+                cv.TrichYeu = " ";
+            else
+                cv.TrichYeu = txtTomTat.Text;
+            bool bYKienCV = string.IsNullOrWhiteSpace(txtGopY.Text);
+            if (bYKienCV == true)
+                cv.YKienCV = " ";
+            else
+                cv.YKienCV = txtGopY.Text;
+            bool bYKienLD = string.IsNullOrWhiteSpace(txtYKienLD.Text);
+            if (bYKienLD == true)
+                cv.YKienLD = " ";
+            else
+                cv.YKienLD = txtYKienLD.Text;
+            cv.Ma_LCV = int.Parse(droLCV.SelectedValue);
+            cv.NgayPH = txtNgayPH.Text;
+            string DuongDan = "";
+            DuongDan = Server.MapPath("~/src/products/");
+            DuongDan = DuongDan + fileTep.FileName;
+            fileTep.SaveAs(DuongDan);
+            cv.TenFile = fileTep.FileName;
+            //cut.ThoiGianGui = DateTime.Now.ToString();
+            cut.Ma_User = int.Parse(Session["Ma"].ToString());
+            cut.Ma_UserNhan = int.Parse(droUserN.SelectedValue);
+            cv.Them_NgayPH();
+            cut.So_CV = cv.So;
+            cut.PhatHanh();
+            lblTB.Visible = true;
+            lblTB1.Visible = true;
+            lblTB.Text = cv.ThongBao;
+            lblTB1.Text = cut.ThongBao;
+            txtTenCV.Text = "";
+            txtTomTat.Text = "";
+            txtGopY.Text = "";
+            txtMaCV.Text = "";
+            txtSoCV.Text = "";
+            // droLCV.Text = "";
+            txtNgayPH.Text = "";
+            //fileTep.;
+        }
+        else
+        {
+            cv.So = griCongVanDen.SelectedValue.ToString();
+            cv.CT();
+            string temp = cv.TenFile.ToString();
+            cv.TenCV = txtTenCV.Text;
+            bool bTrichYeu = string.IsNullOrWhiteSpace(txtTomTat.Text);
+            if (bTrichYeu == true)
+                cv.TrichYeu = " ";
+            else
+                cv.TrichYeu = txtTomTat.Text;
+            bool bYKienCV = string.IsNullOrWhiteSpace(txtGopY.Text);
+            if (bYKienCV == true)
+                cv.YKienCV = " ";
+            else
+                cv.YKienCV = txtGopY.Text;
+            bool bYKienLD = string.IsNullOrWhiteSpace(txtYKienLD.Text);
+            if (bYKienLD == true)
+                cv.YKienLD = " ";
+            else
+                cv.YKienLD = txtYKienLD.Text;
+            cv.Ma_LCV = int.Parse(droLCV.SelectedValue);
+            cv.NgayPH = txtNgayPH.Text;
+            cv.TenFile = temp;
+            cut.ThoiGianGui = DateTime.Now.ToString();
+            cut.Ma_User = int.Parse(Session["Ma"].ToString());
+            cut.Ma_UserNhan = int.Parse(droUserN.SelectedValue);
+            cv.Them_NgayPH();
+            cut.So_CV = cv.So;
+            cut.PhatHanh();
+            lblTB.Visible = true;
+            lblTB1.Visible = true;
+            lblTB.Text = cv.ThongBao;
+            lblTB1.Text = cut.ThongBao;
+            txtTenCV.Text = "";
+            txtTomTat.Text = "";
+            txtGopY.Text = "";
+            txtMaCV.Text = "";
+            txtSoCV.Text = "";
+            // droLCV.Text = "";
+            txtNgayPH.Text = "";
+            //fileTep.;
+        }
     }
     protected void btnLuuDuThao_Click(object sender, EventArgs e)
     {

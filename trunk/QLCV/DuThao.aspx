@@ -6,7 +6,7 @@
     <table style="width:100%; color: #000000;">
         <tr>
             <td style="font-weight: 700; font-size: 20px; text-align: center; color: #FFFFFF; background-image: none;">
-                <asp:GridView ID="griDuThao" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Font-Bold="False" OnSelectedIndexChanged="griDuThao_SelectedIndexChanged" DataKeyNames="So">
+                <asp:GridView ID="griDuThao" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Font-Bold="False" OnSelectedIndexChanged="griDuThao_SelectedIndexChanged" DataKeyNames="So" AllowPaging="True">
                     <AlternatingRowStyle BackColor="White" />
                     <Columns>
                         <asp:CommandField ButtonType="Button" SelectText="Chọn" ShowSelectButton="True" />
