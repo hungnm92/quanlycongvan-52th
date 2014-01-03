@@ -18,21 +18,18 @@ public partial class _Default : System.Web.UI.Page
         if (IsPostBack == false)
         {
             pnlChiTiet.Visible = false;
-            griDaDuyet.DataSource = cv.DaDuyet_DS(int.Parse(Session["Ma"].ToString()));
-            griDaDuyet.DataBind();
+            griCongVanDi.DataSource = cv.DaGui_DS(int.Parse(Session["Ma"].ToString()));
+            griCongVanDi.DataBind();
             droLCV.DataSource = lcv.DS();
             droLCV.DataBind();
         }
     }
-    protected void btnThoat_Click(object sender, EventArgs e)
+   
+    protected void griCongVanDi_SelectedIndexChanged(object sender, EventArgs e)
     {
-        Response.Redirect("~/DaDuyet.aspx");
-    }
-    protected void griDaDuyet_SelectedIndexChanged(object sender, EventArgs e)
-    {
-        griDaDuyet.Visible = false;
+        griCongVanDi.Visible = false;
         pnlChiTiet.Visible = true;
-        cut.So = int.Parse(griDaDuyet.SelectedValue.ToString());
+        cut.So = int.Parse(griCongVanDi.SelectedValue.ToString());
         cut.CT();
         cv.So = cut.So_CV;
         cv.CT();
@@ -43,21 +40,14 @@ public partial class _Default : System.Web.UI.Page
         txtGopY.Text = cv.YKienCV;
         txtMaCV.Text = cv.Ma;
         txtSoCV.Text = cv.So;
-        u.Ma = cut.Ma_UserNhan;
-        droUserN.SelectedValue = u.Ma.ToString();
+        //u.Ma = cut.Ma_UserNhan;
+        //droUserN.SelectedValue = u.Ma.ToString();
         lcv.Ma = cv.Ma_LCV;
         droLCV.SelectedValue = lcv.Ma.ToString();
         txtNgayPH.Text = cut.NgayPH;
-        if (Convert.ToInt16(Session["Ma"]) == cut.Ma_UserNhan)
-        {
-            string TimeDoc = cut.ThoiGianDoc;
-            bool bThoiGianDoc = string.IsNullOrEmpty(TimeDoc);
-            if (bThoiGianDoc == true)
-            {
-                cut.Update_TGDoc();
-                cut.CT();
-                cut.Doc();
-            }
-        }
     }
-}
+    protected void btnThoat_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("~/HopThuDi.aspx");
+    }
+  }

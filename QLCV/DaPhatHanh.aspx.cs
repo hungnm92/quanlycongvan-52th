@@ -26,7 +26,7 @@ public partial class _Default : System.Web.UI.Page
     }
     protected void btnThoat_Click(object sender, EventArgs e)
     {
-        Response.Redirect("~/Default.aspx");
+        Response.Redirect("~/DaPhatHanh.aspx");
     }
     protected void griDaPhatHanh_SelectedIndexChanged(object sender, EventArgs e)
     {

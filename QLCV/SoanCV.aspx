@@ -99,6 +99,7 @@
                     </tr>
                     <tr>
                         <td colspan="3" style="text-align: center">
+                            <asp:Button ID="btnGui" runat="server" Font-Bold="True" Height="32px" Text="Gửi" Width="100px" OnClick="btnGui_Click" />
                             <asp:Button ID="btnTrinhDuyet" runat="server" Font-Bold="True" Height="32px" Text="Trình duyệt" Width="100px" OnClick="btnTrinhDuyet_Click" />
                             <asp:Button ID="btnThoat" runat="server" Font-Bold="True" Height="32px" Text="Thoát" Width="100px" OnClick="btnThoat_Click" />
                         </td>
