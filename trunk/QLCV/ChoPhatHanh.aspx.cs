@@ -26,7 +26,7 @@ public partial class _Default : System.Web.UI.Page
     }
     protected void btnThoat_Click(object sender, EventArgs e)
     {
-        Response.Redirect("~/Default.aspx");
+        Response.Redirect("~/ChoPhatHanh.aspx");
     }
     protected void btnPhatHanh_Click(object sender, EventArgs e)
     {
@@ -141,9 +141,16 @@ public partial class _Default : System.Web.UI.Page
         lcv.Ma = cv.Ma_LCV;
         droLCV.SelectedValue = lcv.Ma.ToString();
         txtNgayPH.Text = cut.NgayPH;
-        string TimeDoc = cut.ThoiGianDoc;
-        bool bThoiGianDoc = string.IsNullOrEmpty(TimeDoc);
-        if (bThoiGianDoc == true)
-            cut.Update_TGDoc();
+        if (Convert.ToInt16(Session["Ma"]) == cut.Ma_UserNhan)
+        {
+            string TimeDoc = cut.ThoiGianDoc;
+            bool bThoiGianDoc = string.IsNullOrEmpty(TimeDoc);
+            if (bThoiGianDoc == true)
+            {
+                cut.Update_TGDoc();
+                cut.CT();
+                cut.Doc();
+            }
+        }
     }
 }

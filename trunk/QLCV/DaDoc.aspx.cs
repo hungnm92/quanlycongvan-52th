@@ -27,7 +27,7 @@ public partial class _Default : System.Web.UI.Page
     }
     protected void btnThoat_Click(object sender, EventArgs e)
     {
-        Response.Redirect("~/Default.aspx");
+        Response.Redirect("~/DaDoc.aspx");
     }
     protected void griDaDoc_SelectedIndexChanged(object sender, EventArgs e)
     {

@@ -22,7 +22,7 @@ public partial class Admin_Login : System.Web.UI.Page
                 Session["Ma"] = u.Ma;
                 Session["HoTenNV"] = u.Ho + " " + u.TenNV;
                 Session["MaNhom"] = u.MaNhom;
-                Response.Redirect("~/Default.aspx");
+                Response.Redirect("~/HopThuDen.aspx");
             }
             else
             {

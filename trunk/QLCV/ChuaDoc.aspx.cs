@@ -27,7 +27,7 @@ public partial class _Default : System.Web.UI.Page
     }
     protected void btnThoat_Click(object sender, EventArgs e)
     {
-        Response.Redirect("~/Default.aspx");
+        Response.Redirect("~/ChuaDoc.aspx");
     }
     protected void griChuaDoc_SelectedIndexChanged(object sender, EventArgs e)
     {
@@ -52,7 +52,11 @@ public partial class _Default : System.Web.UI.Page
         string TimeDoc = cut.ThoiGianDoc;
         bool bThoiGianDoc = string.IsNullOrEmpty(TimeDoc);
         if (bThoiGianDoc == true)
+        {
             cut.Update_TGDoc();
+            cut.CT();
+            cut.Doc();
+        }
     }
     protected void btnPheDuyet_Click(object sender, EventArgs e)
     {

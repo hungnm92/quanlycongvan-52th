@@ -65,10 +65,17 @@ public partial class _Default : System.Web.UI.Page
         lcv.Ma = cv.Ma_LCV;
         droLCV.SelectedValue = lcv.Ma.ToString();
         txtNgayPH.Text = cut.NgayPH;
-        string TimeDoc = cut.ThoiGianDoc;
-        bool bThoiGianDoc = string.IsNullOrEmpty(TimeDoc);
-        if (bThoiGianDoc == true)
-            cut.Update_TGDoc();
+        if (Convert.ToInt16(Session["Ma"]) == cut.Ma_UserNhan)
+        {
+            string TimeDoc = cut.ThoiGianDoc;
+            bool bThoiGianDoc = string.IsNullOrEmpty(TimeDoc);
+            if (bThoiGianDoc == true)
+            {
+                cut.Update_TGDoc();
+                cut.CT();
+                cut.Doc();
+            }
+        }
 
     }
     protected void btnThoat_Click(object sender, EventArgs e)
@@ -131,7 +138,8 @@ public partial class _Default : System.Web.UI.Page
             //cut.ThoiGianGui = DateTime.Now.ToString();
             cut.Ma_User = int.Parse(Session["Ma"].ToString());
             cut.Ma_UserNhan = int.Parse(droUserN.SelectedValue);
-            cv.Sua();
+            cv.Them();
+            cut.So_CV = cv.LayMa().ToString();
             cut.TrinhDuyet();
             msg.Show(cut.ThongBao);
             txtTenCV.Text = "";
@@ -172,7 +180,8 @@ public partial class _Default : System.Web.UI.Page
             cut.ThoiGianGui = DateTime.Now.ToString();
             cut.Ma_User = int.Parse(Session["Ma"].ToString());
             cut.Ma_UserNhan = int.Parse(droUserN.SelectedValue);
-            cv.Sua();
+            cv.Them();
+            cut.So_CV = cv.LayMa().ToString();
             cut.TrinhDuyet();
             msg.Show(cut.ThongBao);
             txtTenCV.Text = "";
@@ -306,7 +315,8 @@ public partial class _Default : System.Web.UI.Page
             cv.TenFile = fileTep.FileName;
             cut.Ma_User = int.Parse(Session["Ma"].ToString());
             cut.Ma_UserNhan = int.Parse(droUserN.SelectedValue);
-            cv.Sua();
+            cv.Them();
+            cut.So_CV = cv.LayMa().ToString();
             cut.DuThao();
             msg.Show(cut.ThongBao);
             txtTenCV.Text = "";
@@ -348,7 +358,8 @@ public partial class _Default : System.Web.UI.Page
             cv.TenFile = temp;
             cut.Ma_User = int.Parse(Session["Ma"].ToString());
             cut.Ma_UserNhan = int.Parse(droUserN.SelectedValue);
-            cv.Sua();
+            cv.Them();
+            cut.So_CV = cv.LayMa().ToString();
             cut.DuThao();
             msg.Show(cut.ThongBao);
             txtTenCV.Text = "";

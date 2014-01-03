@@ -66,12 +66,13 @@
         <ul id="nav">
                    <li><a href="SoanCV.aspx">So&#7841;n</a></li>
 
-            <li><a href="Default.aspx">Công v&#259;n &#273;&#7871;n »</a> 
+            <li><a href="HopThuDen.aspx">Hộp thư đến »</a> 
             <ul>
                            <li><a href="ChuaDoc.aspx">Ch&#432;a &#273;&#7885;c</a></li>
                            <li><a href="DaDoc.aspx">&#272;ã &#273;&#7885;c</a></li>
                          </ul>
                 </li> 
+             <li><a href="HopThuDi.aspx">Hộp thư đi</a></li>
             <li><a href="#">Phê duy&#7879;t »</a>
                         <ul>
                            <li><a href="ChoDuyet.aspx">Ch&#7901; duy&#7879;t</a></li>
