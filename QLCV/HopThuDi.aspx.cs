@@ -50,4 +50,10 @@ public partial class _Default : System.Web.UI.Page
     {
         Response.Redirect("~/HopThuDi.aspx");
     }
-  }
+    protected void griCongVanDi_PageIndexChanging(object sender, GridViewPageEventArgs e)
+    {
+        griCongVanDi.PageIndex = e.NewPageIndex;
+        griCongVanDi.DataSource = cv.DaGui_DS(int.Parse(Session["Ma"].ToString()));
+        griCongVanDi.DataBind();
+    }
+}

@@ -1,8 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="SoanCV.aspx.cs" Inherits="SoanCV" %>
 
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder2" Runat="Server">
+    <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server"></asp:ToolkitScriptManager>
     <table style="width:100%;" __designer:mapid="56">
         <tr __designer:mapid="57">
             <td class="auto-style7" colspan="3" style="vertical-align: top" __designer:mapid="58">
@@ -11,6 +14,11 @@
                         <td class="auto-style64" __designer:mapid="5b" style="white-space: nowrap">
                             Người nhận:&nbsp;(*) </td>
                         <td class="auto-style81" __designer:mapid="5d">
+                            <asp:TextBox ID="txtNguoiNhan" runat="server" TextMode="MultiLine"></asp:TextBox><asp:Button ID="btnXong" runat="server" Text="Button" OnClick="btnXong_Click" />
+                            <asp:Panel ID="pnlNguoiNhan" runat="server">
+                                <asp:CheckBoxList ID="cblUser" runat="server" DataTextField="TenUser" DataValueField="Ma"></asp:CheckBoxList>
+                            </asp:Panel>
+                            <asp:PopupControlExtender ID="PopupControlExtender1" runat="server" TargetControlID="txtNGuoiNhan" PopupControlID="pnlNguoiNhan" Position="Bottom"></asp:PopupControlExtender>
                                         <asp:DropDownList ID="droUserN" runat="server" DataTextField="TenUser" DataValueField="Ma" Height="30px" Width="715px">
                                         </asp:DropDownList>
                                     </td>

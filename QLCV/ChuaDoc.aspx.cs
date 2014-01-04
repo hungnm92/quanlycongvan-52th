@@ -344,4 +344,10 @@ public partial class _Default : System.Web.UI.Page
             Response.Redirect("~/DuThao.aspx");
         }
     }
+    protected void griChuaDoc_PageIndexChanging(object sender, GridViewPageEventArgs e)
+    {
+        griChuaDoc.PageIndex = e.NewPageIndex;
+        griChuaDoc.DataSource = cv.ChuaDoc_DS(int.Parse(Session["Ma"].ToString()));
+        griChuaDoc.DataBind();
+    }
 }

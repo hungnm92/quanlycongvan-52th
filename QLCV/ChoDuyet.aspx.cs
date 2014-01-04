@@ -90,4 +90,10 @@ public partial class _Default : System.Web.UI.Page
             }
         }
     }
+    protected void griChoDuyet_PageIndexChanging(object sender, GridViewPageEventArgs e)
+    {
+        griChoDuyet.PageIndex = e.NewPageIndex;
+        griChoDuyet.DataSource = cv.ChoDuyet_DS(int.Parse(Session["Ma"].ToString()));
+        griChoDuyet.DataBind();
+    }
 }

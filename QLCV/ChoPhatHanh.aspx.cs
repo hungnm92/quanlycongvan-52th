@@ -153,4 +153,10 @@ public partial class _Default : System.Web.UI.Page
             }
         }
     }
+    protected void griChoPhatHanh_PageIndexChanging(object sender, GridViewPageEventArgs e)
+    {
+        griChoPhatHanh.PageIndex = e.NewPageIndex;
+        griChoPhatHanh.DataSource = cv.ChoPhatHanh_DS(int.Parse(Session["Ma"].ToString()));
+        griChoPhatHanh.DataBind();
+    }
 }

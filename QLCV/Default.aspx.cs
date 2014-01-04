@@ -372,5 +372,11 @@ public partial class _Default : System.Web.UI.Page
             Response.Redirect("~/DuThao.aspx");
         }
     }
+    protected void griCongVanDen_PageIndexChanging(object sender, GridViewPageEventArgs e)
+    {
+        griCongVanDen.PageIndex = e.NewPageIndex;
+        griCongVanDen.DataSource = cv.Den_DS(int.Parse(Session["Ma"].ToString()));
+        griCongVanDen.DataBind();
+    }
 }
 //store công văn đến.
