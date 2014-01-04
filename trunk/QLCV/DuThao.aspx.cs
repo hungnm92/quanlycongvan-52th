@@ -247,5 +247,10 @@ public partial class _Default : System.Web.UI.Page
             //fileTep.;
         }
     }
-
+    protected void griDuThao_PageIndexChanging(object sender, GridViewPageEventArgs e)
+    {
+        griDuThao.PageIndex = e.NewPageIndex;
+        griDuThao.DataSource = cv.DuThao_DS(int.Parse(Session["Ma"].ToString()));
+        griDuThao.DataBind();
+    }
 }

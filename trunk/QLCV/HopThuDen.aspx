@@ -9,7 +9,7 @@
                 <table style="width:100%; color: #000000;">
         <tr>
             <td style="font-weight: 700; font-size: 20px; text-align: center; color: #FFFFFF; background-image: none;">
-                <asp:GridView ID="griCongVanDen" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Font-Bold="False" DataKeyNames="So" OnSelectedIndexChanged="griCongVanDen_SelectedIndexChanged" AllowPaging="True">
+                <asp:GridView ID="griCongVanDen" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Font-Bold="False" DataKeyNames="So" OnSelectedIndexChanged="griCongVanDen_SelectedIndexChanged" AllowPaging="True" OnPageIndexChanging="griCongVanDen_PageIndexChanging">
                     <AlternatingRowStyle BackColor="White" />
                     <Columns>
                         <asp:CommandField ButtonType="Button" SelectText="Chọn" ShowSelectButton="True" />
@@ -121,7 +121,8 @@
                                     </tr>
                                     <tr>
                                         <td colspan="3" style="text-align: center">
-                                            <asp:Button ID="btnThoat" runat="server" Font-Bold="True" Height="32px" Text="Thoát" Width="100px" OnClick="btnThoat_Click" />
+                                            <asp:Button ID="btnTraLoi" runat="server" Font-Bold="True" Height="32px" Text="Trả lời" Width="100px" />
+                                            <asp:Button ID="btnThoat" runat="server" Font-Bold="True" Height="32px" OnClick="btnThoat_Click" Text="Thoát" Width="100px" />
                                         </td>
                                     </tr>
                                 </table>

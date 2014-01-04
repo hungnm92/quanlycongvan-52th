@@ -49,4 +49,10 @@ public partial class _Default : System.Web.UI.Page
         droLCV.SelectedValue = lcv.Ma.ToString();
         txtNgayPH.Text = cut.NgayPH;
     }
+    protected void griDaPhatHanh_PageIndexChanging(object sender, GridViewPageEventArgs e)
+    {
+        griDaPhatHanh.PageIndex = e.NewPageIndex;
+        griDaPhatHanh.DataSource = cv.DaPhatHanh_DS(int.Parse(Session["Ma"].ToString()));
+        griDaPhatHanh.DataBind();
+    }
 }

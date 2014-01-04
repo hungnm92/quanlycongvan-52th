@@ -392,6 +392,22 @@ namespace lanhnt
             }
             return ThungChua;
         }
+        public DataTable ChiTietCongVan(string SoCV)
+        {
+            string SelectSQL = "SELECT Ma_UserNhan AS NguoiNhan, Ma_User AS NguoiGui,TenTT, ThoiGianSoan, ThoiGianGui, ThoiGianDoc, ThoiGianDuyet, NgayPH	FROM CongVan CV, CV_UserN_TT CUT, TinhTrang TT WHERE CV.So = CUT.So_CV AND CUT.Ma_TT = TT.Ma AND CUT.So_CV = @So_CV ";
+            SqlConnection BaoVe = new SqlConnection("server=(local)\\SQLEXPRESS;uid=sa;pwd=123456;database=QuanLyCongVan");
+            DataTable ThungChua = new DataTable();
+            BaoVe.Open();
+            if (BaoVe.State == ConnectionState.Open)
+            {
+                SqlCommand Lenh = new SqlCommand(SelectSQL, BaoVe);
+                Lenh.Parameters.Add("@SoCV", SqlDbType.Int).Value = SoCV;
+                SqlDataAdapter XeTai = new SqlDataAdapter(Lenh);
+                XeTai.Fill(ThungChua);
+                BaoVe.Close();
+            }
+            return ThungChua;
+        }
         public DataTable DaGui_DS(int MaUser)
         {
             string SelectSQL = "SELECT CV.Ma,CUT.So, TenCV,TrichYeu, TenFile, NgayPH,YKienLD, YKienCV, TenTT, TenUser AS NguoiGui, ThoiGianGui, ThoiGianDoc	FROM CongVan CV, TinhTrang TT, UserN U, CV_UserN_TT CUT	WHERE CV.So = CUT.So_CV AND CUT.Ma_TT = TT.Ma AND CUT.Ma_User = U.Ma AND CUT.Ma_User = @MaUser AND TT.Ma in ( 2, 3, 4, 7 ,8)	ORDER BY ThoiGianGui DESC";

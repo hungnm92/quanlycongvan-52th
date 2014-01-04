@@ -60,4 +60,10 @@ public partial class _Default : System.Web.UI.Page
             }
         }
     }
+    protected void griKhongDuyet_PageIndexChanging(object sender, GridViewPageEventArgs e)
+    {
+        griKhongDuyet.PageIndex = e.NewPageIndex;
+        griKhongDuyet.DataSource = cv.KhongDuyet_DS(int.Parse(Session["Ma"].ToString()));
+        griKhongDuyet.DataBind();
+    }
 }
