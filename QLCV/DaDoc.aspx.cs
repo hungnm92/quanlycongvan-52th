@@ -84,9 +84,13 @@ public partial class _Default : System.Web.UI.Page
             DuongDan = DuongDan + ReName + fileTep.FileName;
             fileTep.SaveAs(DuongDan);
             cv.TenFile = ReName + fileTep.FileName;
+            cut.So = int.Parse(griDaDoc.SelectedValue.ToString());
+            cut.CT();
+            cv.Me = cut.So_CV;
+            cv.Them_Me();
+            cut.So_CV = cv.LayMa().ToString();
             cut.Ma_User = int.Parse(Session["Ma"].ToString());
             cut.Ma_UserNhan = int.Parse(droUserN.SelectedValue);
-            cv.Sua();
             cut.DuThao();
             msg.Show(cut.ThongBao);
             txtTenCV.Text = "";
@@ -96,7 +100,7 @@ public partial class _Default : System.Web.UI.Page
             txtSoCV.Text = "";
             // droLCV.Text = "";
             txtNgayPH.Text = "";
-            Response.Redirect("~/DuThao.aspx");
+            Response.Redirect("~/DaDoc.aspx");
             //fileTep.;
         }
         else
@@ -126,9 +130,13 @@ public partial class _Default : System.Web.UI.Page
             cv.Ma_LCV = int.Parse(droLCV.SelectedValue);
             //cv.NgayPH = txtNgayPH.Text;
             cv.TenFile = temp;
+            cut.So = int.Parse(griDaDoc.SelectedValue.ToString());
+            cut.CT();
+            cv.Me = cut.So_CV;
+            cv.Them_Me();
+            cut.So_CV = cv.LayMa().ToString();
             cut.Ma_User = int.Parse(Session["Ma"].ToString());
             cut.Ma_UserNhan = int.Parse(droUserN.SelectedValue);
-            cv.Sua();
             cut.DuThao();
             msg.Show(cut.ThongBao);
             txtTenCV.Text = "";
@@ -138,7 +146,7 @@ public partial class _Default : System.Web.UI.Page
             txtSoCV.Text = "";
             // droLCV.Text = "";
             txtNgayPH.Text = "";
-            Response.Redirect("~/DuThao.aspx");
+            Response.Redirect("~/DaDoc.aspx");
         }
     }
     protected void griDaDoc_PageIndexChanging(object sender, GridViewPageEventArgs e)
@@ -184,7 +192,10 @@ public partial class _Default : System.Web.UI.Page
             DuongDan = DuongDan + ReName + fileTep.FileName;
             fileTep.SaveAs(DuongDan);
             cv.TenFile = ReName + fileTep.FileName;
-            cv.Them();
+            cut.So = int.Parse(griDaDoc.SelectedValue.ToString());
+            cut.CT();
+            cv.Me = cut.So_CV;
+            cv.Them_Me();
             cut.So_CV = cv.LayMa().ToString();
             cut.Ma_User = int.Parse(Session["Ma"].ToString());
             cut.Ma_UserNhan = int.Parse(droUserN.SelectedValue.ToString());
@@ -212,7 +223,10 @@ public partial class _Default : System.Web.UI.Page
                     cv.YKienLD = txtChiDao.Text;
                 cv.Ma_LCV = int.Parse(droLCV.SelectedValue);
                 cv.TenFile = " ";
-                cv.Them();
+                cut.So = int.Parse(griDaDoc.SelectedValue.ToString());
+                cut.CT();
+                cv.Me = cut.So_CV;
+                cv.Them_Me();
                 cut.So_CV = cv.LayMa().ToString();
                 cut.Ma_User = int.Parse(Session["Ma"].ToString());
                 cut.Ma_UserNhan = int.Parse(droUserN.SelectedValue.ToString());

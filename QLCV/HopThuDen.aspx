@@ -127,6 +127,7 @@
                                     <tr>
                                         <td colspan="3" style="text-align: center">
                                             <asp:Button ID="btnTraLoi" runat="server" Font-Bold="True" Height="32px" Text="Trả lời" Width="100px" OnClick="btnTraLoi_Click" />
+                                            <asp:Button ID="btnLuuDuThao" runat="server" Font-Bold="True" Height="32px" OnClick="btnLuuDuThao_Click" Text="Lưu dự thảo" Visible="False" Width="100px" />
                                             <asp:Button ID="btnThoat" runat="server" Font-Bold="True" Height="32px" OnClick="btnThoat_Click" Text="Thoát" Width="100px" />
                                         </td>
                                     </tr>
