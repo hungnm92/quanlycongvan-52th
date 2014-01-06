@@ -13,7 +13,7 @@
                     <AlternatingRowStyle BackColor="White" />
                     <Columns>
                         <asp:CommandField ButtonType="Button" SelectText="Chọn" ShowSelectButton="True" />
-                        <asp:BoundField DataField="NguoiGui" HeaderText="Người gửi" />
+                        <asp:BoundField DataField="NguoiNhan" HeaderText="Người nhận" />
                         <asp:BoundField DataField="TenCV" HeaderText="Tên Công văn" />
                         <asp:BoundField DataField="TrichYeu" HeaderText="Trích yếu" />
                         <asp:BoundField DataField="TenFile" HeaderText="File" />

@@ -12,6 +12,7 @@ public partial class _Default : System.Web.UI.Page
     lanhnt.LoaiCV lcv = new lanhnt.LoaiCV();
     lanhnt.CongVan cv = new lanhnt.CongVan();
     lanhnt.WebMsgBox msg = new lanhnt.WebMsgBox();
+    public static int SoLuongDaChon = 0;
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -30,26 +31,48 @@ public partial class _Default : System.Web.UI.Page
     }
     protected void btnPheDuyet_Click(object sender, EventArgs e)
     {
-        cut.So = int.Parse(griChoDuyet.SelectedValue.ToString());
-        cut.CT();
-        cut.Ma_User = int.Parse(Session["Ma"].ToString());
-        cut.Ma_UserNhan = int.Parse(droUserN.SelectedValue);
-        cv.So = cut.So_CV;
-        cut.PheDuyet();
-        cut.PheDuyet_ChoPH();
-        msg.Show(cut.ThongBao);
-        // Response.Redirect("~/Default.aspx");
+        if (SoLuongDaChon != 0)
+        {
+            cut.So = int.Parse(griChoDuyet.SelectedValue.ToString());
+            cut.CT();
+            cut.Ma_User = int.Parse(Session["Ma"].ToString());
+            cv.So = cut.So_CV;
+            for (int i = 0; i <= cblUser.Items.Count - 1; i++)
+            {
+                if (cblUser.Items[i].Selected == true)
+                {
+                    cut.Ma_UserNhan = Convert.ToInt32(cblUser.Items[i].Value);
+                    cut.PheDuyet();
+                    cut.PheDuyet_ChoPH();
+                }
+            }
+            msg.Show(cut.ThongBao);
+            SoLuongDaChon = 0;
+        }
+        else
+            msg.Show("Bạn chưa nhập người nhận.");
     }
     protected void btnKhongDuyet_Click(object sender, EventArgs e)
     {
+        if (SoLuongDaChon != 0)
+        {
         cut.So = int.Parse(griChoDuyet.SelectedValue.ToString());
         cut.CT();
         cut.Ma_User = int.Parse(Session["Ma"].ToString());
-        cut.Ma_UserNhan = int.Parse(droUserN.SelectedValue);
         cv.So = cut.So_CV;
-        cut.KhongDuyet();
-        msg.Show(cut.ThongBao);
-        //Response.Redirect("~/Default.aspx");
+         for (int i = 0; i <= cblUser.Items.Count - 1; i++)
+            {
+                if (cblUser.Items[i].Selected == true)
+                {
+                    cut.Ma_UserNhan = Convert.ToInt32(cblUser.Items[i].Value);
+                    cut.KhongDuyet();
+                }
+            }
+         msg.Show(cut.ThongBao);
+         SoLuongDaChon = 0;
+        }
+        else
+            msg.Show("Bạn chưa nhập người nhận.");
     }
     protected void griChoDuyet_SelectedIndexChanged(object sender, EventArgs e)
     {
@@ -57,8 +80,8 @@ public partial class _Default : System.Web.UI.Page
         {
             btnPheDuyet.Visible = true;
             btnKhongDuyet.Visible = true;
-            droUserN.DataSource = u.VT_CV_DS();
-            droUserN.DataBind();
+            cblUser.DataSource = u.VT_CV_DS();
+            cblUser.DataBind();
         }
         griChoDuyet.Visible = false;
         pnlChiTiet.Visible = true;
@@ -73,8 +96,6 @@ public partial class _Default : System.Web.UI.Page
         txtGopY.Text = cv.YKienCV;
         txtMaCV.Text = cv.Ma;
         txtSoCV.Text = cv.So;
-        //u.Ma = cut.Ma_UserNhan;
-        //droUserN.SelectedValue = u.Ma.ToString();
         lcv.Ma = cv.Ma_LCV;
         droLCV.SelectedValue = lcv.Ma.ToString();
         txtNgayPH.Text = cut.NgayPH;
@@ -96,4 +117,18 @@ public partial class _Default : System.Web.UI.Page
         griChoDuyet.DataSource = cv.ChoDuyet_DS(int.Parse(Session["Ma"].ToString()));
         griChoDuyet.DataBind();
     }
+    protected void btnXong_Click(object sender, EventArgs e)
+    {
+        txtNguoiNhan.Text = "Đã chọn:" + "\r\n";
+        for (int i = 0; i <= cblUser.Items.Count - 1; i++)
+        {
+            if (cblUser.Items[i].Selected == true)
+            {
+                txtNguoiNhan.Text += cblUser.Items[i].Text.ToString() + "\r\n";
+                txtNguoiNhan.Visible = true;
+                SoLuongDaChon += 1;
+            }
+        }
+    }
+
 }

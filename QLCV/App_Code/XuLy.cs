@@ -124,6 +124,16 @@ namespace lanhnt
         public string TenLCV;
         public string ThongBao;
         public string SoCV;
+        public DataTable DS_TenFile()
+        {
+            SqlConnection BaoVe = new SqlConnection("server=(local)\\SQLEXPRESS;uid=sa;pwd=123456;database=QuanLyCongVan");
+            SqlDataAdapter XeTai = new SqlDataAdapter("DS_TenFile", BaoVe);
+            DataTable ThungChua = new DataTable();
+            BaoVe.Open();
+            XeTai.Fill(ThungChua);
+            BaoVe.Close();
+            return ThungChua;
+        }
         public string LayMa()
         {
             SqlConnection BaoVe = new SqlConnection("server=(local)\\SQLEXPRESS;uid=sa;pwd=123456;database=QuanLyCongVan");
@@ -410,7 +420,7 @@ namespace lanhnt
         }
         public DataTable DaGui_DS(int MaUser)
         {
-            string SelectSQL = "SELECT CV.Ma,CUT.So, TenCV,TrichYeu, TenFile, NgayPH,YKienLD, YKienCV, TenTT, TenUser AS NguoiGui, ThoiGianGui, ThoiGianDoc	FROM CongVan CV, TinhTrang TT, UserN U, CV_UserN_TT CUT	WHERE CV.So = CUT.So_CV AND CUT.Ma_TT = TT.Ma AND CUT.Ma_User = U.Ma AND CUT.Ma_User = @MaUser AND TT.Ma in ( 2, 3, 4, 7 ,8)	ORDER BY ThoiGianGui DESC";
+            string SelectSQL = "SELECT CV.Ma,CUT.So, TenCV,TrichYeu, TenFile, NgayPH,YKienLD, YKienCV, TenTT, TenUser AS NguoiGui,ThoiGianGui, ThoiGianDoc,(SELECT u.TenUser FROM CV_UserN_TT CT, UserN U WHERE CT.So = CUT.So and  U.Ma = CUT.Ma_UserNhan) AS NguoiNhan FROM CongVan CV, TinhTrang TT, UserN U, CV_UserN_TT CUT	WHERE CV.So = CUT.So_CV AND CUT.Ma_TT = TT.Ma AND CUT.Ma_User = U.Ma AND CUT.Ma_User = @MaUser AND TT.Ma in (9)	ORDER BY ThoiGianGui DESC";
             SqlConnection BaoVe = new SqlConnection("server=(local)\\SQLEXPRESS;uid=sa;pwd=123456;database=QuanLyCongVan");
             DataTable ThungChua = new DataTable();
             BaoVe.Open();
@@ -454,6 +464,7 @@ namespace lanhnt
         public string Ho;
         public string TenNV;
         public int MaNhom;
+        public int LayNhom;
         public string ThongBao;
         public DataTable DS()
         {
@@ -551,7 +562,7 @@ namespace lanhnt
                 ThongBao = ex.Message;
             }
             return false;
-        } 
+        }
         public void DoiMatKhau()
         {
             try
@@ -573,6 +584,23 @@ namespace lanhnt
             {
                 ThongBao = ex.Message;
             }
+        }
+        public int LayMaNhom(int MaUser)
+        {
+            string SelectSQL = "SELECT NU.Ma AS MaNhom FROM UserN U, NhomUser NU WHERE U.Ma = @MaUser AND NU.Ma_User = U.Ma";
+            SqlConnection BaoVe = new SqlConnection("server=(local)\\SQLEXPRESS;uid=sa;pwd=123456;database=QuanLyCongVan");
+            DataTable ThungChua = new DataTable();
+            BaoVe.Open();
+            if (BaoVe.State == ConnectionState.Open)
+            {
+                SqlCommand Lenh = new SqlCommand(SelectSQL, BaoVe);
+                Lenh.Parameters.Add("@MaUser", SqlDbType.Int).Value = MaUser;
+                SqlDataAdapter XeTai = new SqlDataAdapter(Lenh);
+                XeTai.Fill(ThungChua);
+                LayNhom = int.Parse(ThungChua.Rows[0][0].ToString());
+                BaoVe.Close();
+            }
+            return LayNhom;
         }
     }
     public class CV_User_TT

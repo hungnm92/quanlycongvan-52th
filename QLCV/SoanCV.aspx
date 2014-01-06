@@ -14,13 +14,11 @@
                         <td class="auto-style64" __designer:mapid="5b" style="white-space: nowrap">
                             Người nhận:&nbsp;(*) </td>
                         <td class="auto-style81" __designer:mapid="5d">
-                            <asp:TextBox ID="txtNguoiNhan" runat="server" TextMode="MultiLine"></asp:TextBox><asp:Button ID="btnXong" runat="server" Text="Button" OnClick="btnXong_Click" />
+                            <asp:TextBox ID="txtNguoiNhan" runat="server" TextMode="MultiLine" Width="656px"></asp:TextBox><asp:Button ID="btnXong" runat="server" Text="Chọn" OnClick="btnXong_Click" />
                             <asp:Panel ID="pnlNguoiNhan" runat="server">
                                 <asp:CheckBoxList ID="cblUser" runat="server" DataTextField="TenUser" DataValueField="Ma"></asp:CheckBoxList>
                             </asp:Panel>
-                            <asp:PopupControlExtender ID="PopupControlExtender1" runat="server" TargetControlID="txtNGuoiNhan" PopupControlID="pnlNguoiNhan" Position="Bottom"></asp:PopupControlExtender>
-                                        <asp:DropDownList ID="droUserN" runat="server" DataTextField="TenUser" DataValueField="Ma" Height="30px" Width="715px">
-                                        </asp:DropDownList>
+                            <asp:PopupControlExtender ID="PopupControlExtender1" runat="server" TargetControlID="txtNGuoiNhan" PopupControlID="pnlNguoiNhan" Position="Bottom"></asp:PopupControlExtender>                           
                                     </td>
                         <td class="auto-style4" rowspan="5" style="vertical-align: top" __designer:mapid="5f">
                             <table style="width: 100%; height: 224px;" __designer:mapid="60">
@@ -76,8 +74,7 @@
                     </tr>
                     <tr __designer:mapid="70">
                         <td class="auto-style99" style="white-space: nowrap;" __designer:mapid="71">
-                            <asp:Label ID="Label4" runat="server" Text="Tóm tắt"></asp:Label>
-                                                    :
+                            Nội dung:
                                                 (*)</td>
                         <td class="auto-style100" style="height: 19px; vertical-align: top;" __designer:mapid="73">
                             <asp:TextBox ID="txtTomTat" runat="server" Height="140px" TextMode="MultiLine" Width="715px"></asp:TextBox>
@@ -87,14 +84,14 @@
                         <td class="auto-style99" style="height: 19px; white-space: nowrap;" __designer:mapid="71">
                             Chỉ đạo: </td>
                         <td class="auto-style100" style="height: 19px; vertical-align: top;" __designer:mapid="73">
-                            <asp:TextBox ID="txtChiDao" runat="server" Height="37px" TextMode="MultiLine" Width="715px"></asp:TextBox>
+                            <asp:TextBox ID="txtChiDao" runat="server" Height="37px" TextMode="MultiLine" Width="715px" ReadOnly="True"></asp:TextBox>
                         </td>
                     </tr>
                     <tr __designer:mapid="70">
                         <td class="auto-style99" style="height: 19px" __designer:mapid="71">
                             Góp ý: </td>
                         <td class="auto-style100" style="height: 19px; vertical-align: top;" __designer:mapid="73">
-                            <asp:TextBox ID="txtGopY" runat="server" Height="37px" TextMode="MultiLine" Width="715px"></asp:TextBox>
+                            <asp:TextBox ID="txtGopY" runat="server" Height="37px" TextMode="MultiLine" Width="715px" ReadOnly="True"></asp:TextBox>
                         </td>
                     </tr>
                 </table>
@@ -108,7 +105,7 @@
                     <tr>
                         <td colspan="3" style="text-align: center">
                             <asp:Button ID="btnGui" runat="server" Font-Bold="True" Height="32px" Text="Gửi" Width="100px" OnClick="btnGui_Click" />
-                            <asp:Button ID="btnTrinhDuyet" runat="server" Font-Bold="True" Height="32px" Text="Trình duyệt" Width="100px" OnClick="btnTrinhDuyet_Click" />
+                            <asp:Button ID="btnTrinhDuyet" runat="server" Font-Bold="True" Height="32px" Text="Trình duyệt" Width="100px" OnClick="btnTrinhDuyet_Click" Visible="False" />
                             <asp:Button ID="btnThoat" runat="server" Font-Bold="True" Height="32px" Text="Thoát" Width="100px" OnClick="btnThoat_Click" />
                         </td>
                     </tr>

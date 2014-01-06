@@ -48,6 +48,17 @@ public partial class _Default : System.Web.UI.Page
         lcv.Ma = cv.Ma_LCV;
         droLCV.SelectedValue = lcv.Ma.ToString();
         txtNgayPH.Text = cut.NgayPH;
+        if (Convert.ToInt16(Session["Ma"]) == cut.Ma_UserNhan)
+        {
+            string TimeDoc = cut.ThoiGianDoc;
+            bool bThoiGianDoc = string.IsNullOrEmpty(TimeDoc);
+            if (bThoiGianDoc == true)
+            {
+                cut.Update_TGDoc();
+                cut.CT();
+                cut.Doc();
+            }
+        }
     }
     protected void griDaPhatHanh_PageIndexChanging(object sender, GridViewPageEventArgs e)
     {

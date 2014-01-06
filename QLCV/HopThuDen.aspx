@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="HopThuDen.aspx.cs" Inherits="_Default" %>
 
+<%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="asp" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder2" Runat="Server">
@@ -31,7 +33,8 @@
                     <SortedDescendingCellStyle BackColor="#E9EBEF" />
                     <SortedDescendingHeaderStyle BackColor="#4870BE" />
                 </asp:GridView>
-                <br />
+                <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
+                </asp:ToolkitScriptManager>
                 <br />
                 <asp:Panel ID="pnlChiTiet" runat="server">
                     <table style="width:100%;">
@@ -41,8 +44,12 @@
                                     <tr>
                                         <td class="auto-style64" style="white-space: nowrap">Gửi tới:&nbsp; </td>
                                         <td class="auto-style81">
-                                            <asp:DropDownList ID="droUserN" runat="server" DataTextField="TenUser" DataValueField="Ma" Height="30px" Width="715px" ForeColor="Black">
-                                            </asp:DropDownList>
+                                            <asp:TextBox ID="txtNguoiNhan" runat="server" TextMode="MultiLine" Width="656px"></asp:TextBox>
+                                            <asp:PopupControlExtender ID="PopupControlExtender1" runat="server" PopupControlID="pnlNguoiNhan" Position="Bottom" TargetControlID="txtNGuoiNhan">
+                                            </asp:PopupControlExtender>
+                                            <asp:Button ID="btnXong" runat="server" OnClick="btnXong_Click" Text="Chọn" />
+                                            <asp:CheckBoxList ID="cblUser" runat="server" DataTextField="TenUser" DataValueField="Ma">
+                                            </asp:CheckBoxList>
                                         </td>
                                         <td class="auto-style4" rowspan="5" style="vertical-align: top">
                                             <table style="width: 100%; height: 224px;">
@@ -103,7 +110,7 @@
                                     <tr>
                                         <td class="auto-style99" style="height: 19px; white-space: nowrap;">Chỉ đạo: </td>
                                         <td class="auto-style100" style="height: 19px; vertical-align: top;">
-                                            <asp:TextBox ID="txtYKienLD" runat="server" Height="37px" TextMode="MultiLine" Width="715px"></asp:TextBox>
+                                            <asp:TextBox ID="txtChiDao" runat="server" Height="37px" TextMode="MultiLine" Width="715px"></asp:TextBox>
                                         </td>
                                     </tr>
                                     <tr>
@@ -121,7 +128,7 @@
                                     </tr>
                                     <tr>
                                         <td colspan="3" style="text-align: center">
-                                            <asp:Button ID="btnTraLoi" runat="server" Font-Bold="True" Height="32px" Text="Trả lời" Width="100px" />
+                                            <asp:Button ID="btnTraLoi" runat="server" Font-Bold="True" Height="32px" Text="Trả lời" Width="100px" OnClick="btnTraLoi_Click" />
                                             <asp:Button ID="btnThoat" runat="server" Font-Bold="True" Height="32px" OnClick="btnThoat_Click" Text="Thoát" Width="100px" />
                                         </td>
                                     </tr>
