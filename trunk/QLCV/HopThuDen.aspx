@@ -37,8 +37,6 @@
                     <SortedDescendingCellStyle BackColor="#E9EBEF" />
                     <SortedDescendingHeaderStyle BackColor="#4870BE" />
                 </asp:GridView>
-                <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
-                </asp:ToolkitScriptManager>
                 <br />
                 <asp:Panel ID="pnlChiTiet" runat="server">
                     <table style="width:100%;">
@@ -48,12 +46,8 @@
                                     <tr>
                                         <td class="auto-style64" style="white-space: nowrap">Gửi tới:&nbsp; </td>
                                         <td class="auto-style81">
-                                            <asp:TextBox ID="txtNguoiNhan" runat="server" TextMode="MultiLine" Width="656px"></asp:TextBox>
-                                            <asp:PopupControlExtender ID="PopupControlExtender1" runat="server" PopupControlID="pnlNguoiNhan" Position="Bottom" TargetControlID="txtNGuoiNhan">
-                                            </asp:PopupControlExtender>
-                                            <asp:Button ID="btnXong" runat="server" OnClick="btnXong_Click" Text="Chọn" />
-                                            <asp:CheckBoxList ID="cblUser" runat="server" DataTextField="TenUser" DataValueField="Ma">
-                                            </asp:CheckBoxList>
+                                            <asp:DropDownList ID="droUserN" runat="server" DataTextField="TenUser" DataValueField="Ma" ForeColor="Black" Height="30px" Width="715px">
+                                            </asp:DropDownList>
                                         </td>
                                         <td class="auto-style4" rowspan="5" style="vertical-align: top">
                                             <table style="width: 100%; height: 224px;">

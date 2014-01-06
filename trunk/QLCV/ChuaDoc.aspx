@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="ChuaDoc.aspx.cs" Inherits="_Default" %>
 
+<%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="asp" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder2" Runat="Server">
@@ -42,7 +44,7 @@
                                     <tr>
                                         <td class="auto-style64" style="white-space: nowrap">Gửi tới:&nbsp; </td>
                                         <td class="auto-style81">
-                                            <asp:DropDownList ID="droUserN" runat="server" DataTextField="TenUser" DataValueField="Ma" Height="30px" Width="715px" ForeColor="Black">
+                                            <asp:DropDownList ID="droUserN" runat="server" DataTextField="TenUser" DataValueField="Ma" ForeColor="Black" Height="30px" Width="715px">
                                             </asp:DropDownList>
                                         </td>
                                         <td class="auto-style4" rowspan="5" style="vertical-align: top">
@@ -104,7 +106,7 @@
                                     <tr>
                                         <td class="auto-style99" style="height: 19px; white-space: nowrap;">Chỉ đạo: </td>
                                         <td class="auto-style100" style="height: 19px; vertical-align: top;">
-                                            <asp:TextBox ID="txtYKienLD" runat="server" Height="37px" TextMode="MultiLine" Width="715px"></asp:TextBox>
+                                            <asp:TextBox ID="txtChiDao" runat="server" Height="37px" TextMode="MultiLine" Width="715px"></asp:TextBox>
                                         </td>
                                     </tr>
                                     <tr>
@@ -122,10 +124,7 @@
                                     </tr>
                                     <tr>
                                         <td colspan="3" style="text-align: center">
-                                            <asp:Button ID="btnTrinhDuyet" runat="server" Font-Bold="True" Height="32px" OnClick="btnTrinhDuyet_Click" Text="Trình duyệt" Width="100px" Visible="False" />
-                                            <asp:Button ID="btnPheDuyet" runat="server" Font-Bold="True" Height="32px" Text="Phê duyệt" Width="100px" OnClick="btnPheDuyet_Click" Visible="False" />
-                                            <asp:Button ID="btnKhongDuyet" runat="server" Font-Bold="True" Height="32px" Text="Không duyệt" Width="100px" OnClick="btnKhongDuyet_Click" Visible="False" />
-                                            <asp:Button ID="btnPhatHanh" runat="server" Font-Bold="True" Height="32px" Text="Phát hành" Width="100px" OnClick="btnPhatHanh_Click" Visible="False" />
+                                            <asp:Button ID="btnTraLoi" runat="server" Font-Bold="True" Height="32px" OnClick="btnTraLoi_Click" Text="Trả lời" Width="100px" />
                                             <asp:Button ID="btnLuuDuThao" runat="server" Font-Bold="True" Height="32px" Text="Lưu dự thảo" Width="100px" OnClick="btnLuuDuThao_Click" Visible="False" />
                                             <asp:Button ID="btnThoat" runat="server" Font-Bold="True" Height="32px" Text="Thoát" Width="100px" OnClick="btnThoat_Click" />
                                         </td>
