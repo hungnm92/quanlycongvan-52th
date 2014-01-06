@@ -1,0 +1,199 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder id="head" runat="server">
+        <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+    <script type="text/javascript" charset="utf-8" src="../Scripts/jquery-1.3.2.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../Scripts/dropdown.js"></script>
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .auto-style1 {
+            height: 411px;
+            width: 139px;
+        }
+        .auto-style2 {
+            width: 991px;
+            height: 411px;
+        }
+        .auto-style5 {
+            font-weight: normal;
+        }
+        .auto-style6 {
+            height: 26px;
+            }
+        </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <table style="width:100%;">
+            <tr>
+                <td colspan="2">
+                    
+                </td>
+            </tr>
+            <tr>
+                <td class="auto-style6" style="vertical-align: middle; text-align: center;">
+                    <asp:HyperLink ID="HyperLink12" runat="server" Font-Bold="True" Font-Size="Large" Font-Underline="False" ForeColor="Black" NavigateUrl="~/user/default.aspx" style="text-align: center">TRANG CH&#7910;</asp:HyperLink>
+                </td>
+                <td class="auto-style6" style="vertical-align: middle; text-align: right;">
+                    
+                    <asp:TextBox ID="TextBox1" runat="server" Width="293px"></asp:TextBox>
+                    &nbsp;
+                    <asp:Label ID="Label1" runat="server" Text="Tìm ki&#7871;m"></asp:Label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:Label ID="lblUser" runat="server"></asp:Label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <asp:HyperLink ID="lnkThoat" runat="server" NavigateUrl="~/Account/Login.aspx">Thoát</asp:HyperLink>
+                    &nbsp;&nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td class="auto-style1" style="vertical-align: top; white-space: nowrap;">
+                    <table style="width:100%;">
+                                <tr>
+                                    <td style="font-weight: 700; background-color: #339933; font-size: 20px; text-align: center; color: #FFFFFF; -moz-border-radius-topright:20px;
+                 -webkit-border-top-right-radius:20px;
+                 -moz-border-radius-topleft:20px;
+                  -webkit-border-top-left-radius:20px; background-image: url('src/web/style_menu.gif');">MENU</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                      <div id="sidebar">
+        <ul id="nav">
+                   <li><a href="SoanCV.aspx">So&#7841;n</a></li>
+
+            <li><a href="Default.aspx">Công v&#259;n &#273;&#7871;n »</a> 
+            <ul>
+                           <li><a href="#">Ch&#432;a &#273;&#7885;c</a></li>
+                           <li><a href="#">&#272;ã &#273;&#7885;c</a></li>
+                         </ul>
+                </li> 
+            <li><a href="#">Phê duy&#7879;t »</a>
+                        <ul>
+                           <li><a href="#">Ch&#7901; duy&#7879;t</a></li>
+                           <li><a href="#">Không duy&#7879;t</a></li>
+                           <li><a href="#">&#272;ã duy&#7879;t</a></li>
+                         </ul>
+                   
+                   </li>          
+            <li><a href="#">Phát hành »</a>
+                        <ul>
+                           <li><a href="#">Ch&#7901; phát hành</a></li>
+                           <li><a href="#">&#272;ã phát hành</a></li>
+                        </ul>
+                   </li>
+            <li><a href="DuThao.aspx">D&#7921; th&#7843;o</a></li>
+            <li><a href="#">H&#7879; th&#7889;ng »</a>
+                        <ul>
+                           <li><a href="#">Phân quy&#7873;n</a></li>
+                        </ul>
+                  </li>
+            <li><a href="#">Thoát</a></li>
+		</ul>
+    </div> 
+                                       
+ <style type="text/css">
+     *{margin: 0; padding: 0;}
+
+#sidebar {
+    width: 150px;
+    margin: 10px 10px;
+    
+
+}
+
+#nav, #nav ul {
+    list-style:  none;
+    position: relative;
+    line-height: 1.5em;
+    top: 0px;
+    left: -7px;
+    width: 150px;
+}
+
+#nav a:link, #nav a:active,
+#nav a:visited {
+    display: block;
+    padding: 0px 5px;
+    border: 1px solid #03C212;
+    color: white;
+    text-decoration: none;
+    background: #03C212;
+}
+
+#nav a:hover {
+    background: #fff;
+    color: #333;
+}
+#nav li {
+    position: relative;
+}
+
+#nav ul {
+    position: absolute;
+    width: 12em;
+    top: 0em;
+    display: none;
+}
+
+#nav li ul a {
+    width: 7em;
+    float: left;
+}
+
+#nav li ul {
+    left: 7em;
+    margin: 0px 0 0 39px;
+}
+
+#nav li:hover ul ul, 
+#nav li:hover ul ul ul{
+    display: none;
+}
+
+#nav li:hover ul,
+#nav li li:hover ul,
+#nav li li li:hover ul{
+    display: block;
+}
+
+ </style>
+
+                                    </td>
+                                </tr>
+                                </table>
+                    <br />
+
+                </td>
+                <td class="auto-style2" style="vertical-align: top; ">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+                       
+                          
+                        <p>
+                            &nbsp;</p>
+                       
+                          
+                    </asp:ContentPlaceHolder>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center; color: #FFFFFF; font-size: large; font-weight: bolder; background-color: #008000;">
+                    <asp:HyperLink ID="HyperLink7" runat="server" Font-Underline="False" ForeColor="White">Gi&#7899;i thi&#7879;u</asp:HyperLink>
+                    &nbsp;&nbsp;&nbsp; <span class="auto-style5"><strong>|&nbsp;&nbsp;&nbsp; nbsp;&nbsp; |&nbsp;&nbsp;&nbsp; <asp:HyperLink ID="HyperLink9" runat="server" Font-Underline="False" ForeColor="White" NavigateUrl="http://52th.hnsv.com">52TH Forum</asp:HyperLink>
+                    &nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;
+                    <asp:HyperLink ID="HyperLink10" runat="server" Font-Underline="False" ForeColor="White" NavigateUrl="http://hùngc&#417;.vn">LIÊN H&#7878;</asp:HyperLink>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: right; color: #0000FF; font-size: medium; font-weight: bolder; ">&#272;&#7882;A CH&#7880;: 52TH - NHA TRANG UNIVERSITY - KHÁNH HÒA.<br />
+                    Email: <a href="mailto:nguyenthilanh52th@gmail.com">manhhung.it9x@gmail.com</a>.</td>
+            </tr>
+        </table>
+    </div>
+    </form>
+</body>
+</html>

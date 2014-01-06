@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.IO;
 
 public partial class _Default : System.Web.UI.Page
 {
@@ -65,5 +66,16 @@ public partial class _Default : System.Web.UI.Page
         griKhongDuyet.PageIndex = e.NewPageIndex;
         griKhongDuyet.DataSource = cv.KhongDuyet_DS(int.Parse(Session["Ma"].ToString()));
         griKhongDuyet.DataBind();
+    }
+    protected void griKhongDuyet_RowCommand(object sender, GridViewCommandEventArgs e)
+    {
+        if (e.CommandName == "Download")
+        {
+            Response.Clear();
+            Response.ContentType = "application/octect-stream";
+            Response.AppendHeader("content-disposition", "filename=" + e.CommandArgument);
+            Response.TransmitFile(Server.MapPath("~/src/products/") + e.CommandArgument);
+            Response.End();
+        }
     }
 }
