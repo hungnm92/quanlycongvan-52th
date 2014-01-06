@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.IO;
 
 public partial class _Default : System.Web.UI.Page
 {
@@ -99,10 +100,11 @@ public partial class _Default : System.Web.UI.Page
             cv.Ma_LCV = int.Parse(droLCV.SelectedValue);
             cv.NgayPH = txtNgayPH.Text;
             string DuongDan = "";
+            string ReName = DateTime.Now.ToString().Replace("/", "").Replace(":", "").Replace(" ", "-");
             DuongDan = Server.MapPath("~/src/products/");
-            DuongDan = DuongDan + fileTep.FileName;
+            DuongDan = DuongDan + ReName + fileTep.FileName;
             fileTep.SaveAs(DuongDan);
-            cv.TenFile = fileTep.FileName;
+            cv.TenFile = ReName + fileTep.FileName;
             //cut.ThoiGianGui = DateTime.Now.ToString();
             cut.Ma_User = int.Parse(Session["Ma"].ToString());
             cut.Ma_UserNhan = int.Parse(droUserN.SelectedValue);
@@ -186,10 +188,11 @@ public partial class _Default : System.Web.UI.Page
             cv.Ma_LCV = int.Parse(droLCV.SelectedValue);
             cv.NgayPH = txtNgayPH.Text;
             string DuongDan = "";
+            string ReName = DateTime.Now.ToString().Replace("/", "").Replace(":", "").Replace(" ", "-");
             DuongDan = Server.MapPath("~/src/products/");
-            DuongDan = DuongDan + fileTep.FileName;
+            DuongDan = DuongDan + ReName + fileTep.FileName;
             fileTep.SaveAs(DuongDan);
-            cv.TenFile = fileTep.FileName;
+            cv.TenFile = ReName + fileTep.FileName;
             //cut.ThoiGianGui = DateTime.Now.ToString();
             cut.Ma_User = int.Parse(Session["Ma"].ToString());
             cut.Ma_UserNhan = int.Parse(droUserN.SelectedValue);
@@ -275,10 +278,11 @@ public partial class _Default : System.Web.UI.Page
             cv.Ma_LCV = int.Parse(droLCV.SelectedValue);
             //cv.NgayPH = txtNgayPH.Text;
             string DuongDan = "";
+            string ReName = DateTime.Now.ToString().Replace("/", "").Replace(":", "").Replace(" ", "-");
             DuongDan = Server.MapPath("~/src/products/");
-            DuongDan = DuongDan + fileTep.FileName;
+            DuongDan = DuongDan + ReName + fileTep.FileName;
             fileTep.SaveAs(DuongDan);
-            cv.TenFile = fileTep.FileName;
+            cv.TenFile = ReName + fileTep.FileName;
             cut.Ma_User = int.Parse(Session["Ma"].ToString());
             cut.Ma_UserNhan = int.Parse(droUserN.SelectedValue);
             cv.Sua();
@@ -341,5 +345,16 @@ public partial class _Default : System.Web.UI.Page
         griDaDoc.PageIndex = e.NewPageIndex;
         griDaDoc.DataSource = cv.DaDoc_DS(int.Parse(Session["Ma"].ToString()));
         griDaDoc.DataBind();
+    }
+    protected void griDaDoc_RowCommand(object sender, GridViewCommandEventArgs e)
+    {
+        if (e.CommandName == "Download")
+        {
+            Response.Clear();
+            Response.ContentType = "application/octect-stream";
+            Response.AppendHeader("content-disposition", "filename=" + e.CommandArgument);
+            Response.TransmitFile(Server.MapPath("~/src/products/") + e.CommandArgument);
+            Response.End();
+        }
     }
 }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
+using System.IO;
 public partial class _Default : System.Web.UI.Page
 {
     lanhnt.UserN u = new lanhnt.UserN();
@@ -103,10 +103,11 @@ public partial class _Default : System.Web.UI.Page
                 cv.YKienLD = txtChiDao.Text;
             cv.Ma_LCV = int.Parse(droLCV.SelectedValue);
             string DuongDan = "";
+            string ReName = DateTime.Now.ToString().Replace("/", "").Replace(":", "").Replace(" ", "-");
             DuongDan = Server.MapPath("~/src/products/");
-            DuongDan = DuongDan + fileTep.FileName;
+            DuongDan = DuongDan + ReName + fileTep.FileName;
             fileTep.SaveAs(DuongDan);
-            cv.TenFile = fileTep.FileName;
+            cv.TenFile = ReName + fileTep.FileName;
             cv.Them();
             cut.So_CV = cv.LayMa().ToString();
             cut.Ma_User = int.Parse(Session["Ma"].ToString());
@@ -164,6 +165,17 @@ public partial class _Default : System.Web.UI.Page
             }
             else
                 msg.Show("Bạn chưa nhập đầy đủ thông tin bắt buộc");
+    }
+    protected void griCongVanDen_RowCommand(object sender, GridViewCommandEventArgs e)
+    {
+        if (e.CommandName == "Download")
+        {
+            Response.Clear();
+            Response.ContentType = "application/octect-stream";
+            Response.AppendHeader("content-disposition", "filename=" + e.CommandArgument);
+            Response.TransmitFile(Server.MapPath("~/src/products/") + e.CommandArgument);
+            Response.End();            
+        }
     }
 }
 //store công văn đến.

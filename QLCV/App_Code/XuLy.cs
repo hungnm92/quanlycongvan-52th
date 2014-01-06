@@ -1010,4 +1010,46 @@ namespace lanhnt
             HttpContext.Current.Response.Write("<script>alert('" + Message + "') ; window.location.href='" + HttpContext.Current.Request.Url.PathAndQuery + "'</script>");
         }
     }
+    public class Menu
+    {
+        public int Ma;
+        public string TenMenu;
+        public int Me;
+
+        public string LoadMenu(int Me, int level)
+        {
+            string KetQua = string.Empty;
+            SqlConnection BaoVe = new SqlConnection("server=(local)\\SQLEXPRESS;uid=sa;pwd=123456;database=QuanLyCongVan");
+            SqlCommand Lenh = new SqlCommand("Menu_Lay", BaoVe);
+            Lenh.CommandType = CommandType.StoredProcedure;
+            SqlParameter ThamSo = new SqlParameter();
+            ThamSo = Lenh.Parameters.AddWithValue("@Me", Me);
+            SqlDataReader DocDL;
+            BaoVe.Open();
+            DocDL = Lenh.ExecuteReader();
+            if (!DocDL.HasRows)
+            {
+                return KetQua;
+            }
+            else
+            {
+                KetQua = "<ul>";
+                while (DocDL.Read())
+                {
+                    KetQua += "<li><a><span>" + DocDL["TenMenu"] + "</span></a></li>";
+                    KetQua += LoadMenu(Convert.ToInt32(DocDL["Ma"]), level + 1);
+                }
+                KetQua += "</ul>";
+                BaoVe.Close();
+            }
+            return KetQua;
+            //SqlDataAdapter XeTai = new SqlDataAdapter("CongVan_DS", BaoVe);
+            //DataTable ThungChua = new DataTable();
+            //BaoVe.Open();
+            //XeTai.Fill(ThungChua);
+            //BaoVe.Close();
+            //return ThungChua;
+        }
+
+    }
 }

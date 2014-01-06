@@ -57,10 +57,11 @@ public partial class SoanCV : System.Web.UI.Page
                 cv.YKienLD = txtChiDao.Text;
             cv.Ma_LCV = int.Parse(droLCV.SelectedValue);
             string DuongDan = "";
+            string ReName = DateTime.Now.ToString().Replace("/", "").Replace(":", "").Replace(" ", "-");
             DuongDan = Server.MapPath("~/src/products/");
-            DuongDan = DuongDan + fileTep.FileName;
+            DuongDan = DuongDan + ReName + fileTep.FileName;
             fileTep.SaveAs(DuongDan);
-            cv.TenFile = fileTep.FileName; 
+            cv.TenFile = ReName + fileTep.FileName; 
             //if ( Dir(fileTep.FileName, cv.DS_TenFile()) = "")
             cut.Ma_User = int.Parse(Session["Ma"].ToString());
                 cv.Them();
@@ -70,14 +71,8 @@ public partial class SoanCV : System.Web.UI.Page
                 {
                     if (cblUser.Items[i].Selected == true)
                     {
-                        cut.Ma_UserNhan = Convert.ToInt32(cblUser.Items[i].Value);
-                        if (u.LayMaNhom(cut.Ma_UserNhan) == 1)
-                            cut.TrinhDuyet();
-                        else
-                        {
-                            cv.Xoa();
-                            msg.Show("Bạn chỉ được trình duyệt cho Lãnh đạo, vui lòng chọn lại người nhận.");
-                        }
+                        cut.Ma_UserNhan = Convert.ToInt32(cblUser.Items[i].Value);                      
+                        cut.TrinhDuyet();                        
                     }
                 }
                 msg.Show(cut.ThongBao);
@@ -117,10 +112,11 @@ public partial class SoanCV : System.Web.UI.Page
                     cv.YKienLD = txtChiDao.Text;
                 cv.Ma_LCV = int.Parse(droLCV.SelectedValue);
                 string DuongDan = "";
+                string ReName = DateTime.Now.ToString().Replace("/", "").Replace(":", "").Replace(" ", "-");
                 DuongDan = Server.MapPath("~/src/products/");
-                DuongDan = DuongDan + fileTep.FileName;
+                DuongDan = DuongDan + ReName + fileTep.FileName;
                 fileTep.SaveAs(DuongDan);
-                cv.TenFile = fileTep.FileName;
+                cv.TenFile = ReName + fileTep.FileName;
                 //if ( Dir(fileTep.FileName, cv.DS_TenFile()) = "")
                 cut.Ma_User = int.Parse(Session["Ma"].ToString());
                 cv.Them();
@@ -216,10 +212,11 @@ public partial class SoanCV : System.Web.UI.Page
                 cv.YKienLD = txtChiDao.Text;
             cv.Ma_LCV = int.Parse(droLCV.SelectedValue);
             string DuongDan = "";
+            string ReName = DateTime.Now.ToString().Replace("/", "").Replace(":","").Replace(" ", "-");
             DuongDan = Server.MapPath("~/src/products/");
-            DuongDan = DuongDan + fileTep.FileName;
+            DuongDan = DuongDan + ReName + fileTep.FileName;
             fileTep.SaveAs(DuongDan);
-            cv.TenFile = fileTep.FileName;
+            cv.TenFile = ReName + fileTep.FileName;
             cv.Them();
             cut.So_CV = cv.LayMa().ToString();
             cut.Ma_User = int.Parse(Session["Ma"].ToString());

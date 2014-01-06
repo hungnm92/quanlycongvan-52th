@@ -1,4 +1,4 @@
-Ôªø<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
 
 <!DOCTYPE html>
 
@@ -18,9 +18,6 @@
         .auto-style2 {
             width: 991px;
             height: 411px;
-        }
-        .auto-style5 {
-            font-weight: normal;
         }
         .auto-style6 {
             height: 26px;
@@ -44,10 +41,10 @@
                     
                     <asp:TextBox ID="TextBox1" runat="server" Width="293px"></asp:TextBox>
                     &nbsp;
-                    <asp:Label ID="Label1" runat="server" Text="T√¨m ki&#7871;m"></asp:Label>
+                    <asp:Label ID="Label1" runat="server" Text="TÏm ki&#7871;m"></asp:Label>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:Label ID="lblUser" runat="server"></asp:Label>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <asp:HyperLink ID="lnkThoat" runat="server" NavigateUrl="~/Account/Login.aspx">Tho√°t</asp:HyperLink>
+                    <asp:HyperLink ID="lnkThoat" runat="server" NavigateUrl="~/Account/Login.aspx">Tho·t</asp:HyperLink>
                     &nbsp;&nbsp;
                 </td>
             </tr>
@@ -66,37 +63,37 @@
         <ul id="nav">
                    <li><a href="SoanCV.aspx">So&#7841;n</a></li>
 
-            <li><a href="HopThuDen.aspx">H·ªôp th∆∞ ƒë·∫øn ¬ª</a> 
+            <li><a href="HopThuDen.aspx">H&#7897;p th&#432; &#273;&#7871;n ª</a> 
             <ul>
                            <li><a href="ChuaDoc.aspx">Ch&#432;a &#273;&#7885;c</a></li>
-                           <li><a href="DaDoc.aspx">&#272;√£ &#273;&#7885;c</a></li>
+                           <li><a href="DaDoc.aspx">&#272;„ &#273;&#7885;c</a></li>
                          </ul>
                 </li> 
-             <li><a href="HopThuDi.aspx">H·ªôp th∆∞ ƒëi</a></li>
-            <li><a href="#">Ph√™ duy&#7879;t ¬ª</a>
+             <li><a href="HopThuDi.aspx">H&#7897;p th&#432; &#273;i</a></li>
+            <li><a href="#">PhÍ duy&#7879;t ª</a>
                         <ul>
                            <li><a href="ChoDuyet.aspx">Ch&#7901; duy&#7879;t</a></li>
-                           <li><a href="KhongDuyet.aspx">Kh√¥ng duy&#7879;t</a></li>
-                           <li><a href="DaDuyet.aspx">&#272;√£ duy&#7879;t</a></li>
+                           <li><a href="KhongDuyet.aspx">KhÙng duy&#7879;t</a></li>
+                           <li><a href="DaDuyet.aspx">&#272;„ duy&#7879;t</a></li>
                          </ul>
                    
                    </li>          
-            <li><a href="#">Ph√°t h√†nh ¬ª</a>
+            <li><a href="#">Ph·t h‡nh ª</a>
                         <ul>
-                           <li><a href="ChoPhatHanh.aspx">Ch&#7901; ph√°t h√†nh</a></li>
-                           <li><a href="DaPhatHanh.aspx">&#272;√£ ph√°t h√†nh</a></li>
+                           <li><a href="ChoPhatHanh.aspx">Ch&#7901; ph·t h‡nh</a></li>
+                           <li><a href="DaPhatHanh.aspx">&#272;„ ph·t h‡nh</a></li>
                         </ul>
                    </li>
             <li><a href="DuThao.aspx">D&#7921; th&#7843;o</a></li>
-            <li><a href="#">H&#7879; th&#7889;ng ¬ª</a>
+            <li><a href="#">H&#7879; th&#7889;ng ª</a>
                         <ul>
-                           <li><a href="#">Ph√¢n quy&#7873;n</a></li>
+                           <li><a href="#">Ph‚n quy&#7873;n</a></li>
                         </ul>
                   </li>
-            <li><a href="#">Tho√°t</a></li>
+            <li><a href="#">Tho·t</a></li>
 		</ul>
     </div> 
-                                       
+                                     
  <style type="text/css">
      *{margin: 0; padding: 0;}
 
@@ -183,14 +180,10 @@
             </tr>
             <tr>
                 <td colspan="2" style="text-align: center; color: #FFFFFF; font-size: large; font-weight: bolder; background-color: #008000;">
-                    <asp:HyperLink ID="HyperLink7" runat="server" Font-Underline="False" ForeColor="White">Gi&#7899;i thi&#7879;u</asp:HyperLink>
-                    &nbsp;&nbsp;&nbsp; <span class="auto-style5"><strong>|&nbsp;&nbsp;&nbsp; nbsp;&nbsp; |&nbsp;&nbsp;&nbsp; <asp:HyperLink ID="HyperLink9" runat="server" Font-Underline="False" ForeColor="White" NavigateUrl="http://52th.hnsv.com">52TH Forum</asp:HyperLink>
-                    &nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;
-                    <asp:HyperLink ID="HyperLink10" runat="server" Font-Underline="False" ForeColor="White" NavigateUrl="http://h√πngc&#417;.vn">LI√äN H&#7878;</asp:HyperLink>
-                </td>
+                    acb</td>
             </tr>
             <tr>
-                <td colspan="2" style="text-align: right; color: #0000FF; font-size: medium; font-weight: bolder; ">&#272;&#7882;A CH&#7880;: 52TH - NHA TRANG UNIVERSITY - KH√ÅNH H√íA.<br />
+                <td colspan="2" style="text-align: right; color: #0000FF; font-size: medium; font-weight: bolder; ">&#272;&#7882;A CH&#7880;: 52TH - NHA TRANG UNIVERSITY - KH¡NH H“A.<br />
                     Email: <a href="mailto:nguyenthilanh52th@gmail.com">manhhung.it9x@gmail.com</a>.</td>
             </tr>
         </table>

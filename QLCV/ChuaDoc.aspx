@@ -6,16 +6,20 @@
     <table style="width:100%; color: #000000;">
         <tr>
             <td style="font-weight: 700; font-size: 20px; text-align: center; color: #FFFFFF; background-image: none;">
-                <asp:GridView ID="griChuaDoc" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Font-Bold="False" OnSelectedIndexChanged="griChuaDoc_SelectedIndexChanged" DataKeyNames="So" AllowPaging="True" OnPageIndexChanging="griChuaDoc_PageIndexChanging">
+                <asp:GridView ID="griChuaDoc" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Font-Bold="False" OnSelectedIndexChanged="griChuaDoc_SelectedIndexChanged" DataKeyNames="So" AllowPaging="True" OnPageIndexChanging="griChuaDoc_PageIndexChanging" OnRowCommand ="griChuaDoc_RowCommand">
                     <AlternatingRowStyle BackColor="White" />
                     <Columns>
                         <asp:CommandField ButtonType="Button" SelectText="Chọn" ShowSelectButton="True" />
                         <asp:BoundField DataField="NguoiGui" HeaderText="Người gửi" />
                         <asp:BoundField DataField="TenCV" HeaderText="Tên Công văn" />
                         <asp:BoundField DataField="TrichYeu" HeaderText="Trích yếu" />
-                        <asp:BoundField DataField="TenFile" HeaderText="File" />
                         <asp:BoundField DataField="ThoiGianSoan" HeaderText="Thời gian soạn" />
                         <asp:BoundField DataField="ThoiGianGui" HeaderText="Thời gian gửi" />
+                        <asp:TemplateField HeaderText="File">
+                            <ItemTemplate>
+                                <asp:LinkButton ID="lkbtnTaiVe" runat="server" CommandArgument='<%# Eval("TenFile") %>' CommandName="Download" Text='<%# Eval("TenFile") %>'>LinkButton</asp:LinkButton>
+                            </ItemTemplate>
+                        </asp:TemplateField>
                     </Columns>
                     <EditRowStyle BackColor="#2461BF" />
                     <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
