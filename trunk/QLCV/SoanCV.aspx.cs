@@ -13,157 +13,37 @@ public partial class SoanCV : System.Web.UI.Page
     lanhnt.CV_User_TT cut = new lanhnt.CV_User_TT();
     lanhnt.UserN u = new lanhnt.UserN();
     lanhnt.WebMsgBox msg = new lanhnt.WebMsgBox();
+    public static int SoLuongDaChon = 0;
     protected void Page_Load(object sender, EventArgs e)
     {
         if (IsPostBack == false)
         {
             droLCV.DataSource = lcv.DS();
             droLCV.DataBind();
-            droUserN.DataSource = u.LanhDao_DS();
-            droUserN.DataBind();
-           //lblTB1.Text = cv.LayMa().ToString();
             txtMaCV.ReadOnly = true;
             txtSoCV.ReadOnly = true;
             txtNgayPH.ReadOnly = true;
-            cblUser.DataSource = u.LanhDao_DS();
+            cblUser.DataSource = u.DS();
             cblUser.DataBind();
+            if (Convert.ToInt16(Session["MaNhom"]) == 1)
+            {
+                txtChiDao.ReadOnly = false;
+            }
+            if (Convert.ToInt16(Session["MaNhom"]) == 2)
+            {
+                btnTrinhDuyet.Visible = true;
+                txtGopY.ReadOnly = false;
+            }
         }
     }
     protected void btnTrinhDuyet_Click(object sender, EventArgs e)
     {
+
         bool bTenCV = string.IsNullOrWhiteSpace(txtTenCV.Text);
         bool bTrichYeu = string.IsNullOrWhiteSpace(txtTomTat.Text);
         bool bYKienCV = string.IsNullOrWhiteSpace(txtGopY.Text);
         bool bYKienLD = string.IsNullOrWhiteSpace(txtChiDao.Text);
-        if (bTenCV == false && bTrichYeu == false && fileTep.HasFile == true)
-        {
-            cv.TenCV = txtTenCV.Text; 
-            cv.TrichYeu = txtTomTat.Text;
-            if (bYKienCV == true)
-                cv.YKienCV = " ";
-            else
-                cv.YKienCV = txtGopY.Text;
-            if (bYKienLD == true)
-                cv.YKienLD = " ";
-            else
-                cv.YKienLD = txtChiDao.Text;
-            //cv.Ma = txtMaCV.Text;
-            //cv.So = int.Parse(txtSoCV.Text);
-            cv.Ma_LCV = int.Parse(droLCV.SelectedValue);
-            string DuongDan = "";
-            DuongDan = Server.MapPath("~/src/products/");
-            DuongDan = DuongDan + fileTep.FileName;
-            fileTep.SaveAs(DuongDan);
-            cv.TenFile = fileTep.FileName;
-            cut.Ma_User = int.Parse(Session["Ma"].ToString());
-            cut.Ma_UserNhan = int.Parse(droUserN.SelectedValue);
-            cv.Them();
-            cut.So_CV = cv.LayMa().ToString();
-            cut.TrinhDuyet();
-            msg.ShowAndRedirect(cut.ThongBao);
-            txtTenCV.Text = "";
-            txtTomTat.Text = "";
-            txtGopY.Text = "";
-            txtMaCV.Text = "";
-            txtSoCV.Text = "";
-            // droLCV.Text = "";
-            txtNgayPH.Text = "";
-            //Redirect("~/Default.aspx");
-        }
-        else
-            msg.Show("Bạn chưa nhập đầy đủ thông tin bắt buộc");
-    }
-    protected void btnThoat_Click(object sender, EventArgs e)
-    {
-        bool bTenCV = string.IsNullOrWhiteSpace(txtTenCV.Text);
-        bool bTrichYeu = string.IsNullOrWhiteSpace(txtTomTat.Text);
-        bool bYKienCV = string.IsNullOrWhiteSpace(txtGopY.Text);
-        bool bYKienLD = string.IsNullOrWhiteSpace(txtChiDao.Text);
-        if (bTenCV == true && bTrichYeu == true && bYKienCV == true && bYKienLD == true && fileTep.HasFile == false)
-            Response.Redirect("~/HopThuDen.aspx");
-        else
-            if (bTenCV == true && fileTep.HasFile == true)
-            {
-                cv.TenCV = txtTenCV.Text;
-                if (bTrichYeu == true)
-                    cv.TrichYeu = " ";
-                else
-                    cv.TrichYeu = txtTomTat.Text;
-                if (bYKienCV == true)
-                    cv.YKienCV = " ";
-                else
-                    cv.YKienCV = txtGopY.Text;
-                if (bYKienLD == true)
-                    cv.YKienLD = " ";
-                else
-                    cv.YKienLD = txtChiDao.Text;
-                //cv.Ma = txtMaCV.Text;
-                //cv.So = int.Parse(txtSoCV.Text);
-                cv.Ma_LCV = int.Parse(droLCV.SelectedValue);
-                string DuongDan = "";
-                DuongDan = Server.MapPath("~/src/products/");
-                DuongDan = DuongDan + fileTep.FileName;
-                fileTep.SaveAs(DuongDan);
-                cv.TenFile = fileTep.FileName;
-                cut.Ma_User = int.Parse(Session["Ma"].ToString());
-                cut.Ma_UserNhan = int.Parse(droUserN.SelectedValue);
-                cv.Them();
-                cut.So_CV = cv.LayMa().ToString();
-                cut.DuThao();
-                msg.ShowAndRedirect(cut.ThongBao);
-                txtTenCV.Text = "";
-                txtTomTat.Text = "";
-                txtGopY.Text = "";
-                txtMaCV.Text = "";
-                txtSoCV.Text = "";
-                // droLCV.Text = "";
-                txtNgayPH.Text = "";
-                //fileTep. = "";
-                // Response.Redirect("~/Default.aspx");
-            }
-            else
-            {
-                cv.TenCV = txtTenCV.Text;
-                if (bTrichYeu == true)
-                    cv.TrichYeu = " ";
-                else
-                    cv.TrichYeu = txtTomTat.Text;
-                if (bYKienCV == true)
-                    cv.YKienCV = " ";
-                else
-                    cv.YKienCV = txtGopY.Text;
-                if (bYKienLD == true)
-                    cv.YKienLD = " ";
-                else
-                    cv.YKienLD = txtChiDao.Text;
-                //cv.Ma = txtMaCV.Text;
-                //cv.So = int.Parse(txtSoCV.Text);
-                cv.Ma_LCV = int.Parse(droLCV.SelectedValue);
-                cv.TenFile = " ";
-                cut.Ma_User = int.Parse(Session["Ma"].ToString());
-                cut.Ma_UserNhan = int.Parse(droUserN.SelectedValue);
-                cv.Them();
-                cut.So_CV = cv.LayMa().ToString();
-                cut.DuThao();
-                msg.ShowAndRedirect(cut.ThongBao);
-                txtTenCV.Text = "";
-                txtTomTat.Text = "";
-                txtGopY.Text = "";
-                txtMaCV.Text = "";
-                txtSoCV.Text = "";
-                // droLCV.Text = "";
-                txtNgayPH.Text = "";
-                //fileTep. = "";
-                // Response.Redirect("~/Default.aspx");
-            }
-    }
-    protected void btnGui_Click(object sender, EventArgs e)
-    {
-        bool bTenCV = string.IsNullOrWhiteSpace(txtTenCV.Text);
-        bool bTrichYeu = string.IsNullOrWhiteSpace(txtTomTat.Text);
-        bool bYKienCV = string.IsNullOrWhiteSpace(txtGopY.Text);
-        bool bYKienLD = string.IsNullOrWhiteSpace(txtChiDao.Text);
-        if (bTenCV == false && bTrichYeu == false && fileTep.HasFile == true)
+        if (bTenCV == false && bTrichYeu == false && fileTep.HasFile == true && SoLuongDaChon != 0)
         {
             cv.TenCV = txtTenCV.Text;
             cv.TrichYeu = txtTomTat.Text;
@@ -175,8 +55,165 @@ public partial class SoanCV : System.Web.UI.Page
                 cv.YKienLD = " ";
             else
                 cv.YKienLD = txtChiDao.Text;
-            //cv.Ma = txtMaCV.Text;
-            //cv.So = int.Parse(txtSoCV.Text);
+            cv.Ma_LCV = int.Parse(droLCV.SelectedValue);
+            string DuongDan = "";
+            DuongDan = Server.MapPath("~/src/products/");
+            DuongDan = DuongDan + fileTep.FileName;
+            fileTep.SaveAs(DuongDan);
+            cv.TenFile = fileTep.FileName; 
+            //if ( Dir(fileTep.FileName, cv.DS_TenFile()) = "")
+            cut.Ma_User = int.Parse(Session["Ma"].ToString());
+                cv.Them();
+                cut.So_CV = cv.LayMa().ToString();
+                cv.So = cut.So_CV;
+                for (int i = 0; i <= cblUser.Items.Count - 1; i++)
+                {
+                    if (cblUser.Items[i].Selected == true)
+                    {
+                        cut.Ma_UserNhan = Convert.ToInt32(cblUser.Items[i].Value);
+                        if (u.LayMaNhom(cut.Ma_UserNhan) == 1)
+                            cut.TrinhDuyet();
+                        else
+                        {
+                            cv.Xoa();
+                            msg.Show("Bạn chỉ được trình duyệt cho Lãnh đạo, vui lòng chọn lại người nhận.");
+                        }
+                    }
+                }
+                msg.Show(cut.ThongBao);
+                txtTenCV.Text = "";
+                txtTomTat.Text = "";
+                txtGopY.Text = "";
+                txtMaCV.Text = "";
+                txtSoCV.Text = "";
+                txtNgayPH.Text = "";
+                SoLuongDaChon = 0;
+            }
+        else
+             msg.Show("Bạn chưa nhập đầy đủ thông tin bắt buộc");
+    }
+    protected void btnThoat_Click(object sender, EventArgs e)
+    {
+        bool bTenCV = string.IsNullOrWhiteSpace(txtTenCV.Text);
+        bool bTrichYeu = string.IsNullOrWhiteSpace(txtTomTat.Text);
+        bool bYKienCV = string.IsNullOrWhiteSpace(txtGopY.Text);
+        bool bYKienLD = string.IsNullOrWhiteSpace(txtChiDao.Text);
+        if (bTenCV == true && bTrichYeu == true && bYKienCV == true && bYKienLD == true && fileTep.HasFile == false)
+            Response.Redirect("~/HopThuDen.aspx");
+        if (bTenCV == false && fileTep.HasFile == true)
+            {
+                cv.TenCV = txtTenCV.Text;
+                if (bTrichYeu == true)
+                    cv.TrichYeu = " ";
+                else
+                    cv.TrichYeu = txtTomTat.Text;
+                if (bYKienCV == true)
+                    cv.YKienCV = " ";
+                else
+                    cv.YKienCV = txtGopY.Text;
+                if (bYKienLD == true)
+                    cv.YKienLD = " ";
+                else
+                    cv.YKienLD = txtChiDao.Text;
+                cv.Ma_LCV = int.Parse(droLCV.SelectedValue);
+                string DuongDan = "";
+                DuongDan = Server.MapPath("~/src/products/");
+                DuongDan = DuongDan + fileTep.FileName;
+                fileTep.SaveAs(DuongDan);
+                cv.TenFile = fileTep.FileName;
+                //if ( Dir(fileTep.FileName, cv.DS_TenFile()) = "")
+                cut.Ma_User = int.Parse(Session["Ma"].ToString());
+                cv.Them();
+                cut.So_CV = cv.LayMa().ToString();
+                if (SoLuongDaChon != 0)
+                    for (int i = 0; i <= cblUser.Items.Count - 1; i++)
+                    {
+                        if (cblUser.Items[i].Selected == true)
+                        {
+                            cut.Ma_UserNhan = Convert.ToInt32(cblUser.Items[i].Value);
+                            cut.DuThao();
+                        }
+                        SoLuongDaChon = 0;
+                    }
+                else
+                {
+                    cut.Ma_UserNhan = 0;
+                    cut.DuThao();
+                }
+                msg.ShowAndRedirect(cut.ThongBao);
+                txtTenCV.Text = "";
+                txtTomTat.Text = "";
+                txtGopY.Text = "";
+                txtMaCV.Text = "";
+                txtSoCV.Text = "";
+                // droLCV.Text = "";
+                txtNgayPH.Text = "";
+                //fileTep. = "";
+                // Response.Redirect("~/Default.aspx");
+            }
+            else
+            {
+                cv.TenCV = txtTenCV.Text;
+                if (bTrichYeu == true)
+                    cv.TrichYeu = " ";
+                else
+                    cv.TrichYeu = txtTomTat.Text;
+                if (bYKienCV == true)
+                    cv.YKienCV = " ";
+                else
+                    cv.YKienCV = txtGopY.Text;
+                if (bYKienLD == true)
+                    cv.YKienLD = " ";
+                else
+                    cv.YKienLD = txtChiDao.Text;
+                cv.Ma_LCV = int.Parse(droLCV.SelectedValue);
+                cv.TenFile = " ";
+                cut.Ma_User = int.Parse(Session["Ma"].ToString());
+                cv.Them();
+                cut.So_CV = cv.LayMa().ToString();
+                //cut.So_CV = cv.So;
+                if (SoLuongDaChon != 0)
+                for (int i = 0; i <= cblUser.Items.Count - 1; i++)
+                {
+                    if (cblUser.Items[i].Selected == true)
+                    {
+                        cut.Ma_UserNhan = Convert.ToInt32(cblUser.Items[i].Value);
+                        cut.DuThao();
+                    }
+                    SoLuongDaChon = 0;
+                }
+               else
+               {
+                   cut.Ma_UserNhan = 0;
+                   cut.DuThao();
+               }
+                msg.ShowAndRedirect(cut.ThongBao);
+                txtTenCV.Text = "";
+                txtTomTat.Text = "";
+                txtGopY.Text = "";
+                txtMaCV.Text = "";
+                txtSoCV.Text = "";
+                txtNgayPH.Text = "";
+            }
+    }
+    protected void btnGui_Click(object sender, EventArgs e)
+    {
+        bool bTenCV = string.IsNullOrWhiteSpace(txtTenCV.Text);
+        bool bTrichYeu = string.IsNullOrWhiteSpace(txtTomTat.Text);
+        bool bYKienCV = string.IsNullOrWhiteSpace(txtGopY.Text);
+        bool bYKienLD = string.IsNullOrWhiteSpace(txtChiDao.Text);
+        if (bTenCV == false && bTrichYeu == false && fileTep.HasFile == true && SoLuongDaChon != 0)
+        {
+            cv.TenCV = txtTenCV.Text;
+            cv.TrichYeu = txtTomTat.Text;
+            if (bYKienCV == true)
+                cv.YKienCV = " ";
+            else
+                cv.YKienCV = txtGopY.Text;
+            if (bYKienLD == true)
+                cv.YKienLD = " ";
+            else
+                cv.YKienLD = txtChiDao.Text;
             cv.Ma_LCV = int.Parse(droLCV.SelectedValue);
             string DuongDan = "";
             DuongDan = Server.MapPath("~/src/products/");
@@ -186,20 +223,25 @@ public partial class SoanCV : System.Web.UI.Page
             cv.Them();
             cut.So_CV = cv.LayMa().ToString();
             cut.Ma_User = int.Parse(Session["Ma"].ToString());
-            cut.Ma_UserNhan = int.Parse(droUserN.SelectedValue);
-            cut.Gui();
+            for (int i = 0; i <= cblUser.Items.Count - 1; i++)
+            {
+                if (cblUser.Items[i].Selected == true)
+                {
+                    cut.Ma_UserNhan = Convert.ToInt32(cblUser.Items[i].Value);
+                    cut.Gui();
+                }
+            }
             msg.ShowAndRedirect(cut.ThongBao);
             txtTenCV.Text = "";
             txtTomTat.Text = "";
             txtGopY.Text = "";
             txtMaCV.Text = "";
             txtSoCV.Text = "";
-            // droLCV.Text = "";
             txtNgayPH.Text = "";
-            //Redirect("~/Default.aspx");
+            SoLuongDaChon = 0;
         }
         else
-            if (bTenCV == false && bTrichYeu == false && fileTep.HasFile == false)
+            if (bTenCV == false && bTrichYeu == false && fileTep.HasFile == false && SoLuongDaChon != 0)
             {
                 cv.TenCV = txtTenCV.Text;
                 cv.TrichYeu = txtTomTat.Text;
@@ -211,24 +253,27 @@ public partial class SoanCV : System.Web.UI.Page
                     cv.YKienLD = " ";
                 else
                     cv.YKienLD = txtChiDao.Text;
-                //cv.Ma = txtMaCV.Text;
-                //cv.So = int.Parse(txtSoCV.Text);
                 cv.Ma_LCV = int.Parse(droLCV.SelectedValue);      
                 cv.TenFile = " ";
                 cv.Them();
                 cut.So_CV = cv.LayMa().ToString();
                 cut.Ma_User = int.Parse(Session["Ma"].ToString());
-                cut.Ma_UserNhan = int.Parse(droUserN.SelectedValue);
-                cut.Gui();
+                for (int i = 0; i <= cblUser.Items.Count - 1; i++)
+                {
+                    if (cblUser.Items[i].Selected == true)
+                    {
+                        cut.Ma_UserNhan = Convert.ToInt32(cblUser.Items[i].Value);
+                        cut.Gui();
+                    }
+                }
                 msg.ShowAndRedirect(cut.ThongBao);
                 txtTenCV.Text = "";
                 txtTomTat.Text = "";
                 txtGopY.Text = "";
                 txtMaCV.Text = "";
                 txtSoCV.Text = "";
-                // droLCV.Text = "";
                 txtNgayPH.Text = "";
-                //Redirect("~/Default.aspx");
+                SoLuongDaChon = 0;
             }
             else 
                 msg.Show("Bạn chưa nhập đầy đủ thông tin bắt buộc");
@@ -242,6 +287,7 @@ public partial class SoanCV : System.Web.UI.Page
             {
                 txtNguoiNhan.Text += cblUser.Items[i].Text.ToString() +"\r\n";
                 txtNguoiNhan.Visible = true;
+                SoLuongDaChon += 1;
             }
         }
     }

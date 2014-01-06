@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="ChoPhatHanh.aspx.cs" Inherits="_Default" %>
 
+<%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="asp" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder2" Runat="Server">
@@ -32,6 +34,8 @@
                     <SortedDescendingHeaderStyle BackColor="#4870BE" />
                 </asp:GridView>
                 <br />
+                <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
+                </asp:ToolkitScriptManager>
                 <br />
                 <asp:Panel ID="pnlChiTiet" runat="server">
                     <table style="width:100%;">
@@ -41,8 +45,12 @@
                                     <tr>
                                         <td class="auto-style64" style="white-space: nowrap">Gửi tới:&nbsp; </td>
                                         <td class="auto-style81">
-                                            <asp:DropDownList ID="droUserN" runat="server" DataTextField="TenUser" DataValueField="Ma" Height="30px" Width="715px" ForeColor="Black">
-                                            </asp:DropDownList>
+                                            <asp:TextBox ID="txtNguoiNhan" runat="server" TextMode="MultiLine" Width="656px"></asp:TextBox>
+                                            <asp:PopupControlExtender ID="PopupControlExtender1" runat="server" PopupControlID="pnlNguoiNhan" Position="Bottom" TargetControlID="txtNGuoiNhan">
+                                            </asp:PopupControlExtender>
+                                            <asp:Button ID="btnXong" runat="server" OnClick="btnXong_Click" Text="Chọn" />
+                                            <asp:CheckBoxList ID="cblUser" runat="server" DataTextField="TenUser" DataValueField="Ma">
+                                            </asp:CheckBoxList>
                                         </td>
                                         <td class="auto-style4" rowspan="5" style="vertical-align: top">
                                             <table style="width: 100%; height: 224px;">
