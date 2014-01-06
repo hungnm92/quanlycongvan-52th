@@ -22,8 +22,16 @@ public partial class _Default : System.Web.UI.Page
             pnlChiTiet.Visible = false;
             griKhongDuyet.DataSource = cv.KhongDuyet_DS(int.Parse(Session["Ma"].ToString()));
             griKhongDuyet.DataBind();
+            cblUser.DataSource = u.DS();
+            cblUser.DataBind();
             droLCV.DataSource = lcv.DS();
             droLCV.DataBind();
+            if (Convert.ToInt16(Session["MaNhom"]) == 2)
+            {
+                btnTrinhDuyet.Visible = true;
+                btnLuuDuThao.Visible = true;
+                txtGopY.ReadOnly = false;
+            }
         }
     }
     protected void btnThoat_Click(object sender, EventArgs e)
@@ -105,9 +113,12 @@ public partial class _Default : System.Web.UI.Page
             fileTep.SaveAs(DuongDan);
             cv.TenFile = ReName + fileTep.FileName;
             //if ( Dir(fileTep.FileName, cv.DS_TenFile()) = "")
-            cut.Ma_User = int.Parse(Session["Ma"].ToString());
-            cv.Them();
+            cut.So = int.Parse(griKhongDuyet.SelectedValue.ToString());
+            cut.CT();
+            cv.Me = cut.So_CV;
+            cv.Them_Me();
             cut.So_CV = cv.LayMa().ToString();
+            cut.Ma_User = int.Parse(Session["Ma"].ToString());
             cv.So = cut.So_CV;
             for (int i = 0; i <= cblUser.Items.Count - 1; i++)
             {
@@ -159,10 +170,12 @@ public partial class _Default : System.Web.UI.Page
             DuongDan = DuongDan + ReName + fileTep.FileName;
             fileTep.SaveAs(DuongDan);
             cv.TenFile = ReName + fileTep.FileName;
-            //if ( Dir(fileTep.FileName, cv.DS_TenFile()) = "")
-            cut.Ma_User = int.Parse(Session["Ma"].ToString());
-            cv.Them();
+            cut.So = int.Parse(griKhongDuyet.SelectedValue.ToString());
+            cut.CT();
+            cv.Me = cut.So_CV;
+            cv.Them_Me();
             cut.So_CV = cv.LayMa().ToString();
+            cut.Ma_User = int.Parse(Session["Ma"].ToString());
             if (SoLuongDaChon != 0)
                 for (int i = 0; i <= cblUser.Items.Count - 1; i++)
                 {
@@ -206,10 +219,12 @@ public partial class _Default : System.Web.UI.Page
                 cv.YKienLD = txtChiDao.Text;
             cv.Ma_LCV = int.Parse(droLCV.SelectedValue);
             cv.TenFile = " ";
-            cut.Ma_User = int.Parse(Session["Ma"].ToString());
-            cv.Them();
+            cut.So = int.Parse(griKhongDuyet.SelectedValue.ToString());
+            cut.CT();
+            cv.Me = cut.So_CV;
+            cv.Them_Me();
             cut.So_CV = cv.LayMa().ToString();
-            //cut.So_CV = cv.So;
+            cut.Ma_User = int.Parse(Session["Ma"].ToString());
             if (SoLuongDaChon != 0)
                 for (int i = 0; i <= cblUser.Items.Count - 1; i++)
                 {

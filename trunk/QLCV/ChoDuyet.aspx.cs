@@ -36,8 +36,10 @@ public partial class _Default : System.Web.UI.Page
         {
             cut.So = int.Parse(griChoDuyet.SelectedValue.ToString());
             cut.CT();
-            cut.Ma_User = int.Parse(Session["Ma"].ToString());
             cv.So = cut.So_CV;
+            cv.YKienLD = txtYKienLD.Text;
+            cv.Sua_YKien();
+            cut.Ma_User = int.Parse(Session["Ma"].ToString());
             for (int i = 0; i <= cblUser.Items.Count - 1; i++)
             {
                 if (cblUser.Items[i].Selected == true)
@@ -59,8 +61,10 @@ public partial class _Default : System.Web.UI.Page
         {
         cut.So = int.Parse(griChoDuyet.SelectedValue.ToString());
         cut.CT();
-        cut.Ma_User = int.Parse(Session["Ma"].ToString());
         cv.So = cut.So_CV;
+        cv.YKienLD = txtYKienLD.Text;
+        cv.Sua_YKien();
+        cut.Ma_User = int.Parse(Session["Ma"].ToString());
          for (int i = 0; i <= cblUser.Items.Count - 1; i++)
             {
                 if (cblUser.Items[i].Selected == true)

@@ -113,7 +113,8 @@ namespace lanhnt
     public class CongVan
     {
         public string Ma;
-        public string So;        
+        public string So;
+        public string Me;
         public string TenCV;
         public string TrichYeu;
         public string TenFile;
@@ -174,6 +175,33 @@ namespace lanhnt
                 ThongBao = ex.Message;
             }
         }
+        public void Them_Me()
+        {
+            try
+            {
+                SqlConnection BaoVe = new SqlConnection("server=(local)\\SQLEXPRESS;uid=sa;pwd=123456;database=QuanLyCongVan");
+                SqlCommand Lenh = new SqlCommand("CongVan_Them_Me", BaoVe);
+                Lenh.CommandType = CommandType.StoredProcedure;
+                SqlParameter ThamSo = new SqlParameter();
+                //ThamSo = Lenh.Parameters.AddWithValue("@Ma", Ma);
+                ThamSo = Lenh.Parameters.AddWithValue("@Ma_LCV", Ma_LCV);
+                ThamSo = Lenh.Parameters.AddWithValue("@TenCV", TenCV);
+                ThamSo = Lenh.Parameters.AddWithValue("@TrichYeu", TrichYeu);
+                ThamSo = Lenh.Parameters.AddWithValue("@TenFile", TenFile);
+                //ThamSo = Lenh.Parameters.AddWithValue("@NgayPH", NgayPH);
+                ThamSo = Lenh.Parameters.AddWithValue("@YKienLD", YKienLD);
+                ThamSo = Lenh.Parameters.AddWithValue("@YKienCV", YKienCV);
+                ThamSo = Lenh.Parameters.AddWithValue("@Me", Me);
+                BaoVe.Open();
+                Lenh.ExecuteNonQuery();
+                BaoVe.Close();
+                ThongBao = "Thêm thành công!.";
+            }
+            catch (Exception ex)
+            {
+                ThongBao = ex.Message;
+            }
+        }
         public void Xoa()
         {
             try
@@ -207,6 +235,27 @@ namespace lanhnt
                 ThamSo = Lenh.Parameters.AddWithValue("@TrichYeu", TrichYeu);
                 ThamSo = Lenh.Parameters.AddWithValue("@TenFile", TenFile);
                 ThamSo = Lenh.Parameters.AddWithValue("@YKienCV", YKienCV);
+                BaoVe.Open();
+                Lenh.ExecuteNonQuery();
+                BaoVe.Close();
+                ThongBao = "Sửa thành công!.";
+            }
+            catch (Exception ex)
+            {
+                ThongBao = ex.Message;
+            }
+        }
+        public void Sua_YKien()
+        {
+            try
+            {
+                SqlConnection BaoVe = new SqlConnection("server=(local)\\SQLEXPRESS;uid=sa;pwd=123456;database=QuanLyCongVan");
+                SqlCommand Lenh = new SqlCommand("CongVan_Sua_YKien", BaoVe);
+                Lenh.CommandType = CommandType.StoredProcedure;
+                SqlParameter ThamSo = new SqlParameter();
+                ThamSo = Lenh.Parameters.AddWithValue("@So", So);
+                ThamSo = Lenh.Parameters.AddWithValue("@YKienLD", YKienLD);
+                //ThamSo = Lenh.Parameters.AddWithValue("@YKienCV", YKienCV);
                 BaoVe.Open();
                 Lenh.ExecuteNonQuery();
                 BaoVe.Close();
@@ -268,6 +317,16 @@ namespace lanhnt
         {
             SqlConnection BaoVe = new SqlConnection("server=(local)\\SQLEXPRESS;uid=sa;pwd=123456;database=QuanLyCongVan");
             SqlDataAdapter XeTai = new SqlDataAdapter("CongVan_DS", BaoVe);
+            DataTable ThungChua = new DataTable();
+            BaoVe.Open();
+            XeTai.Fill(ThungChua);
+            BaoVe.Close();
+            return ThungChua;
+        }
+        public DataTable Me_DS()
+        {
+            SqlConnection BaoVe = new SqlConnection("server=(local)\\SQLEXPRESS;uid=sa;pwd=123456;database=QuanLyCongVan");
+            SqlDataAdapter XeTai = new SqlDataAdapter("CongVan_Me_DS", BaoVe);
             DataTable ThungChua = new DataTable();
             BaoVe.Open();
             XeTai.Fill(ThungChua);
@@ -404,7 +463,7 @@ namespace lanhnt
         }
         public DataTable ChiTietCongVan(string SoCV)
         {
-            string SelectSQL = "SELECT Ma_UserNhan AS NguoiNhan, Ma_User AS NguoiGui,TenTT, ThoiGianSoan, ThoiGianGui, ThoiGianDoc, ThoiGianDuyet, NgayPH	FROM CongVan CV, CV_UserN_TT CUT, TinhTrang TT WHERE CV.So = CUT.So_CV AND CUT.Ma_TT = TT.Ma AND CUT.So_CV = @So_CV ";
+            string SelectSQL = "SELECT  Ma_UserNhan AS NguoiNhan, Ma_User AS NguoiGui,TenTT, ThoiGianSoan, ThoiGianGui, ThoiGianDoc, ThoiGianDuyet, NgayPH	FROM CongVan CV, CV_UserN_TT CUT, TinhTrang TT WHERE CV.So = CUT.So_CV AND CUT.Ma_TT = TT.Ma AND CUT.So_CV = @SoCV ";
             SqlConnection BaoVe = new SqlConnection("server=(local)\\SQLEXPRESS;uid=sa;pwd=123456;database=QuanLyCongVan");
             DataTable ThungChua = new DataTable();
             BaoVe.Open();
