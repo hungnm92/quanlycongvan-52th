@@ -463,7 +463,7 @@ namespace lanhnt
         }
         public DataTable ChiTietCongVan(string SoCV)
         {
-            string SelectSQL = "SELECT  Ma_UserNhan AS NguoiNhan, Ma_User AS NguoiGui,TenTT, ThoiGianSoan, ThoiGianGui, ThoiGianDoc, ThoiGianDuyet, NgayPH	FROM CongVan CV, CV_UserN_TT CUT, TinhTrang TT WHERE CV.So = CUT.So_CV AND CUT.Ma_TT = TT.Ma AND CUT.So_CV = @SoCV ";
+            string SelectSQL = "SELECT Ma_UserNhan AS NguoiNhan,Ma_User AS NguoiGui,TenTT, ThoiGianSoan, ThoiGianGui, ThoiGianDoc, ThoiGianDuyet, NgayPH FROM CongVan CV, CV_UserN_TT CUT, TinhTrang TT WHERE CV.So = CUT.So_CV AND CUT.Ma_TT = TT.Ma AND (Me = @SoCV or CV.So = @SoCV)	WHILE (@SoCV in (SELECT Me	FROM CongVan WHERE Me = @SoCV)) BEGIN SET @SoCV = (SELECT So FROM CongVan	WHERE Me = @SoCV) IF (@SoCV in (SELECT Me	FROM CongVan WHERE Me = @SoCV)) SELECT Ma_UserNhan AS NguoiNhan,Ma_User AS NguoiGui,TenTT, ThoiGianSoan, ThoiGianGui, ThoiGianDoc, ThoiGianDuyet, NgayPH FROM CongVan CV, CV_UserN_TT CUT, TinhTrang TT WHERE CV.So = CUT.So_CV AND CUT.Ma_TT = TT.Ma AND Me = @SoCV END";
             SqlConnection BaoVe = new SqlConnection("server=(local)\\SQLEXPRESS;uid=sa;pwd=123456;database=QuanLyCongVan");
             DataTable ThungChua = new DataTable();
             BaoVe.Open();
@@ -1095,7 +1095,7 @@ namespace lanhnt
                 KetQua = "<ul>";
                 while (DocDL.Read())
                 {
-                    KetQua += "<li><a><span>" + DocDL["TenMenu"] + "</span></a></li>";
+                    KetQua += "<li><a href='<%# Eval(\"Link\")%>'><span>" + DocDL["TenMenu"] + "</span></a></li>";
                     KetQua += LoadMenu(Convert.ToInt32(DocDL["Ma"]), level + 1);
                 }
                 KetQua += "</ul>";
