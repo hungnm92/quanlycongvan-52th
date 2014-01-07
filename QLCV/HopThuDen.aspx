@@ -80,6 +80,7 @@
                                                     <td class="auto-style93" style="text-align: right; color: #000000;">Tệp đính kèm: </td>
                                                     <td class="auto-style94">
                                                         <asp:FileUpload ID="fileTep" runat="server" Width="247px" Height="21px" />
+                                                        <asp:LinkButton ID="lnkbtnTaiVe" runat="server" OnClick="lnkbtnTaiVe_Click"></asp:LinkButton>
                                                     </td>
                                                 </tr>
                                                 <tr>
