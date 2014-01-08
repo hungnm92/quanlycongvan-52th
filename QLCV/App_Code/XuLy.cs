@@ -125,6 +125,10 @@ namespace lanhnt
         public string TenLCV;
         public string ThongBao;
         public string SoCV;
+        public string DemSoCD;
+        public string DemSoCPH;
+        public string DemSoD;
+        public string DemSoDT;
         public DataTable DS_TenFile()
         {
             SqlConnection BaoVe = new SqlConnection("server=(local)\\SQLEXPRESS;uid=sa;pwd=123456;database=QuanLyCongVan");
@@ -238,7 +242,7 @@ namespace lanhnt
                 BaoVe.Open();
                 Lenh.ExecuteNonQuery();
                 BaoVe.Close();
-                ThongBao = "Sửa thành công!.";
+                ThongBao = "lưu thành công!.";
             }
             catch (Exception ex)
             {
@@ -383,7 +387,7 @@ namespace lanhnt
         }
         public DataTable ChuaDoc_DS(int MaUser)
         {
-            string SelectSQL = "SELECT CV.Ma,CUT.So, TenCV,TrichYeu, TenFile, NgayPH,YKienLD, YKienCV, TenTT, TenUser AS NguoiGui, ThoiGianGui, ThoiGianDoc,ThoiGianSoan FROM CongVan CV, TinhTrang TT, UserN U, CV_UserN_TT CUT WHERE CV.So = CUT.So_CV AND CUT.Ma_TT = TT.Ma AND CUT.Ma_User = U.Ma AND Ma_UserNhan = @MaUser AND TT.Ma <> 7 ORDER BY ThoiGianGui DESC";
+            string SelectSQL = "SELECT CV.Ma,CUT.So, TenCV,TrichYeu, TenFile, NgayPH,YKienLD, YKienCV, TenTT, TenUser AS NguoiGui, ThoiGianGui, ThoiGianDoc,ThoiGianSoan FROM CongVan CV, TinhTrang TT, UserN U, CV_UserN_TT CUT WHERE CV.So = CUT.So_CV AND CUT.Ma_TT = TT.Ma AND CUT.Ma_User = U.Ma AND Ma_UserNhan = @MaUser AND ThoiGianDoc is null AND TT.Ma not in (4, 2) ORDER BY ThoiGianGui DESC";
             SqlConnection BaoVe = new SqlConnection("server=(local)\\SQLEXPRESS;uid=sa;pwd=123456;database=QuanLyCongVan");
             DataTable ThungChua = new DataTable();
             BaoVe.Open();
@@ -397,9 +401,77 @@ namespace lanhnt
             }
             return ThungChua;
         }
+        public string ChoDuyet_ChuaDoc_SL(int MaUser)
+        {
+            string SelectSQL = "SELECT count(CV.So)	FROM CongVan CV, TinhTrang TT, UserN U, CV_UserN_TT CUT	WHERE CV.So = CUT.So_CV AND CUT.Ma_TT = TT.Ma AND CUT.Ma_User = U.Ma AND (CUT.Ma_User = @MaUser or Ma_UserNhan = @MaUser) AND ThoiGianDoc is null AND TT.Ma = 2";
+            SqlConnection BaoVe = new SqlConnection("server=(local)\\SQLEXPRESS;uid=sa;pwd=123456;database=QuanLyCongVan");
+            DataTable ThungChua = new DataTable();
+            BaoVe.Open();
+            if (BaoVe.State == ConnectionState.Open)
+            {
+                SqlCommand Lenh = new SqlCommand(SelectSQL, BaoVe);
+                Lenh.Parameters.Add("@MaUser", SqlDbType.Int).Value = MaUser;
+                SqlDataAdapter XeTai = new SqlDataAdapter(Lenh);
+                XeTai.Fill(ThungChua);
+                DemSoCD = ThungChua.Rows[0][0].ToString();
+                BaoVe.Close();
+            }
+            return DemSoCD;
+        }
+        public string ChoPhatHanh_ChuaDoc_SL(int MaUser)
+        {
+            string SelectSQL = "SELECT count(CV.So)	FROM CongVan CV, TinhTrang TT, UserN U, CV_UserN_TT CUT	WHERE CV.So = CUT.So_CV AND CUT.Ma_TT = TT.Ma AND CUT.Ma_User = U.Ma AND (CUT.Ma_User = @MaUser or Ma_UserNhan = @MaUser) AND ThoiGianDoc is null AND TT.Ma = 4";
+            SqlConnection BaoVe = new SqlConnection("server=(local)\\SQLEXPRESS;uid=sa;pwd=123456;database=QuanLyCongVan");
+            DataTable ThungChua = new DataTable();
+            BaoVe.Open();
+            if (BaoVe.State == ConnectionState.Open)
+            {
+                SqlCommand Lenh = new SqlCommand(SelectSQL, BaoVe);
+                Lenh.Parameters.Add("@MaUser", SqlDbType.Int).Value = MaUser;
+                SqlDataAdapter XeTai = new SqlDataAdapter(Lenh);
+                XeTai.Fill(ThungChua);
+                DemSoCPH = ThungChua.Rows[0][0].ToString();
+                BaoVe.Close();
+            }
+            return DemSoCPH;
+        }
+        public string Den_ChuaDoc_SL(int MaUser)
+        {
+            string SelectSQL = "SELECT count(CV.So)	FROM CongVan CV, TinhTrang TT, UserN U, CV_UserN_TT CUT	WHERE CV.So = CUT.So_CV AND CUT.Ma_TT = TT.Ma AND CUT.Ma_User = U.Ma AND  Ma_UserNhan = @MaUser AND ThoiGianDoc is null AND TT.Ma not in (2, 4)";
+            SqlConnection BaoVe = new SqlConnection("server=(local)\\SQLEXPRESS;uid=sa;pwd=123456;database=QuanLyCongVan");
+            DataTable ThungChua = new DataTable();
+            BaoVe.Open();
+            if (BaoVe.State == ConnectionState.Open)
+            {
+                SqlCommand Lenh = new SqlCommand(SelectSQL, BaoVe);
+                Lenh.Parameters.Add("@MaUser", SqlDbType.Int).Value = MaUser;
+                SqlDataAdapter XeTai = new SqlDataAdapter(Lenh);
+                XeTai.Fill(ThungChua);
+                DemSoD = ThungChua.Rows[0][0].ToString();
+                BaoVe.Close();
+            }
+            return DemSoD;
+        }
+        public string DuThao_SL(int MaUser)
+        {
+            string SelectSQL = "SELECT count(CV.So)	FROM CongVan CV, TinhTrang TT, UserN U, CV_UserN_TT CUT	WHERE CV.So = CUT.So_CV AND CUT.Ma_TT = TT.Ma AND CUT.Ma_User = U.Ma AND CUT.Ma_User = @MaUser AND ThoiGianDoc is null AND TT.Ma = 6";
+            SqlConnection BaoVe = new SqlConnection("server=(local)\\SQLEXPRESS;uid=sa;pwd=123456;database=QuanLyCongVan");
+            DataTable ThungChua = new DataTable();
+            BaoVe.Open();
+            if (BaoVe.State == ConnectionState.Open)
+            {
+                SqlCommand Lenh = new SqlCommand(SelectSQL, BaoVe);
+                Lenh.Parameters.Add("@MaUser", SqlDbType.Int).Value = MaUser;
+                SqlDataAdapter XeTai = new SqlDataAdapter(Lenh);
+                XeTai.Fill(ThungChua);
+                DemSoDT = ThungChua.Rows[0][0].ToString();
+                BaoVe.Close();
+            }
+            return DemSoDT;
+        }
         public DataTable DaDoc_DS(int MaUser)
         {
-            string SelectSQL = "SELECT CV.Ma,CUT.So, TenCV,TrichYeu, TenFile, NgayPH,YKienLD, YKienCV, TenTT, TenUser AS NguoiGui, ThoiGianGui, ThoiGianDoc FROM CongVan CV, TinhTrang TT, UserN U, CV_UserN_TT CUT WHERE CV.So = CUT.So_CV AND CUT.Ma_TT = TT.Ma AND CUT.Ma_User = U.Ma AND Ma_UserNhan = @MaUser AND TT.Ma = 7 ORDER BY ThoiGianGui DESC ";
+            string SelectSQL = "SELECT CV.Ma,CUT.So, TenCV,TrichYeu, TenFile, NgayPH,YKienLD, YKienCV, TenTT, TenUser AS NguoiGui, ThoiGianGui, ThoiGianDoc FROM CongVan CV, TinhTrang TT, UserN U, CV_UserN_TT CUT WHERE CV.So = CUT.So_CV AND CUT.Ma_TT = TT.Ma AND CUT.Ma_User = U.Ma AND Ma_UserNhan = @MaUser AND ThoiGianDoc is not null AND TT.Ma not in (4, 2) ORDER BY ThoiGianGui DESC ";
             SqlConnection BaoVe = new SqlConnection("server=(local)\\SQLEXPRESS;uid=sa;pwd=123456;database=QuanLyCongVan");
             DataTable ThungChua = new DataTable();
             BaoVe.Open();
@@ -534,6 +606,22 @@ namespace lanhnt
             XeTai.Fill(ThungChua);
             BaoVe.Close();
             return ThungChua;
+        }
+        public void CT()
+        {
+            SqlConnection BaoVe = new SqlConnection("server=(local)\\SQLEXPRESS;uid=sa;pwd=123456;database=QuanLyCongVan");
+            SqlCommand Lenh = new SqlCommand("User_CT", BaoVe);
+            Lenh.CommandType = CommandType.StoredProcedure;
+            SqlParameter ThamSo = new SqlParameter();
+            ThamSo = Lenh.Parameters.AddWithValue("@Ma", Ma);
+            SqlDataReader DocDL;
+            BaoVe.Open();
+            DocDL = Lenh.ExecuteReader();
+            if (DocDL.Read() == true)
+            {
+                TenUser = DocDL["TenUser"].ToString();
+            }
+            BaoVe.Close();
         }
         public DataTable LanhDao_DS()
         {
@@ -740,7 +828,7 @@ namespace lanhnt
                 BaoVe.Open();
                 Lenh.ExecuteNonQuery();
                 BaoVe.Close();
-                ThongBao = "Sửa thành công!.";
+                ThongBao = "Đã gửi tới Lãnh đạo!.";
             }
             catch (Exception ex)
             {
@@ -991,7 +1079,7 @@ namespace lanhnt
                 BaoVe.Open();
                 Lenh.ExecuteNonQuery();
                 BaoVe.Close();
-                ThongBao = "Sửa thành công!.";
+                ThongBao = "Lưu thành công!.";
             }
             catch (Exception ex)
             {
@@ -1095,7 +1183,7 @@ namespace lanhnt
                 KetQua = "<ul>";
                 while (DocDL.Read())
                 {
-                    KetQua += "<li><a href='" + DocDL["Link"] + "'><span>" + DocDL["TenCN"] + "</span></a></li>";
+                    KetQua += "<li><a href='" + DocDL["Link"] + "'><span>" + DocDL["TenMenu"] + "</span></a></li>";
                     KetQua += LoadMenu(Convert.ToInt32(DocDL["Ma"]), level + 1);
                 }
                 KetQua += "</ul>";

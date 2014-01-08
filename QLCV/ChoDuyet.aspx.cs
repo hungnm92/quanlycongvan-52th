@@ -49,8 +49,8 @@ public partial class _Default : System.Web.UI.Page
                     cut.PheDuyet_ChoPH();
                 }
             }
-            msg.Show(cut.ThongBao);
             SoLuongDaChon = 0;
+            msg.Show(cut.ThongBao);  
         }
         else
             msg.Show("Bạn chưa nhập người nhận.");

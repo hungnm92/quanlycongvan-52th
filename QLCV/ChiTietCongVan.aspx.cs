@@ -26,7 +26,7 @@ public partial class _Default : System.Web.UI.Page
     }
     protected void btnThoat_Click(object sender, EventArgs e)
     {
-        Response.Redirect("~/HopThuDen.aspx");
+        Response.Redirect("~/ChiTietCongVan.aspx");
     }
 
     protected void griCV_Me_DS_SelectedIndexChanged(object sender, EventArgs e)
