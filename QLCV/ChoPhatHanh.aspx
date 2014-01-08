@@ -44,7 +44,7 @@
                 <asp:Panel ID="pnlChiTiet" runat="server">
                     <table style="width:100%;">
                         <tr>
-                            <td class="auto-style7" style="vertical-align: top; color: #000000;">
+                            <td class="auto-style7" style="vertical-align: top; color: #000000; font-size: medium; font-weight: normal;">
                                 <table style="width:100%; height: 56px;">
                                     <tr>
                                         <td class="auto-style64" style="white-space: nowrap">Gửi tới:&nbsp; </td>
@@ -73,7 +73,7 @@
                                                 <tr>
                                                     <td class="auto-style95" style="text-align: right">Loại Công văn: </td>
                                                     <td class="auto-style95">
-                                                        <asp:DropDownList ID="droLCV" runat="server" DataTextField="TenLCV" DataValueField="Ma">
+                                                        <asp:DropDownList ID="droLCV" runat="server" DataTextField="TenLCV" DataValueField="Ma" Height="26px" Width="160px">
                                                         </asp:DropDownList>
                                                     </td>
                                                 </tr>
@@ -86,12 +86,14 @@
                                                 <tr>
                                                     <td class="auto-style93" style="text-align: right; color: #000000;">Tệp đính kèm: </td>
                                                     <td class="auto-style94">
-                                                        <asp:FileUpload ID="fileTep" runat="server" Width="247px" Height="21px" />
+                                                        <asp:FileUpload ID="fileTep" runat="server" Width="160px" Height="28px" />
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="auto-style103" style="text-align: right; vertical-align: top;">&nbsp;</td>
-                                                    <td class="auto-style103" style="vertical-align: top">&nbsp;</td>
+                                                    <td class="auto-style103" style="text-align: right; vertical-align: top;">Tải về: </td>
+                                                    <td class="auto-style103" style="vertical-align: top">
+                                                        <asp:LinkButton ID="lnkbtnTaiVe" runat="server" OnClick="lnkbtnTaiVe_Click"></asp:LinkButton>
+                                                    </td>
                                                 </tr>
                                             </table>
                                         </td>

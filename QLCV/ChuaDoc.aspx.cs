@@ -49,6 +49,7 @@ public partial class _Default : System.Web.UI.Page
         droLCV.SelectedValue = lcv.Ma.ToString();
         txtNgayPH.Text = cut.NgayPH;
         string TimeDoc = cut.ThoiGianDoc;
+        lnkbtnTaiVe.Text = cv.TenFile;
         bool bThoiGianDoc = string.IsNullOrEmpty(TimeDoc);
         if (bThoiGianDoc == true)
         {
@@ -56,6 +57,7 @@ public partial class _Default : System.Web.UI.Page
             cut.CT();
             cut.Doc();
         }
+
     }
     protected void btnLuuDuThao_Click(object sender, EventArgs e)
     {
@@ -247,5 +249,13 @@ public partial class _Default : System.Web.UI.Page
             }
             else
                 msg.Show("Bạn chưa nhập đầy đủ thông tin bắt buộc");
+    }
+    protected void lnkbtnTaiVe_Click(object sender, EventArgs e)
+    {
+        Response.Clear();
+        Response.ContentType = "application/octect-stream";
+        Response.AppendHeader("content-disposition", "filename=" + lnkbtnTaiVe.Text);
+        Response.TransmitFile(Server.MapPath("~/src/products/") + lnkbtnTaiVe.Text);
+        Response.End();    
     }
 }
