@@ -32,6 +32,10 @@
 }
 #nav li {
     position: relative;
+    top: 1px;
+    left: 2px;
+    height: 25px;
+    width: 134px;
 }
 
 #nav ul {

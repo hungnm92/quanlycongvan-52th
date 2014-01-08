@@ -44,7 +44,8 @@ public partial class _Default : System.Web.UI.Page
         txtMaCV.Text = cv.Ma;
         txtSoCV.Text = cv.So;
         u.Ma = cut.Ma_UserNhan;
-        txtNguoiNhan.Text = u.Ma.ToString();
+        cblUser.Items[u.Ma].Selected = true;
+        btnXong_Click(sender,e);
         lcv.Ma = cv.Ma_LCV;
         droLCV.SelectedValue = lcv.Ma.ToString();
         txtNgayPH.Text = cut.NgayPH;
