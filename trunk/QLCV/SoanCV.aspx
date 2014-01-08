@@ -39,7 +39,7 @@
                                     <td class="auto-style95" style="text-align: right" __designer:mapid="66">Loại Công văn:
                                                             </td>
                                     <td class="auto-style95" __designer:mapid="67">
-                                        <asp:DropDownList ID="droLCV" runat="server" DataTextField="TenLCV" DataValueField="Ma">
+                                        <asp:DropDownList ID="droLCV" runat="server" DataTextField="TenLCV" DataValueField="Ma" Height="26px" Width="160px">
                                         </asp:DropDownList>
                                     </td>
                                 </tr>
@@ -53,7 +53,7 @@
                                     <td class="auto-style93" style="text-align: right; white-space: nowrap;" __designer:mapid="6a">Tệp đính kèm:(*)
                                                             </td>
                                     <td class="auto-style94" __designer:mapid="6b">
-                                        <asp:FileUpload ID="fileTep" runat="server" Width="247px" Height="21px" />
+                                        <asp:FileUpload ID="fileTep" runat="server" Width="160px" Height="28px" />
                                     </td>
                                 </tr>
                                 <tr __designer:mapid="6d">

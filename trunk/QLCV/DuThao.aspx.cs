@@ -48,6 +48,8 @@ public partial class _Default : System.Web.UI.Page
         lcv.Ma = cv.Ma_LCV;
         droLCV.SelectedValue = lcv.Ma.ToString();
         txtNgayPH.Text = cut.NgayPH;
+        lnkbtnTaiVe.Text = cv.TenFile;
+        lnkbtnTaiVe.Text = cv.TenFile;
     }
     protected void btnTrinhDuyet_Click(object sender, EventArgs e)
     {
@@ -315,5 +317,13 @@ public partial class _Default : System.Web.UI.Page
             Response.TransmitFile(Server.MapPath("~/src/products/") + e.CommandArgument);
             Response.End();
         }
+    }
+    protected void lnkbtnTaiVe_Click(object sender, EventArgs e)
+    {
+        Response.Clear();
+        Response.ContentType = "application/octect-stream";
+        Response.AppendHeader("content-disposition", "filename=" + lnkbtnTaiVe.Text);
+        Response.TransmitFile(Server.MapPath("~/src/products/") + lnkbtnTaiVe.Text);
+        Response.End();    
     }
 }

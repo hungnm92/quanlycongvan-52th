@@ -14,6 +14,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
             Response.Redirect("~/Login.aspx");
         lblUser.Text = "Xin chào " + Session["HoTenNV"].ToString() + ".";
         //lblMenu.Text = mn.LoadMenu(0, 0);
+        //lblMenu.Text = mn.LoadMenu(0, 0);
     }
     
 }

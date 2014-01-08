@@ -1095,7 +1095,7 @@ namespace lanhnt
                 KetQua = "<ul>";
                 while (DocDL.Read())
                 {
-                    KetQua += "<li><a href='<%# Eval(\"Link\")%>'><span>" + DocDL["TenMenu"] + "</span></a></li>";
+                    KetQua += "<li><a href='" + DocDL["Link"] + "'><span>" + DocDL["TenCN"] + "</span></a></li>";
                     KetQua += LoadMenu(Convert.ToInt32(DocDL["Ma"]), level + 1);
                 }
                 KetQua += "</ul>";
