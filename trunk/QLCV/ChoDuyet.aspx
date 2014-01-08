@@ -5,6 +5,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder2" Runat="Server">
+    <asp:ToolkitScriptManager ID="ToolkitScriptManager2" runat="server">
+                                            </asp:ToolkitScriptManager>
     <table style="width:100%;">
         <tr>
             <td style="font-weight: 700; font-size: 20px; text-align: center; color: #FFFFFF; background-image: none;">
@@ -46,8 +48,7 @@
                                     <tr>
                                         <td class="auto-style64" style="white-space: nowrap">Gửi tới:&nbsp; </td>
                                         <td class="auto-style81">
-                                            <asp:ToolkitScriptManager ID="ToolkitScriptManager2" runat="server">
-                                            </asp:ToolkitScriptManager>
+                                            
                                             <asp:TextBox ID="txtNguoiNhan" runat="server" TextMode="MultiLine" Width="656px"></asp:TextBox>
                                             <asp:PopupControlExtender ID="PopupControlExtender1" runat="server" PopupControlID="pnlNguoiNhan" Position="Bottom" TargetControlID="txtNGuoiNhan">
                                             </asp:PopupControlExtender>

@@ -16,8 +16,16 @@
                     <Columns>
                         <asp:CommandField ButtonType="Button" SelectText="Chọn" ShowSelectButton="True" />
                         <asp:BoundField DataField="NguoiGui" HeaderText="Người gửi" />
-                        <asp:BoundField DataField="TenCV" HeaderText="Tên Công văn" />
-                        <asp:BoundField DataField="TrichYeu" HeaderText="Trích yếu" />
+                        <asp:TemplateField HeaderText="Tên Công văn">
+                            <ItemTemplate>
+                                <asp:Label ID="Label2" runat="server" Text='<%# Eval("TenCV").ToString().Length > 10 ? Eval("TenCV").ToString().Substring(0,10) +"..." : Eval("TenCV") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Trích yếu">
+                            <ItemTemplate>
+                                <asp:Label ID="Label1" runat="server" Text='<%# Eval("TrichYeu").ToString().Length > 10 ? Eval("TrichYeu").ToString().Substring(0,10) +"..." : Eval("TrichYeu") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
                         <asp:BoundField DataField="ThoiGianGui" HeaderText="Thời gian gửi" />
                         <asp:BoundField DataField="ThoiGianDoc" HeaderText="Thời gian đọc" />
                         <asp:TemplateField HeaderText="File">

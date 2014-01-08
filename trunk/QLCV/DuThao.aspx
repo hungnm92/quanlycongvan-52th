@@ -5,6 +5,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder2" Runat="Server">
+    <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server"></asp:ToolkitScriptManager>
     <table style="width:100%; color: #000000;">
         <tr>
             <td style="font-weight: 700; font-size: 20px; text-align: center; color: #FFFFFF; background-image: none;">
@@ -35,8 +36,7 @@
                     <SortedDescendingHeaderStyle BackColor="#4870BE" />
                 </asp:GridView>
                 <br />
-                <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
-                </asp:ToolkitScriptManager>
+                
                 <br />
                 <asp:Panel ID="pnlChiTiet" runat="server">
                     <table style="width:100%;">
