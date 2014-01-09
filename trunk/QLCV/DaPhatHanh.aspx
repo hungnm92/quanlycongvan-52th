@@ -59,13 +59,13 @@
                                         <td class="auto-style4" rowspan="5" style="vertical-align: top">
                                             <table style="width: 100%; height: 224px;">
                                                 <tr>
-                                                    <td class="auto-style96" style="text-align: right">Mã Công v&#259;n: </td>
+                                                    <td class="auto-style96" style="text-align: right">Số Công văn: </td>
                                                     <td class="auto-style97">
-                                                        <asp:TextBox ID="txtMaCV" runat="server" Height="24px" Width="156px"></asp:TextBox>
+                                                        <asp:TextBox ID="txtMaCV" runat="server" Height="24px" Width="156px" ReadOnly="True"></asp:TextBox>
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="auto-style96" style="text-align: right">S&#7889; Công v&#259;n</td>
+                                                    <td class="auto-style96" style="text-align: right">Mã Công văn</td>
                                                     <td class="auto-style97">
                                                         <asp:TextBox ID="txtSoCV" runat="server" Height="24px" style="margin-left: 0px" Width="156px"></asp:TextBox>
                                                     </td>
@@ -80,14 +80,13 @@
                                                 <tr>
                                                     <td class="auto-style95" style="text-align: right; white-space: nowrap;">Ngày phát hành</td>
                                                     <td class="auto-style95">
-                                                        <asp:TextBox ID="txtNgayPH" runat="server" Height="24px" style="margin-left: 0px" Width="156px"></asp:TextBox>
+                                                        <asp:TextBox ID="txtNgayPH" runat="server" Height="24px" style="margin-left: 0px" Width="156px" ReadOnly="True"></asp:TextBox>
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="auto-style93" style="text-align: right; color: #000000;">T&#7879;p &#273;ính kèm: </td>
+                                                    <td class="auto-style93" style="text-align: right; color: #000000;">&nbsp;</td>
                                                     <td class="auto-style94">
-                                                        <asp:FileUpload ID="fileTep" runat="server" Width="160px" Height="28px" />
-                                                    </td>
+                                                        &nbsp;</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="auto-style103" style="text-align: right; vertical-align: top;">T&#7843;i v&#7873;: </td>
@@ -103,7 +102,7 @@
                                             <asp:Label ID="Label3" runat="server" Text="Tiêu &#273;&#7873;"></asp:Label>
                                             : </td>
                                         <td class="auto-style81">
-                                            <asp:TextBox ID="txtTenCV" runat="server" Height="37px" TextMode="MultiLine" Width="715px"></asp:TextBox>
+                                            <asp:TextBox ID="txtTenCV" runat="server" Height="37px" TextMode="MultiLine" Width="715px" ReadOnly="True"></asp:TextBox>
                                         </td>
                                     </tr>
                                     <tr>
@@ -111,20 +110,18 @@
                                             <asp:Label ID="Label5" runat="server" Text="Tóm t&#7855;t"></asp:Label>
                                             : </td>
                                         <td class="auto-style100" style="height: 19px; vertical-align: top;">
-                                            <asp:TextBox ID="txtTomTat" runat="server" Height="140px" TextMode="MultiLine" Width="715px"></asp:TextBox>
+                                            <asp:TextBox ID="txtTomTat" runat="server" Height="140px" TextMode="MultiLine" Width="715px" ReadOnly="True"></asp:TextBox>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="auto-style99" style="height: 19px; white-space: nowrap;">Ch&#7881; &#273;&#7841;o: </td>
+                                        <td class="auto-style99" style="height: 19px; white-space: nowrap;">&nbsp;</td>
                                         <td class="auto-style100" style="height: 19px; vertical-align: top;">
-                                            <asp:TextBox ID="txtYKienLD" runat="server" Height="37px" TextMode="MultiLine" Width="715px"></asp:TextBox>
-                                        </td>
+                                            &nbsp;</td>
                                     </tr>
                                     <tr>
-                                        <td class="auto-style99" style="height: 19px">Góp ý: </td>
+                                        <td class="auto-style99" style="height: 19px">&nbsp;</td>
                                         <td class="auto-style100" style="height: 19px; vertical-align: top;">
-                                            <asp:TextBox ID="txtGopY" runat="server" Height="37px" TextMode="MultiLine" Width="715px"></asp:TextBox>
-                                        </td>
+                                            &nbsp;</td>
                                     </tr>
                                 </table>
                                 <table style="width:100%;">

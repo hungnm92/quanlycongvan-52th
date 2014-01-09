@@ -53,8 +53,6 @@ public partial class _Default : System.Web.UI.Page
         txtGopY.Text = cv.YKienCV;
         txtMaCV.Text = cv.Ma;
         txtSoCV.Text = cv.So;
-        //u.Ma = cut.Ma_UserNhan;
-        //droUserN.SelectedValue = u.Ma.ToString();
         lcv.Ma = cv.Ma_LCV;
         droLCV.SelectedValue = lcv.Ma.ToString();
         txtNgayPH.Text = cut.NgayPH;
@@ -113,7 +111,6 @@ public partial class _Default : System.Web.UI.Page
             DuongDan = DuongDan + ReName + fileTep.FileName;
             fileTep.SaveAs(DuongDan);
             cv.TenFile = ReName + fileTep.FileName;
-            //if ( Dir(fileTep.FileName, cv.DS_TenFile()) = "")
             cut.So = int.Parse(griKhongDuyet.SelectedValue.ToString());
             cut.CT();
             cv.Me = cut.So_CV;
@@ -198,10 +195,7 @@ public partial class _Default : System.Web.UI.Page
             txtGopY.Text = "";
             txtMaCV.Text = "";
             txtSoCV.Text = "";
-            // droLCV.Text = "";
             txtNgayPH.Text = "";
-            //fileTep. = "";
-            // Response.Redirect("~/Default.aspx");
         }
         else
         {

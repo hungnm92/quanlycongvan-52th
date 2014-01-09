@@ -23,14 +23,14 @@
                         <td class="auto-style4" rowspan="5" style="vertical-align: top" >
                             <table style="width: 100%; height: 224px;" >
                                 <tr >
-                                    <td class="auto-style96" style="text-align: right">Mã Công văn:
+                                    <td class="auto-style96" style="text-align: right">Số Công văn:
                                                             </td>
                                     <td class="auto-style97" >
                                         <asp:TextBox ID="txtMaCV" runat="server" Height="24px" Width="156px"></asp:TextBox>
                                     </td>
                                 </tr>
                                 <tr >
-                                    <td class="auto-style96" style="text-align: right" >Số Công văn</td>
+                                    <td class="auto-style96" style="text-align: right" >Mã Công văn</td>
                                     <td class="auto-style97">
                                         <asp:TextBox ID="txtSoCV" runat="server" Height="24px" style="margin-left: 0px" Width="156px"></asp:TextBox>
                                     </td>

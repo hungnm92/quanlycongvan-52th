@@ -20,6 +20,7 @@ public partial class Admin_Login : System.Web.UI.Page
             if (u.DangNhap() == true)
             {
                 Session["Ma"] = u.Ma;
+                Session["IsUser"] = u.IsUser;
                 Session["HoTenNV"] = u.Ho + " " + u.TenNV;
                 Session["MaNhom"] = u.MaNhom;
                 Response.Redirect("~/HopThuDen.aspx");

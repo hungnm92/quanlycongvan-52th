@@ -8,11 +8,9 @@ using System.IO;
 
 public partial class _Default : System.Web.UI.Page
 {
-    lanhnt.UserN u = new lanhnt.UserN();
     lanhnt.CV_User_TT cut = new lanhnt.CV_User_TT();
-    lanhnt.LoaiCV lcv = new lanhnt.LoaiCV();
     lanhnt.CongVan cv = new lanhnt.CongVan();
-    lanhnt.WebMsgBox msg = new lanhnt.WebMsgBox();
+    lanhnt.UserN u = new lanhnt.UserN();
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -21,8 +19,8 @@ public partial class _Default : System.Web.UI.Page
             pnlChiTiet.Visible = false;
             griCongVanDi.DataSource = cv.DaGui_DS(int.Parse(Session["Ma"].ToString()));
             griCongVanDi.DataBind();
-            droLCV.DataSource = lcv.DS();
-            droLCV.DataBind();
+            droUserN.DataSource = u.DS();
+            droUserN.DataBind();
         }
     }
    
@@ -32,20 +30,12 @@ public partial class _Default : System.Web.UI.Page
         pnlChiTiet.Visible = true;
         cut.So = int.Parse(griCongVanDi.SelectedValue.ToString());
         cut.CT();
+        u.Ma = cut.Ma_UserNhan;
+        droUserN.SelectedValue = u.Ma.ToString();
         cv.So = cut.So_CV;
         cv.CT();
-        txtSoCV.ReadOnly = true;
         txtTenCV.Text = cv.TenCV;
         txtTomTat.Text = cv.TrichYeu;
-        txtYKienLD.Text = cv.YKienLD;
-        txtGopY.Text = cv.YKienCV;
-        txtMaCV.Text = cv.Ma;
-        txtSoCV.Text = cv.So;
-        //u.Ma = cut.Ma_UserNhan;
-        //droUserN.SelectedValue = u.Ma.ToString();
-        lcv.Ma = cv.Ma_LCV;
-        droLCV.SelectedValue = lcv.Ma.ToString();
-        txtNgayPH.Text = cut.NgayPH;
         lnkbtnTaiVe.Text = cv.TenFile;
     }
     protected void btnThoat_Click(object sender, EventArgs e)

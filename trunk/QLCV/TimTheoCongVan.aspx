@@ -1,8 +1,13 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="ChoPhatHanh.aspx.cs" Inherits="_Default" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="TimTheoCongVan.aspx.cs" Inherits="_Default" %>
 
 <%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="asp" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+    <style type="text/css">
+    .auto-style1 {
+        height: 22px;
+    }
+</style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder2" Runat="Server">
     <table style="width:100%;">
@@ -11,19 +16,60 @@
                 <table style="width:100%; color: #000000;">
         <tr>
             <td style="font-weight: 700; font-size: 20px; text-align: center; color: #FFFFFF; background-image: none;">
-                <asp:GridView ID="griChoPhatHanh" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Font-Bold="False" DataKeyNames="So" OnSelectedIndexChanged="griChoPhatHanh_SelectedIndexChanged" AllowPaging="True" OnPageIndexChanging="griChoPhatHanh_PageIndexChanging" OnRowCommand ="griChoPhatHanh_RowCommand">
+                <table style="width: 100%; color: #000000; font-size: medium;">
+                    <tr>
+                        <td>Tên</td>
+                        <td>
+                            <asp:TextBox ID="txtTenCV_TK" runat="server"></asp:TextBox>
+                        </td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>Lo&#7841;i Công V&#259;n</td>
+                        <td>
+                                                        <asp:DropDownList ID="droTimLCV" runat="server" DataTextField="TenLCV" DataValueField="Ma" Height="26px" Width="160px">
+                                                        </asp:DropDownList>
+                                                    </td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>Tình tr&#7841;ng</td>
+                        <td>
+                                                        <asp:DropDownList ID="droTimTT" runat="server" DataTextField="TenLCV" DataValueField="Ma" Height="26px" Width="160px">
+                                                        </asp:DropDownList>
+                                                    </td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style1">Th&#7901;i gian g&#7917;i</td>
+                        <td class="auto-style1">
+                                                        <asp:DropDownList ID="droTimTG" runat="server" DataTextField="TenLCV" DataValueField="Ma" Height="26px" Width="160px">
+                                                        </asp:DropDownList>
+                                                    </td>
+                        <td class="auto-style1"></td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style1">&nbsp;</td>
+                        <td class="auto-style1">
+                            <asp:Button ID="btnTimKiem" runat="server" Text="Button" />
+                        </td>
+                        <td class="auto-style1">&nbsp;</td>
+                    </tr>
+                </table>
+                <br />
+                <asp:GridView ID="griCongVanDen" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Font-Bold="False" DataKeyNames="So" OnSelectedIndexChanged="griCongVanDen_SelectedIndexChanged" AllowPaging="True" OnPageIndexChanging="griCongVanDen_PageIndexChanging" OnRowCommand="griCongVanDen_RowCommand">
                     <AlternatingRowStyle BackColor="White" />
                     <Columns>
                         <asp:CommandField ButtonType="Button" SelectText="Ch&#7885;n" ShowSelectButton="True" />
                         <asp:BoundField DataField="NguoiGui" HeaderText="Ng&#432;&#7901;i g&#7917;i" />
                         <asp:TemplateField HeaderText="Tên Công v&#259;n">
                             <ItemTemplate>
-                                <asp:Label ID="Label1" runat="server" Text='<%# Eval("TenCV").ToString().Length > 20 ? Eval("TenCV").ToString().Substring(0,20) +"..." : Eval("TenCV") %>'></asp:Label>
+                                <asp:Label ID="Label2" runat="server" Text='<%# Eval("TenCV").ToString().Length > 20 ? Eval("TenCV").ToString().Substring(0,20) +"..." : Eval("TenCV") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Trích y&#7871;u">
                             <ItemTemplate>
-                                <asp:Label ID="Label2" runat="server" Text='<%# Eval("TrichYeu").ToString().Length > 20 ? Eval("TrichYeu").ToString().Substring(0,20) +"..." : Eval("TrichYeu") %>'></asp:Label>
+                                <asp:Label ID="Label1" runat="server" Text='<%# Eval("TrichYeu").ToString().Length > 20 ? Eval("TrichYeu").ToString().Substring(0,20) +"..." : Eval("TrichYeu") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:BoundField DataField="ThoiGianGui" HeaderText="Th&#7901;i gian g&#7917;i" />
@@ -46,9 +92,6 @@
                     <SortedDescendingHeaderStyle BackColor="#4870BE" />
                 </asp:GridView>
                 <br />
-                <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
-                </asp:ToolkitScriptManager>
-                <br />
                 <asp:Panel ID="pnlChiTiet" runat="server">
                     <table style="width:100%;">
                         <tr>
@@ -57,18 +100,15 @@
                                     <tr>
                                         <td class="auto-style64" style="white-space: nowrap">G&#7917;i t&#7899;i:&nbsp; </td>
                                         <td class="auto-style81">
-                                             <asp:TextBox ID="txtNguoiNhan" runat="server" TextMode="MultiLine" Width="669px"></asp:TextBox><asp:Button ID="btnXong" runat="server" Text="Ch&#7885;n" OnClick="btnXong_Click" Height="26px" Width="46px" />
-                            <asp:Panel ID="pnlNguoiNhan" runat="server">
-                                <asp:CheckBoxList ID="cblUser" runat="server" DataTextField="TenUser" DataValueField="Ma"></asp:CheckBoxList>
-                            </asp:Panel>
-                            <asp:PopupControlExtender ID="PopupControlExtender1" runat="server" TargetControlID="txtNGuoiNhan" PopupControlID="pnlNguoiNhan" Position="Bottom"></asp:PopupControlExtender>   
+                                            <asp:DropDownList ID="droUserN" runat="server" DataTextField="TenUser" DataValueField="Ma" ForeColor="Black" Height="30px" Width="715px">
+                                            </asp:DropDownList>
                                         </td>
                                         <td class="auto-style4" rowspan="5" style="vertical-align: top">
                                             <table style="width: 100%; height: 224px;">
                                                 <tr>
                                                     <td class="auto-style96" style="text-align: right">S&#7889; Công v&#259;n: </td>
                                                     <td class="auto-style97">
-                                                        <asp:TextBox ID="txtMaCV" runat="server" Height="24px" Width="156px" ReadOnly="True"></asp:TextBox>
+                                                        <asp:TextBox ID="txtMaCV" runat="server" Height="24px" Width="156px"></asp:TextBox>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -87,13 +127,14 @@
                                                 <tr>
                                                     <td class="auto-style95" style="text-align: right; white-space: nowrap;">Ngày phát hành</td>
                                                     <td class="auto-style95">
-                                                        <asp:TextBox ID="txtNgayPH" runat="server" Height="24px" style="margin-left: 0px" Width="156px" ReadOnly="True"></asp:TextBox>
+                                                        <asp:TextBox ID="txtNgayPH" runat="server" Height="24px" style="margin-left: 0px" Width="156px"></asp:TextBox>
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="auto-style93" style="text-align: right; color: #000000;">&nbsp;</td>
+                                                    <td class="auto-style93" style="text-align: right; color: #000000;">Thêm t&#7879;p m&#7899;i: </td>
                                                     <td class="auto-style94">
-                                                        &nbsp;</td>
+                                                        <asp:FileUpload ID="fileTep" runat="server" Width="160px" Height="28px" />
+                                                    </td>
                                                 </tr>
                                                 <tr>
                                                     <td class="auto-style103" style="text-align: right; vertical-align: top;">T&#7843;i v&#7873;: </td>
@@ -109,22 +150,21 @@
                                             <asp:Label ID="Label3" runat="server" Text="Tiêu &#273;&#7873;"></asp:Label>
                                             : </td>
                                         <td class="auto-style81">
-                                            <asp:TextBox ID="txtTenCV" runat="server" Height="37px" TextMode="MultiLine" Width="715px" ReadOnly="True"></asp:TextBox>
+                                            <asp:TextBox ID="txtTenCV" runat="server" Height="37px" TextMode="MultiLine" Width="715px"></asp:TextBox>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="auto-style99" style="white-space: nowrap;">
-                                            <asp:Label ID="Label5" runat="server" Text="Tóm t&#7855;t"></asp:Label>
+                                            <asp:Label ID="Label5" runat="server" Text="N&#7897;i dung"></asp:Label>
                                             : </td>
                                         <td class="auto-style100" style="height: 19px; vertical-align: top;">
-                                            <asp:TextBox ID="txtTomTat" runat="server" Height="140px" TextMode="MultiLine" Width="715px" ReadOnly="True"></asp:TextBox>
+                                            <asp:TextBox ID="txtTomTat" runat="server" Height="140px" TextMode="MultiLine" Width="715px"></asp:TextBox>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="auto-style99" style="height: 19px; white-space: nowrap;">Ch&#7881; &#273;&#7841;o: </td>
+                                        <td class="auto-style99" style="height: 19px; white-space: nowrap;">&nbsp;</td>
                                         <td class="auto-style100" style="height: 19px; vertical-align: top;">
-                                            <asp:TextBox ID="txtYKienLD" runat="server" Height="37px" TextMode="MultiLine" Width="715px" ReadOnly="True"></asp:TextBox>
-                                        </td>
+                                            &nbsp;</td>
                                     </tr>
                                     <tr>
                                         <td class="auto-style99" style="height: 19px">&nbsp;</td>
@@ -140,8 +180,7 @@
                                     </tr>
                                     <tr>
                                         <td colspan="3" style="text-align: center">
-                                            <asp:Button ID="btnPhatHanh" runat="server" Font-Bold="True" Height="32px" Text="Phát hành" Width="100px" OnClick="btnPhatHanh_Click" Visible="False" />
-                                            <asp:Button ID="btnThoat" runat="server" Font-Bold="True" Height="32px" Text="Thoát" Width="100px" OnClick="btnThoat_Click" />
+                                            <asp:Button ID="btnThoat" runat="server" Font-Bold="True" Height="32px" OnClick="btnThoat_Click" Text="Thoát" Width="100px" />
                                         </td>
                                     </tr>
                                 </table>

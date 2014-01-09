@@ -57,14 +57,14 @@
         <ul id="nav">
                    <li><a href="SoanCV.aspx">So&#7841;n</a></li>
 
-            <li><a href="HopThuDen.aspx">H&#7897;p th&#432; &#273;&#7871;n »     <asp:Label ID="lblChuaDoc_Den" runat="server" Text=""></asp:Label></a> 
+            <li><a href="HopThuDen.aspx">H&#7897;p th&#432; &#273;&#7871;n <asp:Label ID="lblChuaDoc_Den" runat="server" Text=""></asp:Label>  »</a> 
             <ul>
                            <li><a href="ChuaDoc.aspx">Ch&#432;a &#273;&#7885;c</a></li>
                            <li><a href="DaDoc.aspx">&#272;ã &#273;&#7885;c</a></li>
                          </ul>
                 </li> 
              <li><a href="HopThuDi.aspx">H&#7897;p th&#432; &#273;i</a></li>
-            <li><a href="#">Phê duy&#7879;t »     <asp:Label ID="lblChuaDoc_CD" runat="server"></asp:Label></a>
+            <li><a href="#">Phê duy&#7879;t <asp:Label ID="lblChuaDoc_CD" runat="server"></asp:Label>  »</a>
                         <ul>
                            <li><a href="ChoDuyet.aspx">Ch&#7901; duy&#7879;t</a></li>
                            <li><a href="KhongDuyet.aspx">Không duy&#7879;t</a></li>
@@ -72,7 +72,7 @@
                          </ul>
                    
                    </li>          
-            <li><a href="#">Phát hành »    <asp:Label ID="lblChuaDoc_CPH" runat="server" Text=""></asp:Label></a>
+            <li><a href="#">Phát hành  <asp:Label ID="lblChuaDoc_CPH" runat="server" Text=""></asp:Label>  » </a>
                         <ul>
                            <li><a href="ChoPhatHanh.aspx">Ch&#7901; phát hành</a></li>
                            <li><a href="DaPhatHanh.aspx">&#272;ã phát hành</a></li>
@@ -113,7 +113,7 @@
             </tr>
             <tr>
                 <td colspan="2" style="text-align: center; color: #FFFFFF; font-size: large; font-weight: bolder; background-color: #008000;">
-                    acb
+                    acb</td>
             </tr>
             <tr>
                 <td colspan="2" style="text-align: right; color: #0000FF; font-size: medium; font-weight: bolder; ">&#272;&#7882;A CH&#7880;: 52TH - NHA TRANG UNIVERSITY - KHÁNH HÒA.<br />
