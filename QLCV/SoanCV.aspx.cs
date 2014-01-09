@@ -34,6 +34,7 @@ public partial class SoanCV : System.Web.UI.Page
                 btnTrinhDuyet.Visible = true;
                 txtGopY.ReadOnly = false;
             }
+
         }
     }
     protected void btnTrinhDuyet_Click(object sender, EventArgs e)
@@ -62,7 +63,6 @@ public partial class SoanCV : System.Web.UI.Page
             DuongDan = DuongDan + ReName + fileTep.FileName;
             fileTep.SaveAs(DuongDan);
             cv.TenFile = ReName + fileTep.FileName; 
-            //if ( Dir(fileTep.FileName, cv.DS_TenFile()) = "")
             cut.Ma_User = int.Parse(Session["Ma"].ToString());
                 cv.Them();
                 cut.So_CV = cv.LayMa().ToString();
@@ -71,8 +71,17 @@ public partial class SoanCV : System.Web.UI.Page
                 {
                     if (cblUser.Items[i].Selected == true)
                     {
-                        cut.Ma_UserNhan = Convert.ToInt32(cblUser.Items[i].Value);                      
-                        cut.TrinhDuyet();                        
+                        cut.Ma_UserNhan = Convert.ToInt32(cblUser.Items[i].Value);
+                        if (u.LayMaNhom(cut.Ma_UserNhan) == 1)
+                        {
+                            cut.TrinhDuyet();
+                        }
+                        else
+                        {
+                            cv.Xoa();
+                            msg.Show("Không được trình tới chuyên viên.");
+                            break;
+                        }
                     }
                 }
                 msg.Show(cut.ThongBao);
@@ -117,7 +126,6 @@ public partial class SoanCV : System.Web.UI.Page
                 DuongDan = DuongDan + ReName + fileTep.FileName;
                 fileTep.SaveAs(DuongDan);
                 cv.TenFile = ReName + fileTep.FileName;
-                //if ( Dir(fileTep.FileName, cv.DS_TenFile()) = "")
                 cut.Ma_User = int.Parse(Session["Ma"].ToString());
                 cv.Them();
                 cut.So_CV = cv.LayMa().ToString();
@@ -136,16 +144,13 @@ public partial class SoanCV : System.Web.UI.Page
                     cut.Ma_UserNhan = 0;
                     cut.DuThao();
                 }
-                msg.ShowAndRedirect(cut.ThongBao);
+                msg.Show(cut.ThongBao);
                 txtTenCV.Text = "";
                 txtTomTat.Text = "";
                 txtGopY.Text = "";
                 txtMaCV.Text = "";
                 txtSoCV.Text = "";
-                // droLCV.Text = "";
                 txtNgayPH.Text = "";
-                //fileTep. = "";
-                // Response.Redirect("~/Default.aspx");
             }
             else
             {
@@ -167,7 +172,6 @@ public partial class SoanCV : System.Web.UI.Page
                 cut.Ma_User = int.Parse(Session["Ma"].ToString());
                 cv.Them();
                 cut.So_CV = cv.LayMa().ToString();
-                //cut.So_CV = cv.So;
                 if (SoLuongDaChon != 0)
                 for (int i = 0; i <= cblUser.Items.Count - 1; i++)
                 {
@@ -183,7 +187,7 @@ public partial class SoanCV : System.Web.UI.Page
                    cut.Ma_UserNhan = 0;
                    cut.DuThao();
                }
-                msg.ShowAndRedirect(cut.ThongBao);
+                msg.Show(cut.ThongBao);
                 txtTenCV.Text = "";
                 txtTomTat.Text = "";
                 txtGopY.Text = "";
@@ -228,7 +232,7 @@ public partial class SoanCV : System.Web.UI.Page
                     cut.Gui();
                 }
             }
-            msg.ShowAndRedirect(cut.ThongBao);
+            msg.Show(cut.ThongBao);
             txtTenCV.Text = "";
             txtTomTat.Text = "";
             txtGopY.Text = "";
@@ -263,7 +267,7 @@ public partial class SoanCV : System.Web.UI.Page
                         cut.Gui();
                     }
                 }
-                msg.ShowAndRedirect(cut.ThongBao);
+                msg.Show(cut.ThongBao);
                 txtTenCV.Text = "";
                 txtTomTat.Text = "";
                 txtGopY.Text = "";

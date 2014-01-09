@@ -78,7 +78,6 @@ public partial class _Default : System.Web.UI.Page
             else
                 cv.YKienLD = txtChiDao.Text;
             cv.Ma_LCV = int.Parse(droLCV.SelectedValue);
-            //cv.NgayPH = txtNgayPH.Text;
             string DuongDan = "";
             string ReName = DateTime.Now.ToString().Replace("/", "").Replace(":", "").Replace(" ", "-");
             DuongDan = Server.MapPath("~/src/products/");
@@ -99,10 +98,8 @@ public partial class _Default : System.Web.UI.Page
             txtGopY.Text = "";
             txtMaCV.Text = "";
             txtSoCV.Text = "";
-            // droLCV.Text = "";
             txtNgayPH.Text = "";
             Response.Redirect("~/DaDoc.aspx");
-            //fileTep.;
         }
         else
         {
@@ -129,7 +126,6 @@ public partial class _Default : System.Web.UI.Page
             else
                 cv.YKienLD = txtChiDao.Text;
             cv.Ma_LCV = int.Parse(droLCV.SelectedValue);
-            //cv.NgayPH = txtNgayPH.Text;
             cv.TenFile = temp;
             cut.So = int.Parse(griDaDoc.SelectedValue.ToString());
             cut.CT();
@@ -145,7 +141,6 @@ public partial class _Default : System.Web.UI.Page
             txtGopY.Text = "";
             txtMaCV.Text = "";
             txtSoCV.Text = "";
-            // droLCV.Text = "";
             txtNgayPH.Text = "";
             Response.Redirect("~/DaDoc.aspx");
         }

@@ -68,7 +68,7 @@
                                                 <tr>
                                                     <td class="auto-style96" style="text-align: right">Mã Công v&#259;n: </td>
                                                     <td class="auto-style97">
-                                                        <asp:TextBox ID="txtMaCV" runat="server" Height="24px" Width="156px"></asp:TextBox>
+                                                        <asp:TextBox ID="txtMaCV" runat="server" Height="24px" Width="156px" ReadOnly="True"></asp:TextBox>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -87,7 +87,7 @@
                                                 <tr>
                                                     <td class="auto-style95" style="text-align: right; white-space: nowrap;">Ngày phát hành</td>
                                                     <td class="auto-style95">
-                                                        <asp:TextBox ID="txtNgayPH" runat="server" Height="24px" style="margin-left: 0px" Width="156px"></asp:TextBox>
+                                                        <asp:TextBox ID="txtNgayPH" runat="server" Height="24px" style="margin-left: 0px" Width="156px" ReadOnly="True"></asp:TextBox>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -130,7 +130,7 @@
                                     <tr>
                                         <td class="auto-style99" style="height: 19px">Góp ý: </td>
                                         <td class="auto-style100" style="height: 19px; vertical-align: top;">
-                                            <asp:TextBox ID="txtGopY" runat="server" Height="37px" TextMode="MultiLine" Width="715px"></asp:TextBox>
+                                            <asp:TextBox ID="txtGopY" runat="server" Height="37px" TextMode="MultiLine" Width="715px" ReadOnly="True"></asp:TextBox>
                                         </td>
                                     </tr>
                                 </table>

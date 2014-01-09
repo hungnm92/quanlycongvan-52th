@@ -60,13 +60,13 @@
                                         <td class="auto-style4" rowspan="5" style="vertical-align: top">
                                             <table style="width: 100%; height: 224px;">
                                                 <tr>
-                                                    <td class="auto-style96" style="text-align: right">Mã Công v&#259;n: </td>
+                                                    <td class="auto-style96" style="text-align: right">S&#7889; Công v&#259;n: </td>
                                                     <td class="auto-style97">
                                                         <asp:TextBox ID="txtMaCV" runat="server" Height="24px" Width="156px"></asp:TextBox>
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="auto-style96" style="text-align: right">S&#7889; Công v&#259;n</td>
+                                                    <td class="auto-style96" style="text-align: right">Mã Công v&#259;n</td>
                                                     <td class="auto-style97">
                                                         <asp:TextBox ID="txtSoCV" runat="server" Height="24px" style="margin-left: 0px" Width="156px"></asp:TextBox>
                                                     </td>
@@ -109,23 +109,21 @@
                                     </tr>
                                     <tr>
                                         <td class="auto-style99" style="white-space: nowrap;">
-                                            <asp:Label ID="Label5" runat="server" Text="Tóm t&#7855;t"></asp:Label>
+                                            <asp:Label ID="Label5" runat="server" Text="N&#7897;i dung"></asp:Label>
                                             : </td>
                                         <td class="auto-style100" style="height: 19px; vertical-align: top;">
                                             <asp:TextBox ID="txtTomTat" runat="server" Height="140px" TextMode="MultiLine" Width="715px"></asp:TextBox>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="auto-style99" style="height: 19px; white-space: nowrap;">Ch&#7881; &#273;&#7841;o: </td>
+                                        <td class="auto-style99" style="height: 19px; white-space: nowrap;">&nbsp;</td>
                                         <td class="auto-style100" style="height: 19px; vertical-align: top;">
-                                            <asp:TextBox ID="txtChiDao" runat="server" Height="37px" TextMode="MultiLine" Width="715px"></asp:TextBox>
-                                        </td>
+                                            &nbsp;</td>
                                     </tr>
                                     <tr>
-                                        <td class="auto-style99" style="height: 19px">Góp ý: </td>
+                                        <td class="auto-style99" style="height: 19px">&nbsp;</td>
                                         <td class="auto-style100" style="height: 19px; vertical-align: top;">
-                                            <asp:TextBox ID="txtGopY" runat="server" Height="37px" TextMode="MultiLine" Width="715px"></asp:TextBox>
-                                        </td>
+                                            &nbsp;</td>
                                     </tr>
                                 </table>
                                 <table style="width:100%;">
