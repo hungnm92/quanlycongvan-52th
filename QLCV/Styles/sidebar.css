@@ -20,10 +20,10 @@
 #nav a:visited {
     display: block;
     padding: 0px 5px;
-    border: 1px solid #03C212;
+    border: 1px solid #0ca3d2;
     color: white;
     text-decoration: none;
-    background: #03C212;
+    background: #0ca3d2;
 }
 
 #nav a:hover {

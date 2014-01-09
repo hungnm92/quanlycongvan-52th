@@ -6,9 +6,12 @@
 <head runat="server">
     <title></title>
     <link href="Styles/sidebar.css" rel="stylesheet" />
+    <link href="Styles/layout.css" rel="stylesheet" />
     <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
-    <script type="text/javascript" charset="utf-8" src="Scripts/jquery-1.3.2.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="Scripts/jquery-1.8.2.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="Scripts/dropdown.js"></script>
+    <script type="text/javascript" charset="utf-8" src="jquery-browsercheck.js"></script>
+    <script type="text/javascript" charset="utf-8" src="jquery-defaultvalue.js"></script>
     <asp:ContentPlaceHolder id="head" runat="server">
     </asp:ContentPlaceHolder>
     <style type="text/css">
@@ -21,35 +24,34 @@
         <table style="width:100%;">
             <tr>
                 <td colspan="2">
-                    
-                </td>
-            </tr>
-            <tr>
-                <td class="auto-style6" style="vertical-align: middle; text-align: center;">
-                    <asp:HyperLink ID="HyperLink12" runat="server" Font-Bold="True" Font-Size="Large" Font-Underline="False" ForeColor="Black" NavigateUrl="~/user/default.aspx" style="text-align: center">TRANG CH&#7910;</asp:HyperLink>
-                </td>
-                <td class="auto-style6" style="vertical-align: middle; text-align: right;">
-                    
-                    <asp:TextBox ID="TextBox1" runat="server" Width="293px"></asp:TextBox>
+                    <div class="wrapper row1">
+                      <header id="header" class="clear">
+                        <hgroup>
+                          <h1><a href="#"><img src="src/img/emp/Logo_seasoft.png" /></a></h1>
+                          <h2>52CNTT - NTU<br>
+                            Website by ASP.NET</h2>
+                        </hgroup>
+
+                      </header>
+                    </div>
+                    <div class="wrapper row2">
+                      <nav id="topnav">
+                        <ul class="clear">
+                          <li><a href="index.html">Home</a></li>
+                            <li><asp:TextBox ID="TextBox1" runat="server" Width="293px"></asp:TextBox>
                     &nbsp;
-                    <asp:Label ID="Label1" runat="server" Text="Tìm ki&#7871;m"></asp:Label>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:Label ID="lblUser" runat="server"></asp:Label>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <asp:HyperLink ID="lnkThoat" runat="server" NavigateUrl="~/Account/Login.aspx">Thoát</asp:HyperLink>
-                    &nbsp;&nbsp;
+                    <asp:Label ID="Label1" runat="server" Text="Tìm ki&#7871;m"></asp:Label></li>
+                            <li> <asp:Label ID="lblUser" runat="server"></asp:Label>
+                            </li> 
+     <li>  <asp:HyperLink ID="lnkThoat" runat="server" NavigateUrl="~/Account/Login.aspx">Thoát</asp:HyperLink></li>
+                        </ul>
+                      </nav>
+                    </div>
                 </td>
             </tr>
             <tr>
-                <td class="auto-style1" style="vertical-align: top; white-space: nowrap;">
-                    <table style="width:100%;">
-                                <tr>
-                                    <td style="font-weight: 700; background-color: #339933; font-size: 20px; text-align: center; color: #FFFFFF; -moz-border-radius-topright:20px;
-                 -webkit-border-top-right-radius:20px;
-                 -moz-border-radius-topleft:20px;
-                  -webkit-border-top-left-radius:20px; background-image: url('src/web/style_menu.gif');">MENU</td>
-                                </tr>
-                                <tr>
-                                    <td>
+
+                <td>
                                        <!--   <div id ="sidebar">                                          
                                         <asp:Label ID="lblMenu" runat="server" Text="Label"></asp:Label>                                        
                                         </div> -->
@@ -91,15 +93,8 @@
                    
                                         
     </div> 
-                                     
- 
+</td>
 
-                                    </td>
-                                </tr>
-                                </table>
-                    <br />
-
-                </td>
                 <td class="auto-style2" style="vertical-align: top; ">
                     <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
                        
@@ -116,8 +111,7 @@
                     acb</td>
             </tr>
             <tr>
-                <td colspan="2" style="text-align: right; color: #0000FF; font-size: medium; font-weight: bolder; ">&#272;&#7882;A CH&#7880;: 52TH - NHA TRANG UNIVERSITY - KHÁNH HÒA.<br />
-                    Email: <a href="mailto:nguyenthilanh52th@gmail.com">manhhung.it9x@gmail.com</a>.</td>
+                
             </tr>
         </table>
     </div>

@@ -1,0 +1,41 @@
+html{overflow-y:scroll;}
+nav ul{margin:0; padding:0; list-style:none;}
+
+/* ----------------------------------------------Top Navigation-------------------------------------*/
+
+#topnav{padding:15px 0;}
+#topnav ul{}
+#topnav ul li{display:inline-block; margin-left:25px; text-transform:uppercase;}
+#topnav ul li:first-child{margin-left:0;}
+#topnav ul li a:link, #topnav ul li a:visited, #topnav ul li a:hover{display:block; margin:0; padding:0; color:#FFFFFF; background-color:#0ca3d2;}
+#topnav ul li a:hover, #topnav ul li.active a{color:#000000; background-color:#0ca3d2;}
+#topnav ul li:hover ul{left:auto;}
+#topnav ul li:hover{position:static;}
+/* ----------------------------------------------Top Navigation-------------------------------------*/
+body{margin:0; padding:0;}
+
+.clear:after{content:"."; display:block; height:0; clear:both; visibility:hidden; line-height:0;}
+.clear{display:block; clear:both;}
+
+a{outline:none; text-decoration:none;}
+img{margin:0; padding:0; border:none; line-height:normal; vertical-align:middle;}
+
+/* ----------------------------------------------Wrapper-------------------------------------*/
+
+div.wrapper{display:block; width:100%; text-align:left;}
+
+.row1{color:#989898; background-color:#FFFFFF; border-top:5px solid #0ca3d2;}
+.row2{color:#FFFFFF; background-color:#0ca3d2;}
+
+/*----------------------------------------------Generalise-------------------------------------*/
+
+#header, #topnav{display:block; width:960px; margin:0 auto;}
+#header{padding:10px 0 15px;}
+
+#header hgroup{float:left;}
+#header hgroup h1, #header hgroup h2{display:inline; font-weight:normal; font-style:normal; text-transform:none;}
+#header hgroup h1{font-size:36px;}
+#header hgroup h1 span{font-size:26px; text-transform:uppercase;}
+#header hgroup h1 a{color:#666666; background-color:#FFFFFF;}
+#header hgroup h2{display:inline-block; margin-left:10px; padding-left:10px; border-left:1px solid #999999; color:#999999; background-color:#FFFFFF; font-size:12px; text-transform:uppercase;}
+
