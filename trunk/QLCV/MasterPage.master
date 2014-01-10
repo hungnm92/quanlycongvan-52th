@@ -16,6 +16,10 @@
     </asp:ContentPlaceHolder>
     <style type="text/css">
       
+        .auto-style1 {
+            width: 1030px;
+        }
+      
         </style>
 </head>
 <body>
@@ -51,7 +55,7 @@
             </tr>
             <tr>
 
-                <td>
+                <td class="auto-style1" style="text-align: left; vertical-align: top; width: 15%;">
                                        <!--   <div id ="sidebar">                                          
                                         <asp:Label ID="lblMenu" runat="server" Text="Label"></asp:Label>                                        
                                         </div> -->

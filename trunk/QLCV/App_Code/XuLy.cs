@@ -466,7 +466,7 @@ namespace lanhnt
         public DataTable Me_DS()
         {
             SqlConnection BaoVe = new SqlConnection("server=(local)\\SQLEXPRESS;uid=sa;pwd=123456;database=QuanLyCongVan");
-            SqlDataAdapter XeTai = new SqlDataAdapter("CongVan_Me_DS", BaoVe);
+            SqlDataAdapter XeTai = new SqlDataAdapter("CongVan_NgayPH_DS", BaoVe);
             DataTable ThungChua = new DataTable();
             BaoVe.Open();
             XeTai.Fill(ThungChua);
@@ -491,7 +491,7 @@ namespace lanhnt
         }
         public DataTable ChoDuyet_DS(int MaUser)
         {
-            string SelectSQL = "SELECT DISTINCT CUT.So,CV.Ma, TenCV,TrichYeu, TenFile, NgayPH,YKienLD, YKienCV, TenTT, TenUser AS NguoiGui, ThoiGianGui, ThoiGianSoan,ThoiGianDoc,(SELECT u.TenUser FROM CV_UserN_TT CT, UserN U WHERE CT.So = CUT.So and  U.Ma = CUT.Ma_UserNhan) AS NguoiNhan FROM CongVan CV, TinhTrang TT, UserN U,  CV_UserN_TT CUT WHERE CV.So = CUT.So_CV AND CUT.Ma_TT = TT.Ma AND CUT.Ma_User = U.Ma AND TT.Ma = 2 and (CUT.Ma_User = @MaUser or Ma_UserNhan = @MaUser) ORDER BY ThoiGianSoan DESC";
+            string SelectSQL = "SELECT DISTINCT CUT.So,CV.Ma, TenCV,TrichYeu, TenFile, NgayPH,YKienLD, YKienCV, TenTT, TenUser AS NguoiGui, ThoiGianGui, ThoiGianSoan,ThoiGianDoc,ThoiGianDuyet,(SELECT u.TenUser FROM CV_UserN_TT CT, UserN U WHERE CT.So = CUT.So and  U.Ma = CUT.Ma_UserNhan) AS NguoiNhan FROM CongVan CV, TinhTrang TT, UserN U,  CV_UserN_TT CUT WHERE CV.So = CUT.So_CV AND CUT.Ma_TT = TT.Ma AND CUT.Ma_User = U.Ma AND TT.Ma = 2 and (CUT.Ma_User = @MaUser or Ma_UserNhan = @MaUser) ORDER BY ThoiGianSoan DESC";
             SqlConnection BaoVe = new SqlConnection("server=(local)\\SQLEXPRESS;uid=sa;pwd=123456;database=QuanLyCongVan");
             DataTable ThungChua = new DataTable();
             BaoVe.Open();
