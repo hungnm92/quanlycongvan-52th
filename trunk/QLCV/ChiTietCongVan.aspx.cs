@@ -36,7 +36,8 @@ public partial class _Default : System.Web.UI.Page
         cut.So = int.Parse(griCV_Me_DS.SelectedValue.ToString());
         cut.CT();
         cv.So = cut.So_CV;
-        griChiTiet.DataSource = cv.ChiTietCongVan(cv.So);
+        cv.CT();
+        griChiTiet.DataSource = cv.ChiTietCongVan(cv.HoiThoai);
         griChiTiet.DataBind();
     }
     protected void griCV_Me_DS_PageIndexChanging(object sender, GridViewPageEventArgs e)

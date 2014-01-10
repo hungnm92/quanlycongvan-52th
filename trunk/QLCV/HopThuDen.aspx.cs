@@ -74,9 +74,11 @@ public partial class _Default : System.Web.UI.Page
         bool bTrichYeu = string.IsNullOrWhiteSpace(txtTomTat.Text);
         if (bTenCV == false && bTrichYeu == false && fileTep.HasFile == true)
         {
+            cv.YKienCV = " ";
+            cv.YKienLD = " ";
             cv.TenCV = txtTenCV.Text;
             cv.TrichYeu = txtTomTat.Text;            
-            cv.Ma_LCV = int.Parse(droLCV.SelectedValue);
+            cv.Ma_LCV = 10;
             string DuongDan = "";
             string ReName = DateTime.Now.ToString().Replace("/", "").Replace(":", "").Replace(" ", "-");
             DuongDan = Server.MapPath("~/src/products/");
@@ -85,8 +87,9 @@ public partial class _Default : System.Web.UI.Page
             cv.TenFile = ReName + fileTep.FileName;
             cut.So = int.Parse(griCongVanDen.SelectedValue.ToString());
             cut.CT();
-            cv.Me = cut.So_CV;
-            cv.Them_Me();
+            cv.So = cut.So_CV;
+            cv.Lay_HoiThoai();
+            cv.Them_HoiThoai();
             cut.So_CV = cv.LayMa().ToString();
             cut.Ma_User = int.Parse(Session["Ma"].ToString());
             cut.Ma_UserNhan = int.Parse(droUserN.SelectedValue.ToString());
@@ -101,14 +104,17 @@ public partial class _Default : System.Web.UI.Page
         else
             if (bTenCV == false && bTrichYeu == false && fileTep.HasFile == false)
             {
+                cv.YKienCV = " ";
+                cv.YKienLD = " ";
                 cv.TenCV = txtTenCV.Text;
                 cv.TrichYeu = txtTomTat.Text;               
-                cv.Ma_LCV = int.Parse(droLCV.SelectedValue);
+                cv.Ma_LCV = 10;
                 cv.TenFile = " ";
                 cut.So = int.Parse(griCongVanDen.SelectedValue.ToString());
                 cut.CT();
-                cv.Me = cut.So_CV;
-                cv.Them_Me();
+                cv.So = cut.So_CV;
+                cv.Lay_HoiThoai();
+                cv.Them_HoiThoai();
                 cut.So_CV = cv.LayMa().ToString();
                 cut.Ma_User = int.Parse(Session["Ma"].ToString());
                 cut.Ma_UserNhan = int.Parse(droUserN.SelectedValue.ToString());
@@ -148,7 +154,7 @@ public partial class _Default : System.Web.UI.Page
                 cv.TrichYeu = " ";
             else
                 cv.TrichYeu = txtTomTat.Text;            
-            cv.Ma_LCV = int.Parse(droLCV.SelectedValue);
+            cv.Ma_LCV = 10;
             string DuongDan = "";
             string ReName = DateTime.Now.ToString().Replace("/", "").Replace(":", "").Replace(" ", "-");
             DuongDan = Server.MapPath("~/src/products/");
@@ -157,8 +163,9 @@ public partial class _Default : System.Web.UI.Page
             cv.TenFile = ReName + fileTep.FileName;
             cut.So = int.Parse(griCongVanDen.SelectedValue.ToString());
             cut.CT();
-            cv.Me = cut.So_CV;
-            cv.Them_Me();
+            cv.So = cut.So_CV;
+            cv.Lay_HoiThoai();
+            cv.Them_HoiThoai();
             cut.So_CV = cv.LayMa().ToString();
             cut.Ma_User = int.Parse(Session["Ma"].ToString());
             cut.Ma_UserNhan = int.Parse(droUserN.SelectedValue);
@@ -185,12 +192,13 @@ public partial class _Default : System.Web.UI.Page
                 cv.TrichYeu = " ";
             else
                 cv.TrichYeu = txtTomTat.Text;
-           cv.Ma_LCV = int.Parse(droLCV.SelectedValue);
+           cv.Ma_LCV = 10;
             cv.TenFile = temp;
             cut.So = int.Parse(griCongVanDen.SelectedValue.ToString());
             cut.CT();
-            cv.Me = cut.So_CV;
-            cv.Them_Me();
+            cv.So = cut.So_CV;
+            cv.Lay_HoiThoai();
+            cv.Them_HoiThoai();
             cut.So_CV = cv.LayMa().ToString();
             cut.Ma_User = int.Parse(Session["Ma"].ToString());
             cut.Ma_UserNhan = int.Parse(droUserN.SelectedValue);

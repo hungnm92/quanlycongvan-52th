@@ -17,7 +17,7 @@
                 <p><asp:TextBox ID="txtMatKhauCu" runat="server" placeholder="Password" AutoCompleteType="None" TextMode="Password"></asp:TextBox></p>
                 <p><asp:TextBox ID="txtMatKhauMoi" runat="server" placeholder="Mật khẩu mới" AutoCompleteType="None" TextMode="Password"></asp:TextBox></p>
                 <p><asp:TextBox ID="txtMatKhauXN" runat="server" placeholder="Mật khẩu xác nhận" AutoCompleteType="None" TextMode="Password"></asp:TextBox></p>
-                    <p class="submit"><asp:Button ID="btnTrangChu" runat="server" Text="Về Trang Chủ" Height="29px" PostBackUrl="~/Default.aspx" Width="116px" /> <asp:Button ID="btnDoiMatKhau" runat="server" Text="Đổi Mật Khẩu" OnClick="btnDoiMatKhau_Click" Height="29px" Width="116px" /></p>
+                    <p class="submit"><asp:Button ID="btnTrangChu" runat="server" Text="Về Trang Chủ" Height="29px" PostBackUrl="~/HopThuDen.aspx" Width="116px" /> <asp:Button ID="btnDoiMatKhau" runat="server" Text="Đổi Mật Khẩu" OnClick="btnDoiMatKhau_Click" Height="29px" Width="116px" /></p>
                 <asp:Label ID="lblTB" runat="server" ForeColor="Red"></asp:Label>
             </form>
         </div>

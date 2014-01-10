@@ -29,7 +29,7 @@ div.wrapper{display:block; width:100%; text-align:left;}
 
 /*----------------------------------------------Generalise-------------------------------------*/
 
-#header, #topnav{display:block; width:960px; margin:0 auto;}
+#header, #topnav{display:block; width:960px; margin:0 auto 0 15px;}
 #header{padding:10px 0 15px;}
 
 #header hgroup{float:left;}
