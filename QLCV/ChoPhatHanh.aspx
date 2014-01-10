@@ -28,6 +28,7 @@
                         </asp:TemplateField>
                         <asp:BoundField DataField="ThoiGianGui" HeaderText="Th&#7901;i gian g&#7917;i" />
                         <asp:BoundField DataField="ThoiGianDoc" HeaderText="Th&#7901;i gian &#273;&#7885;c" />
+                        <asp:BoundField DataField="NgayPH" HeaderText="Phát hành" />
                         <asp:TemplateField HeaderText="File">
                             <ItemTemplate>
                                 <asp:LinkButton ID="lkbtnTaiVe" runat="server" CommandArgument='<%# Eval("TenFile") %>' CommandName="Download" Text='<%# Eval("TenFile").ToString().Length > 21 ? Eval("TenFile").ToString().Substring(17,5) +"..." : Eval("TenFile") %>'>LinkButton</asp:LinkButton>
