@@ -18,6 +18,7 @@
                     <Columns>
                         <asp:CommandField ButtonType="Button" SelectText="Ch&#7885;n" ShowSelectButton="True" />
                         <asp:BoundField DataField="NguoiGui" HeaderText="Ng&#432;&#7901;i g&#7917;i" />
+                        <asp:BoundField DataField="NguoiNhan" HeaderText="Ng&#432;&#7901;i nh&#7853;n" />
                         <asp:TemplateField HeaderText="Tên Công v&#259;n">
                             <ItemTemplate>
                                 <asp:Label ID="Label1" runat="server" Text='<%# Eval("TenCV").ToString().Length > 20 ? Eval("TenCV").ToString().Substring(0,20) +"..." : Eval("TenCV") %>'></asp:Label>
@@ -30,7 +31,7 @@
                         </asp:TemplateField>
                         <asp:BoundField DataField="ThoiGianGui" HeaderText="Th&#7901;i gian g&#7917;i" />
                         <asp:BoundField DataField="ThoiGianDoc" HeaderText="Th&#7901;i gian &#273;&#7885;c" />
-                        <asp:BoundField DataField="ThoiGianDuyet" HeaderText="Duyệt" />
+                        <asp:BoundField DataField="ThoiGianDuyet" HeaderText="Duy&#7879;t" />
                         <asp:TemplateField HeaderText="File">
                             <ItemTemplate>
                                 <asp:LinkButton ID="lkbtnTaiVe" runat="server" CommandArgument='<%# Eval("TenFile") %>' CommandName="Download" Text='<%# Eval("TenFile").ToString().Length > 21 ? Eval("TenFile").ToString().Substring(17,5) +"..." : Eval("TenFile") %>'>LinkButton</asp:LinkButton>

@@ -22,6 +22,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
         if (Convert.ToInt16(Session["MaNhom"]) == 2)
         {
             lblChuaDoc_CD.Text = "(" + cv.ChoDuyet_ChuaDoc_SL(int.Parse(Session["Ma"].ToString())) + ")";
+            lblChuaDoc_KD.Text = "(" + cv.KhongDuyet_ChuaDoc_SL(int.Parse(Session["Ma"].ToString())) + ")";
         }
         if (Convert.ToInt16(Session["MaNhom"]) == 3)
         {

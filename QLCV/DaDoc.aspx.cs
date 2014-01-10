@@ -41,8 +41,6 @@ public partial class _Default : System.Web.UI.Page
         txtSoCV.ReadOnly = true;
         txtTenCV.Text = cv.TenCV;
         txtTomTat.Text = cv.TrichYeu;
-        txtChiDao.Text = cv.YKienLD;
-        txtGopY.Text = cv.YKienCV;
         txtMaCV.Text = cv.Ma;
         txtSoCV.Text = cv.So;
         u.Ma = cut.Ma_UserNhan;
@@ -57,27 +55,15 @@ public partial class _Default : System.Web.UI.Page
 
         if (fileTep.HasFile == true)
         {
-            cut.So = int.Parse(griDaDoc.SelectedValue.ToString());
-            cut.CT();
-            cv.So = cut.So_CV;
-            cv.Ma = " ";
             cv.TenCV = txtTenCV.Text;
             bool bTrichYeu = string.IsNullOrWhiteSpace(txtTomTat.Text);
             if (bTrichYeu == true)
                 cv.TrichYeu = " ";
             else
                 cv.TrichYeu = txtTomTat.Text;
-            bool bYKienCV = string.IsNullOrWhiteSpace(txtGopY.Text);
-            if (bYKienCV == true)
-                cv.YKienCV = " ";
-            else
-                cv.YKienCV = txtGopY.Text;
-            bool bYKienLD = string.IsNullOrWhiteSpace(txtChiDao.Text);
-            if (bYKienLD == true)
-                cv.YKienLD = " ";
-            else
-                cv.YKienLD = txtChiDao.Text;
-            cv.Ma_LCV = int.Parse(droLCV.SelectedValue);
+            cv.YKienCV = " ";
+            cv.YKienLD = " ";
+            cv.Ma_LCV = 10;
             string DuongDan = "";
             string ReName = DateTime.Now.ToString().Replace("/", "").Replace(":", "").Replace(" ", "-");
             DuongDan = Server.MapPath("~/src/products/");
@@ -86,8 +72,9 @@ public partial class _Default : System.Web.UI.Page
             cv.TenFile = ReName + fileTep.FileName;
             cut.So = int.Parse(griDaDoc.SelectedValue.ToString());
             cut.CT();
-            cv.Me = cut.So_CV;
-            cv.Them_Me();
+            cv.So = cut.So_CV;
+            cv.Lay_HoiThoai();
+            cv.Them_HoiThoai();
             cut.So_CV = cv.LayMa().ToString();
             cut.Ma_User = int.Parse(Session["Ma"].ToString());
             cut.Ma_UserNhan = int.Parse(droUserN.SelectedValue);
@@ -95,7 +82,6 @@ public partial class _Default : System.Web.UI.Page
             msg.Show(cut.ThongBao);
             txtTenCV.Text = "";
             txtTomTat.Text = "";
-            txtGopY.Text = "";
             txtMaCV.Text = "";
             txtSoCV.Text = "";
             txtNgayPH.Text = "";
@@ -107,7 +93,6 @@ public partial class _Default : System.Web.UI.Page
             cut.CT();
             cv.So = cut.So_CV;
             cv.CT();
-            cv.Ma = " ";
             string temp = cv.TenFile.ToString();
             cv.TenCV = txtTenCV.Text;
             bool bTrichYeu = string.IsNullOrWhiteSpace(txtTomTat.Text);
@@ -115,22 +100,12 @@ public partial class _Default : System.Web.UI.Page
                 cv.TrichYeu = " ";
             else
                 cv.TrichYeu = txtTomTat.Text;
-            bool bYKienCV = string.IsNullOrWhiteSpace(txtGopY.Text);
-            if (bYKienCV == true)
-                cv.YKienCV = " ";
-            else
-                cv.YKienCV = txtGopY.Text;
-            bool bYKienLD = string.IsNullOrWhiteSpace(txtChiDao.Text);
-            if (bYKienLD == true)
-                cv.YKienLD = " ";
-            else
-                cv.YKienLD = txtChiDao.Text;
-            cv.Ma_LCV = int.Parse(droLCV.SelectedValue);
+            cv.YKienCV = " ";
+            cv.YKienLD = " ";
+            cv.Ma_LCV = 10;
             cv.TenFile = temp;
-            cut.So = int.Parse(griDaDoc.SelectedValue.ToString());
-            cut.CT();
-            cv.Me = cut.So_CV;
-            cv.Them_Me();
+            cv.Lay_HoiThoai();
+            cv.Them_HoiThoai();
             cut.So_CV = cv.LayMa().ToString();
             cut.Ma_User = int.Parse(Session["Ma"].ToString());
             cut.Ma_UserNhan = int.Parse(droUserN.SelectedValue);
@@ -138,7 +113,6 @@ public partial class _Default : System.Web.UI.Page
             msg.Show(cut.ThongBao);
             txtTenCV.Text = "";
             txtTomTat.Text = "";
-            txtGopY.Text = "";
             txtMaCV.Text = "";
             txtSoCV.Text = "";
             txtNgayPH.Text = "";
@@ -167,21 +141,13 @@ public partial class _Default : System.Web.UI.Page
 
         bool bTenCV = string.IsNullOrWhiteSpace(txtTenCV.Text);
         bool bTrichYeu = string.IsNullOrWhiteSpace(txtTomTat.Text);
-        bool bYKienCV = string.IsNullOrWhiteSpace(txtGopY.Text);
-        bool bYKienLD = string.IsNullOrWhiteSpace(txtChiDao.Text);
         if (bTenCV == false && bTrichYeu == false && fileTep.HasFile == true)
         {
             cv.TenCV = txtTenCV.Text;
             cv.TrichYeu = txtTomTat.Text;
-            if (bYKienCV == true)
-                cv.YKienCV = " ";
-            else
-                cv.YKienCV = txtGopY.Text;
-            if (bYKienLD == true)
-                cv.YKienLD = " ";
-            else
-                cv.YKienLD = txtChiDao.Text;
-            cv.Ma_LCV = int.Parse(droLCV.SelectedValue);
+            cv.YKienCV = " ";
+            cv.YKienLD = " ";
+            cv.Ma_LCV = 10;
             string DuongDan = "";
             string ReName = DateTime.Now.ToString().Replace("/", "").Replace(":", "").Replace(" ", "-");
             DuongDan = Server.MapPath("~/src/products/");
@@ -190,8 +156,9 @@ public partial class _Default : System.Web.UI.Page
             cv.TenFile = ReName + fileTep.FileName;
             cut.So = int.Parse(griDaDoc.SelectedValue.ToString());
             cut.CT();
-            cv.Me = cut.So_CV;
-            cv.Them_Me();
+            cv.So = cut.So_CV;
+            cv.Lay_HoiThoai();
+            cv.Them_HoiThoai();
             cut.So_CV = cv.LayMa().ToString();
             cut.Ma_User = int.Parse(Session["Ma"].ToString());
             cut.Ma_UserNhan = int.Parse(droUserN.SelectedValue.ToString());
@@ -199,7 +166,6 @@ public partial class _Default : System.Web.UI.Page
             msg.ShowAndRedirect(cut.ThongBao);
             txtTenCV.Text = "";
             txtTomTat.Text = "";
-            txtGopY.Text = "";
             txtMaCV.Text = "";
             txtSoCV.Text = "";
             txtNgayPH.Text = "";
@@ -209,20 +175,15 @@ public partial class _Default : System.Web.UI.Page
             {
                 cv.TenCV = txtTenCV.Text;
                 cv.TrichYeu = txtTomTat.Text;
-                if (bYKienCV == true)
-                    cv.YKienCV = " ";
-                else
-                    cv.YKienCV = txtGopY.Text;
-                if (bYKienLD == true)
-                    cv.YKienLD = " ";
-                else
-                    cv.YKienLD = txtChiDao.Text;
-                cv.Ma_LCV = int.Parse(droLCV.SelectedValue);
+                cv.YKienCV = " ";
+                cv.YKienLD = " ";
+                cv.Ma_LCV = 10;
                 cv.TenFile = " ";
                 cut.So = int.Parse(griDaDoc.SelectedValue.ToString());
                 cut.CT();
-                cv.Me = cut.So_CV;
-                cv.Them_Me();
+                cv.So = cut.So_CV;
+                cv.Lay_HoiThoai();
+                cv.Them_HoiThoai();
                 cut.So_CV = cv.LayMa().ToString();
                 cut.Ma_User = int.Parse(Session["Ma"].ToString());
                 cut.Ma_UserNhan = int.Parse(droUserN.SelectedValue.ToString());
@@ -230,7 +191,6 @@ public partial class _Default : System.Web.UI.Page
                 msg.ShowAndRedirect(cut.ThongBao);
                 txtTenCV.Text = "";
                 txtTomTat.Text = "";
-                txtGopY.Text = "";
                 txtMaCV.Text = "";
                 txtSoCV.Text = "";
                 txtNgayPH.Text = "";

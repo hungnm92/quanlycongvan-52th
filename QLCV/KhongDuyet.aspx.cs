@@ -113,8 +113,9 @@ public partial class _Default : System.Web.UI.Page
             cv.TenFile = ReName + fileTep.FileName;
             cut.So = int.Parse(griKhongDuyet.SelectedValue.ToString());
             cut.CT();
-            cv.Me = cut.So_CV;
-            cv.Them_Me();
+            cv.So = cut.So_CV;
+            cv.Lay_HoiThoai();
+            cv.Them_HoiThoai();
             cut.So_CV = cv.LayMa().ToString();
             cut.Ma_User = int.Parse(Session["Ma"].ToString());
             cv.So = cut.So_CV;
@@ -170,8 +171,9 @@ public partial class _Default : System.Web.UI.Page
             cv.TenFile = ReName + fileTep.FileName;
             cut.So = int.Parse(griKhongDuyet.SelectedValue.ToString());
             cut.CT();
-            cv.Me = cut.So_CV;
-            cv.Them_Me();
+            cv.So = cut.So_CV;
+            cv.Lay_HoiThoai();
+            cv.Them_HoiThoai();
             cut.So_CV = cv.LayMa().ToString();
             cut.Ma_User = int.Parse(Session["Ma"].ToString());
             if (SoLuongDaChon != 0)
@@ -216,8 +218,9 @@ public partial class _Default : System.Web.UI.Page
             cv.TenFile = " ";
             cut.So = int.Parse(griKhongDuyet.SelectedValue.ToString());
             cut.CT();
-            cv.Me = cut.So_CV;
-            cv.Them_Me();
+            cv.So = cut.So_CV;
+            cv.Lay_HoiThoai();
+            cv.Them_HoiThoai();
             cut.So_CV = cv.LayMa().ToString();
             cut.Ma_User = int.Parse(Session["Ma"].ToString());
             if (SoLuongDaChon != 0)

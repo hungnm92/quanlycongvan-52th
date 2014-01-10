@@ -214,7 +214,7 @@ public partial class SoanCV : System.Web.UI.Page
                 cv.YKienLD = " ";
             else
                 cv.YKienLD = txtChiDao.Text;
-            cv.Ma_LCV = int.Parse(droLCV.SelectedValue);
+            cv.Ma_LCV = 10;
             string DuongDan = "";
             string ReName = DateTime.Now.ToString().Replace("/", "").Replace(":","").Replace(" ", "-");
             DuongDan = Server.MapPath("~/src/products/");
@@ -254,7 +254,7 @@ public partial class SoanCV : System.Web.UI.Page
                     cv.YKienLD = " ";
                 else
                     cv.YKienLD = txtChiDao.Text;
-                cv.Ma_LCV = int.Parse(droLCV.SelectedValue);      
+                cv.Ma_LCV = 10;      
                 cv.TenFile = " ";
                 cv.Them();
                 cut.So_CV = cv.LayMa().ToString();
