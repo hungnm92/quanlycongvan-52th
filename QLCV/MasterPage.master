@@ -53,7 +53,7 @@
             </tr>
             <tr>
 
-                <td class="auto-style1" style="text-align: left; vertical-align: top; width: 15%;">
+                <td class="auto-style1" style="text-align: left; vertical-align: top; width: 15%; background-color: #0ca3d2;">
                                        <!--   <div id ="sidebar">                                          
                                         <asp:Label ID="lblMenu" runat="server" Text="Label"></asp:Label>                                        
                                         </div> -->
