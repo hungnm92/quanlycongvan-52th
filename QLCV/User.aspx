@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="User.aspx.cs" Inherits="_Default" %>
 
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <style type="text/css">
 
@@ -27,19 +29,21 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder2" Runat="Server">
+    <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server" EnableScriptGlobalization="true"></asp:ToolkitScriptManager>
     <table style="width:100%;">
         <tr>
             <td style="font-weight: 700; font-size: 20px; text-align: center; color: #FFFFFF; background-image: none;">
                 <table style="width:100%; color: #000000;">
         <tr>
             <td style="font-weight: 700; font-size: 20px; text-align: center; color: #FFFFFF; background-image: none;">
-        <asp:GridView ID="griNhanVien" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#999999" BorderStyle="None" BorderWidth="1px" CellPadding="3" DataKeyNames="Ma" OnSelectedIndexChanged="griNhanVien_SelectedIndexChanged" Width="100%">
+        <asp:GridView ID="griNhanVien" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#999999" BorderStyle="None" BorderWidth="1px" CellPadding="3" DataKeyNames="Ma_User" OnSelectedIndexChanged="griNhanVien_SelectedIndexChanged" Width="100%">
             <AlternatingRowStyle BackColor="#DCDCDC" />
             <Columns>
                 <asp:CommandField HeaderText="Tùy ch&#7885;n" SelectText="Ch&#7885;n" ShowSelectButton="True" ButtonType="Button">
                 <HeaderStyle HorizontalAlign="Center" Width="1%" Wrap="False" />
                 <ItemStyle HorizontalAlign="Center" Wrap="False" />
                 </asp:CommandField>
+                <asp:BoundField DataField="Ma_User" HeaderText="Mã User " />
                 <asp:BoundField DataField="Ma" HeaderText="Mã S&#7889;">
                 <HeaderStyle HorizontalAlign="Center" Width="1%" Wrap="False" />
                 <ItemStyle HorizontalAlign="Center" Wrap="False" />
@@ -63,7 +67,7 @@
                         <asp:TextBox ID="TextBox1" runat="server" Text='<%# Eval("AnhNV") %>'></asp:TextBox>
                     </EditItemTemplate>
                     <ItemTemplate>
-                        <asp:Image ID="Image1" runat="server" ImageUrl='<%# Eval("AnhNV", "~/src/emp/{0}") %>' Width="50px" />
+                        <asp:Image ID="Image1" runat="server" ImageUrl='<%# Eval("AnhNV", "~/src/img/User/{0}") %>' Width="50px" />
                     </ItemTemplate>
                     <HeaderStyle Width="1%" Wrap="False" HorizontalAlign="Center" />
                     <ItemStyle HorizontalAlign="Center" Wrap="False" />
@@ -72,7 +76,6 @@
                 <HeaderStyle HorizontalAlign="Center" Wrap="False" />
                 <ItemStyle HorizontalAlign="Center" Wrap="False" />
                 </asp:BoundField>
-                <asp:BoundField DataField="TenNhom" HeaderText="Thu&#7897;c nhóm" />
             </Columns>
             <FooterStyle BackColor="#CCCCCC" ForeColor="Black" />
             <HeaderStyle BackColor="#000084" Font-Bold="True" ForeColor="White" />
@@ -85,7 +88,7 @@
             <SortedDescendingHeaderStyle BackColor="#000065" />
         </asp:GridView>
                 <br />
-        <asp:LinkButton ID="lbtThemMoi" runat="server" Font-Bold="True" BorderColor="#3333FF" Font-Overline="False" Font-Underline="True">Thêm M&#7899;i</asp:LinkButton>
+        <asp:LinkButton ID="lbtThemMoi" runat="server" Font-Bold="True" BorderColor="#3333FF" Font-Overline="False" Font-Underline="True" OnClick="lbtThemMoi_Click" Visible="False">Thêm M&#7899;i</asp:LinkButton>
                 <br />
         <asp:Panel ID="pnlCapNhat" runat="server" BorderColor="#FF6600" BorderStyle="Double" Visible="False" style="margin-left: 112px" Width="80%">
             <table style="width:100%;">
@@ -115,19 +118,13 @@
                     <td class="auto-style2" style="background-color: #6699FF">Ngày sinh:</td>
                     <td style="background-color: #99CCFF">
                         <asp:TextBox ID="txtNgaySinh" runat="server"></asp:TextBox>
-                        *</td>
-                </tr>
-                <tr>
-                    <td class="auto-style2" style="background-color: #6699FF">Gi&#7899;i tính:</td>
-                    <td style="background-color: #99CCFF">
-                        <asp:TextBox ID="txtGioiTinh" runat="server"></asp:TextBox>
+                        <asp:CalendarExtender ID="CalendarExtender1" TargetControlID="txtNgaySinh" Format="dd/MM/yyyy" runat="server"></asp:CalendarExtender>
                         *</td>
                 </tr>
                 <tr>
                     <td class="auto-style2" style="background-color: #6699FF">IsUser:</td>
                     <td style="background-color: #99CCFF">
-                        <asp:DropDownList ID="droIsUser" runat="server" DataTextField="0, 1">
-                        </asp:DropDownList>
+                        <asp:CheckBox ID="chkIsUser" runat="server" ForeColor="Black" Text="Nhóm" Font-Bold="False" />
                     </td>
                 </tr>
                 <tr>
@@ -146,7 +143,7 @@
                     <td class="auto-style2" style="background-color: #6699FF">&#272;i&#7879;n tho&#7841;i:</td>
                     <td style="background-color: #99CCFF">
                         <asp:TextBox ID="txtDienThoai" runat="server"></asp:TextBox>
-                    </td>
+                        *</td>
                 </tr>
                 <tr>
                     <td class="auto-style2" style="background-color: #6699FF">&#7842;nh:</td>
@@ -172,19 +169,23 @@
                 <tr>
                     <td class="auto-style3" style="background-color: #6699FF">&nbsp;</td>
                     <td class="auto-style1" style="background-color: #99CCFF">
-                        <asp:Button ID="btnThem" runat="server" BackColor="Yellow" Text="Thêm" Width="14%" />
+                        <asp:Button ID="btnThem" runat="server" BackColor="Yellow" Text="Thêm" Width="14%" OnClick="btnThem_Click" Visible="False" />
                         &nbsp;
-                        <asp:Button ID="btnXoa" runat="server" BackColor="Yellow" Text="Xóa" Width="14%" />
+                        <asp:Button ID="btnXoa" runat="server" BackColor="Yellow" Text="Xóa" Width="14%" OnClick="btnXoa_Click" Visible="False" />
                         &nbsp;
-                        <asp:Button ID="btnSua" runat="server" BackColor="Yellow" Text="S&#7917;a" Width="14%" />
+                        <asp:Button ID="btnSua" runat="server" BackColor="Yellow" Text="S&#7917;a" Width="14%" OnClick="btnSua_Click" Visible="False" />
                         &nbsp;
-                        <asp:Button ID="btnThoat" runat="server" BackColor="Yellow" Text="Thoát" Width="14%" />
+                        <asp:Button ID="btnThoat" runat="server" BackColor="Yellow" Text="Thoát" Width="14%" OnClick="btnThoat_Click" />
                     </td>
                 </tr>
             </table>
         </asp:Panel>
                 <br />
                         <asp:Label ID="lblTB" runat="server" Font-Italic="True" ForeColor="Red" Text="Thông báo." style="text-align: center" Visible="False"></asp:Label>
+                        <br />
+                        <asp:Label ID="lblTBU" runat="server" Font-Italic="True" ForeColor="Red" Text="Thông báo." style="text-align: center" Visible="False"></asp:Label>
+                        <br />
+                        <asp:Label ID="lblTBNU" runat="server" Font-Italic="True" ForeColor="Red" Text="Thông báo." style="text-align: center" Visible="False"></asp:Label>
             </td>
         </tr>
     </table>

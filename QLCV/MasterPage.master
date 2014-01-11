@@ -40,24 +40,82 @@
                       <nav id="topnav">
                         <ul class="clear">
                           <li><a href="index.html">Home</a></li>
-                            <li><asp:TextBox ID="TextBox1" runat="server" Width="293px"></asp:TextBox>
-                    &nbsp;
+                             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+                            <li ><asp:TextBox ID="TextBox1" runat="server" Width="247px" Height="17px"></asp:TextBox>
+                    &nbsp; 
                     <asp:Label ID="Label1" runat="server" Text="Tìm ki&#7871;m"></asp:Label></li>
-                            <li> <asp:Label ID="lblUser" runat="server"></asp:Label>
+                            <li><asp:Button ID="btnTimNangCao" runat="server" Text="TÌM NÂNG CAO" OnClick="btnTimNangCao_Click" Height="28px" Width="145px" BackColor="#0CA3D2" Font-Bold="True" ForeColor="White" /></li>
+                            <li > <asp:Label ID="lblUser" runat="server"></asp:Label>
                             </li> 
      <li>  <asp:HyperLink ID="lnkThoat" runat="server" NavigateUrl="~/Account/Login.aspx">Thoát</asp:HyperLink></li>
+                              
                         </ul>
                       </nav>
+                        <asp:Panel ID="pnlTimKiem" runat="server" Visible="False">
+                            <table style="width:100%;">
+                                <tr>
+                                    <td style="width: 20%">&nbsp;</td>
+                                    <td style="width: 20%">Tìm theo Lo&#7841;i công v&#259;n: </td>
+                                    <td style="width: 20%">
+                                        <asp:DropDownList ID="droLCV" runat="server" Height="27px" Width="199px" DataTextField="TenLCV" DataValueField="Ma">
+                                        </asp:DropDownList>
+                                    </td>
+                                    <td>
+                                        <asp:Button ID="btnTimLCV" runat="server" Text="Tìm" OnClick="btnTimLCV_Click" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 20%">&nbsp;</td>
+                                    <td style="width: 20%">Tìm theo tình tr&#7841;ng:&nbsp; </td>
+                                    <td style="width: 20%">
+                                        <asp:DropDownList ID="droTinhTrang" runat="server" Height="27px" Width="199px" DataTextField="TenTT" DataValueField="Ma">
+                                        </asp:DropDownList>
+                                    </td>
+                                    <td>
+                                        <asp:Button ID="btnTimTT" runat="server" Text="Tìm" OnClick="btnTimTT_Click" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 20%">&nbsp;</td>
+                                    <td style="width: 20%">Tìm theo tên: </td>
+                                    <td style="width: 20%">
+                                        <asp:TextBox ID="txtTenCV" runat="server" Height="20px" Width="199px"> </asp:TextBox>
+                                    </td>
+                                    <td>
+                                        <asp:Button ID="btnTimTen" runat="server" OnClick="btnTimTen_Click" Text="Tìm" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 20%">&nbsp;</td>
+                                    <td style="width: 20%">Tìm theo tháng: </td>
+                                    <td style="width: 20%">
+                                        <asp:TextBox ID="txtThang" runat="server" Height="20px" Width="199px"></asp:TextBox>
+                                    </td>
+                                    <td>
+                                        <asp:Button ID="btnTimThang" runat="server" OnClick="btnTimThang_Click" Text="Tìm" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 20%">&nbsp;</td>
+                                    <td style="width: 20%">&nbsp;</td>
+                                    <td style="width: 20%">
+                                        <asp:Button ID="btnTimTongHop" runat="server" OnClick="btnTimTongHop_Click" Text="Tìm t&#7893;ng h&#7907;p" />
+                                        <asp:Button ID="btnThoatTK" runat="server" OnClick="btnThoatTK_Click" Text="Thoát" />
+                                    </td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                            </table>
+                        </asp:Panel>
                     </div>
                 </td>
             </tr>
             <tr>
 
                 <td class="auto-style1" style="text-align: left; vertical-align: top; width: 15%; background-color: #0ca3d2;">
-                                       <!--   <div id ="sidebar">                                          
-                                        <asp:Label ID="lblMenu" runat="server" Text="Label"></asp:Label>                                        
-                                        </div> -->
-                                    <div id="sidebar">
+                                   <!--       <div id ="sidebar">                                          
+                                        <asp:Label ID="lblMenu" runat="server" Text="Label"></asp:Label>                                                                                -->
+                                        </div> 
+                                  <div id="sidebar">
         <ul id="nav">
                    <li><a href="SoanCV.aspx">So&#7841;n</a></li>
 
@@ -85,9 +143,10 @@
             <li><a href="DuThao.aspx">D&#7921; th&#7843;o     <asp:Label ID="lblSoLuong_DT" runat="server" Text=""></asp:Label></a></li>
             <li><a href="#">H&#7879; th&#7889;ng »</a>
                         <ul>
-                           <li><a href="#">Phân quy&#7873;n</a></li>
+                           <li><a href="#">Phân quy&#7873;n</a></li> 
                             <li><a href="ChiTietCongVan.aspx">Theo dõi công v&#259;n</a></li>
                             <li><a href="Account/DMK.aspx">Đổi mật khẩu</a></li>
+                            <li><a href="User.aspx">Quản lý users</a></li>
                         </ul>
                   </li>
             <li><a href="#">Thoát</a></li>
@@ -95,7 +154,7 @@
                                         
                    
                                         
-    </div> 
+    </div>
 </td>
 
                 <td class="auto-style2" style="vertical-align: top; ">

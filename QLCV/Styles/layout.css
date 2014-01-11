@@ -29,7 +29,8 @@ div.wrapper{display:block; width:100%; text-align:left;}
 
 /*----------------------------------------------Generalise-------------------------------------*/
 
-#header, #topnav{display:block; width:960px; margin:0 auto 0 20px;}
+#header, #topnav{display:block; width:90%; margin:0 auto 0 20px;}
+#right { margin:0 20px 0 940px;}
 #header{padding:10px 0 15px;}
 
 #header hgroup{float:left;}
