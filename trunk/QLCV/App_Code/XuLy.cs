@@ -104,8 +104,9 @@ namespace lanhnt
             Lenh.CommandType = CommandType.StoredProcedure;
             SqlParameter ThamSo = new SqlParameter();
             ThamSo = Lenh.Parameters.AddWithValue("@Ma", Ma);
+            ThamSo = Lenh.Parameters.AddWithValue("@Ma_User", Ma_User);
             SqlDataReader DocDL;
-            BaoVe.Open();
+            BaoVe.Open(); 
             DocDL = Lenh.ExecuteReader();
             if (DocDL.Read() == true)//nếu có dữ liệu để đọc
             {
@@ -171,12 +172,15 @@ namespace lanhnt
     {
         public int Ma;
         public int Ma_PB;
+        public string TenPB;
         public int Ma_Nhom;
+        public string TenNhom;
         public string Ho;
         public string TenNV;
         public string TenUser;
+        public bool IsUser;
+        public int Ma_User;
         public string NgaySinh;
-        public bool GioiTinh;
         public string DiaChi;
         public string DienThoai;
         public string AnhNV;
@@ -192,7 +196,6 @@ namespace lanhnt
                 ThamSo = Lenh.Parameters.AddWithValue("@Ho", Ho);
                 ThamSo = Lenh.Parameters.AddWithValue("@TenNV", TenNV);
                 ThamSo = Lenh.Parameters.AddWithValue("@NgaySinh", NgaySinh);
-                ThamSo = Lenh.Parameters.AddWithValue("@GioiTinh", GioiTinh);
                 ThamSo = Lenh.Parameters.AddWithValue("@DiaChi", DiaChi);
                 ThamSo = Lenh.Parameters.AddWithValue("@DienThoai", DienThoai);
                 ThamSo = Lenh.Parameters.AddWithValue("@AnhNV", AnhNV);
@@ -238,7 +241,6 @@ namespace lanhnt
                 ThamSo = Lenh.Parameters.AddWithValue("@Ho", Ho);
                 ThamSo = Lenh.Parameters.AddWithValue("@TenNV", TenNV);
                 ThamSo = Lenh.Parameters.AddWithValue("@NgaySinh", NgaySinh);
-                ThamSo = Lenh.Parameters.AddWithValue("@GioiTinh", GioiTinh);
                 ThamSo = Lenh.Parameters.AddWithValue("@DiaChi", DiaChi);
                 ThamSo = Lenh.Parameters.AddWithValue("@DienThoai", DienThoai);
                 ThamSo = Lenh.Parameters.AddWithValue("@AnhNV", AnhNV);
@@ -259,19 +261,74 @@ namespace lanhnt
             SqlCommand Lenh = new SqlCommand("NhanVien_CT", BaoVe);
             Lenh.CommandType = CommandType.StoredProcedure;
             SqlParameter ThamSo = new SqlParameter();
-            ThamSo = Lenh.Parameters.AddWithValue("@Ma", Ma);
+            ThamSo = Lenh.Parameters.AddWithValue("@Ma_User", Ma_User);
             SqlDataReader DocDL;
             BaoVe.Open();
             DocDL = Lenh.ExecuteReader();
             if (DocDL.Read() == true)//nếu có dữ liệu để đọc
             {
                 Ma = int.Parse(DocDL["Ma"].ToString());
+                Ma_User = int.Parse(DocDL["Ma_User"].ToString());
                 Ho = DocDL["Ho"].ToString();
                 TenNV = DocDL["TenNV"].ToString();
                 TenUser = DocDL["TenUser"].ToString();
+                IsUser = bool.Parse(DocDL["IsUser"].ToString());
                 AnhNV = DocDL["AnhNV"].ToString();
                 DienThoai = DocDL["DienThoai"].ToString();
                 Ma_Nhom = int.Parse(DocDL["Ma_Nhom"].ToString());
+                DiaChi = DocDL["DiaChi"].ToString();
+                TenPB = DocDL["TenPB"].ToString();
+                Ma_PB = int.Parse(DocDL["Ma_PB"].ToString());
+                TenNhom = DocDL["TenNhom"].ToString();
+                NgaySinh = DocDL["NgaySinh"].ToString();
+            }
+            BaoVe.Close();
+        }
+        public void IsUser_CT()
+        {
+            SqlConnection BaoVe = new SqlConnection("server=(local)\\SQLEXPRESS;uid=sa;pwd=123456;database=QuanLyCongVan");
+            SqlCommand Lenh = new SqlCommand("NhanVien_IsUser_CT", BaoVe);
+            Lenh.CommandType = CommandType.StoredProcedure;
+            SqlParameter ThamSo = new SqlParameter();
+            ThamSo = Lenh.Parameters.AddWithValue("@Ma_User", Ma_User);
+            SqlDataReader DocDL;
+            BaoVe.Open();
+            DocDL = Lenh.ExecuteReader();
+            if (DocDL.Read() == true)//nếu có dữ liệu để đọc
+            {
+                Ma = int.Parse(DocDL["Ma"].ToString());
+                Ma_User = int.Parse(DocDL["Ma_User"].ToString());
+                Ho = DocDL["Ho"].ToString();
+                TenNV = DocDL["TenNV"].ToString();
+                TenUser = DocDL["TenUser"].ToString();
+                IsUser = bool.Parse(DocDL["IsUser"].ToString());
+                AnhNV = DocDL["AnhNV"].ToString();
+                DienThoai = DocDL["DienThoai"].ToString();
+                DiaChi = DocDL["DiaChi"].ToString();
+                TenPB = DocDL["TenPB"].ToString();
+                Ma_PB = int.Parse(DocDL["Ma_PB"].ToString());
+                NgaySinh = DocDL["NgaySinh"].ToString();
+            }
+            BaoVe.Close();
+        }
+        public void LayMa()
+        {
+            SqlConnection BaoVe = new SqlConnection("server=(local)\\SQLEXPRESS;uid=sa;pwd=123456;database=QuanLyCongVan");
+            SqlCommand Lenh = new SqlCommand("NhanVien_LayMa", BaoVe);
+            Lenh.CommandType = CommandType.StoredProcedure;
+            SqlParameter ThamSo = new SqlParameter();
+            ThamSo = Lenh.Parameters.AddWithValue("@Ho", Ho);
+            ThamSo = Lenh.Parameters.AddWithValue("@TenNV", TenNV);
+            ThamSo = Lenh.Parameters.AddWithValue("@NgaySinh", NgaySinh);
+            ThamSo = Lenh.Parameters.AddWithValue("@DiaChi", DiaChi);
+            ThamSo = Lenh.Parameters.AddWithValue("@DienThoai", DienThoai);
+            ThamSo = Lenh.Parameters.AddWithValue("@AnhNV", AnhNV);
+            SqlDataReader DocDL;
+            BaoVe.Open();
+            DocDL = Lenh.ExecuteReader();
+            if (DocDL.Read() == true)//nếu có dữ liệu để đọc
+            {
+                Ma = int.Parse(DocDL["Ma"].ToString());
             }
             BaoVe.Close();
         }
@@ -299,6 +356,7 @@ namespace lanhnt
         public string YKienCV;
         public int Ma_LCV;
         public int Ma_TT;
+        public int Thang;
         public string TenLCV;
         public string SoCV;
         public string ThongBao;
@@ -824,7 +882,7 @@ namespace lanhnt
         }
         public DataTable TimTheoLCV(int Ma_LCV)
         {
-            string SelectSQL = "SELECT CV.Ma,CV.So, TenCV,TrichYeu, TenFile, NgayPH,YKienLD, YKienCV, TenTT, TenLCV, TenUser AS NguoiGoi, ThoiGianGui, ThoiGianDoc, ThoiGianSoan FROM CongVan CV, TinhTrang TT, UserN U, CV_UserN_TT CUT, LoaiCV LCV	WHERE CV.So = CUT.So_CV AND CUT.Ma_TT = TT.Ma AND CUT.Ma_User = U.Ma AND CV.Ma_LCV = LCV.Ma AND LCV.Ma = @Ma_LCV ORDER BY ThoiGianGui DESC ";
+            string SelectSQL = "SELECT CV.Ma,CUT.So, TenCV,TrichYeu, TenFile, NgayPH,YKienLD, YKienCV, TenTT, TenLCV, TenUser AS NguoiGui, ThoiGianGui, ThoiGianDoc, ThoiGianSoan,(SELECT u.TenUser FROM CV_UserN_TT CT, UserN U WHERE CT.So = CUT.So and  U.Ma = CUT.Ma_UserNhan) AS NguoiNhan FROM CongVan CV, TinhTrang TT, UserN U, CV_UserN_TT CUT, LoaiCV LCV	WHERE CV.So = CUT.So_CV AND CUT.Ma_TT = TT.Ma AND CUT.Ma_User = U.Ma AND CV.Ma_LCV = LCV.Ma AND LCV.Ma = @Ma_LCV ORDER BY ThoiGianGui DESC ";
             SqlConnection BaoVe = new SqlConnection("server=(local)\\SQLEXPRESS;uid=sa;pwd=123456;database=QuanLyCongVan");
             DataTable ThungChua = new DataTable();
             BaoVe.Open();
@@ -840,14 +898,14 @@ namespace lanhnt
         }
         public DataTable TimTheoTen(string TenCV)
         {
-            string SelectSQL = "SELECT CV.Ma,CV.So, TenCV,TrichYeu, TenFile, NgayPH,YKienLD, YKienCV, TenTT, TenLCV, TenUser AS NguoiGoi, ThoiGianGui, ThoiGianDoc, ThoiGianSoan FROM CongVan CV, TinhTrang TT, UserN U, CV_UserN_TT CUT, LoaiCV LCV	WHERE CV.So = CUT.So_CV AND CUT.Ma_TT = TT.Ma AND CUT.Ma_User = U.Ma AND LCV.Ma = CV.Ma_LCV AND TenCV like '%' + @TenCV +'%' ORDER BY ThoiGianGui DESC ";
+            string SelectSQL = "SELECT CV.Ma,CUT.So, TenCV,TrichYeu, TenFile, NgayPH,YKienLD, YKienCV, TenTT, TenLCV, TenUser AS NguoiGui, ThoiGianGui, ThoiGianDoc, ThoiGianSoan,(SELECT u.TenUser FROM CV_UserN_TT CT, UserN U WHERE CT.So = CUT.So and  U.Ma = CUT.Ma_UserNhan) AS NguoiNhan FROM CongVan CV, TinhTrang TT, UserN U, CV_UserN_TT CUT, LoaiCV LCV	WHERE CV.So = CUT.So_CV AND CUT.Ma_TT = TT.Ma AND CUT.Ma_User = U.Ma AND LCV.Ma = CV.Ma_LCV AND TenCV like '%' + @TenCV +'%' ORDER BY ThoiGianGui DESC ";
             SqlConnection BaoVe = new SqlConnection("server=(local)\\SQLEXPRESS;uid=sa;pwd=123456;database=QuanLyCongVan");
             DataTable ThungChua = new DataTable();
             BaoVe.Open();
             if (BaoVe.State == ConnectionState.Open)
             {
                 SqlCommand Lenh = new SqlCommand(SelectSQL, BaoVe);
-                Lenh.Parameters.Add("@TenCV", SqlDbType.Int).Value = TenCV;
+                Lenh.Parameters.Add("@TenCV", SqlDbType.NVarChar).Value = TenCV;
                 SqlDataAdapter XeTai = new SqlDataAdapter(Lenh);
                 XeTai.Fill(ThungChua);
                 BaoVe.Close();
@@ -856,7 +914,7 @@ namespace lanhnt
         }
         public DataTable TimTinhTrang(int Ma_TT)
         {
-            string SelectSQL = "SELECT CV.Ma,CV.So, TenCV,TrichYeu, TenFile, NgayPH,YKienLD, YKienCV, TenTT, TenLCV, TenUser AS NguoiGoi, ThoiGianGui, ThoiGianDoc, ThoiGianSoan	FROM CongVan CV, TinhTrang TT, UserN U, CV_UserN_TT CUT, LoaiCV LCV	WHERE CV.So = CUT.So_CV AND UT.Ma_TT = TT.Ma AND CUT.Ma_User = U.Ma AND CV.Ma_LCV = LCV.Ma AND TT.Ma = CUT.Ma_TT AND CUT.Ma_TT = @Ma_TT ORDER BY ThoiGianGui DESC ";
+            string SelectSQL = "SELECT CV.Ma,CUT.So, TenCV,TrichYeu, TenFile, NgayPH,YKienLD, YKienCV, TenTT, TenLCV, TenUser AS NguoiGui, ThoiGianGui, ThoiGianDoc, ThoiGianSoan,(SELECT u.TenUser FROM CV_UserN_TT CT, UserN U WHERE CT.So = CUT.So and  U.Ma = CUT.Ma_UserNhan) AS NguoiNhan	FROM CongVan CV, TinhTrang TT, UserN U, CV_UserN_TT CUT, LoaiCV LCV	WHERE CV.So = CUT.So_CV AND CUT.Ma_TT = TT.Ma AND CUT.Ma_User = U.Ma AND CV.Ma_LCV = LCV.Ma AND TT.Ma = CUT.Ma_TT AND CUT.Ma_TT = @Ma_TT ORDER BY ThoiGianGui DESC ";
             SqlConnection BaoVe = new SqlConnection("server=(local)\\SQLEXPRESS;uid=sa;pwd=123456;database=QuanLyCongVan");
             DataTable ThungChua = new DataTable();
             BaoVe.Open();
@@ -864,6 +922,41 @@ namespace lanhnt
             {
                 SqlCommand Lenh = new SqlCommand(SelectSQL, BaoVe);
                 Lenh.Parameters.Add("@Ma_TT", SqlDbType.Int).Value = Ma_TT;
+                SqlDataAdapter XeTai = new SqlDataAdapter(Lenh);
+                XeTai.Fill(ThungChua);
+                BaoVe.Close();
+            }
+            return ThungChua;
+        }
+        public DataTable TimTheoThang(int Thang)
+        {
+            string SelectSQL = "SELECT CV.Ma,CUT.So, TenCV,TrichYeu, TenFile, NgayPH,YKienLD, YKienCV, TenTT, TenLCV, TenUser AS NguoiGui, ThoiGianGui, ThoiGianDoc, ThoiGianSoan,	(SELECT u.TenUser FROM CV_UserN_TT CT, UserN U WHERE CT.So = CUT.So and  U.Ma = CUT.Ma_UserNhan) AS NguoiNhan FROM CongVan CV, TinhTrang TT, UserN U, CV_UserN_TT CUT, LoaiCV LCV WHERE CV.So = CUT.So_CV AND CUT.Ma_TT = TT.Ma AND CUT.Ma_User = U.Ma AND CV.Ma_LCV = LCV.Ma AND TT.Ma = CUT.Ma_TT AND MONTH(ThoiGianGui) = @Thang ORDER BY ThoiGianGui DESC ";
+            SqlConnection BaoVe = new SqlConnection("server=(local)\\SQLEXPRESS;uid=sa;pwd=123456;database=QuanLyCongVan");
+            DataTable ThungChua = new DataTable();
+            BaoVe.Open();
+            if (BaoVe.State == ConnectionState.Open)
+            {
+                SqlCommand Lenh = new SqlCommand(SelectSQL, BaoVe);
+                Lenh.Parameters.Add("@Thang", SqlDbType.Int).Value = Thang;
+                SqlDataAdapter XeTai = new SqlDataAdapter(Lenh);
+                XeTai.Fill(ThungChua);
+                BaoVe.Close();
+            }
+            return ThungChua;
+        }
+        public DataTable TimTongHop(int Ma_LCV, int Ma_TT, string TenCV, int Thang)
+        {
+            string SelectSQL = "SELECT CV.Ma,CUT.So, TenCV,TrichYeu, TenFile, NgayPH,YKienLD, YKienCV, TenTT, TenLCV, TenUser AS NguoiGui, ThoiGianGui, ThoiGianDoc, ThoiGianSoan,	(SELECT u.TenUser FROM CV_UserN_TT CT, UserN U WHERE CT.So = CUT.So and  U.Ma = CUT.Ma_UserNhan) AS NguoiNhan FROM CongVan CV, TinhTrang TT, UserN U, CV_UserN_TT CUT, LoaiCV LCV WHERE CV.So = CUT.So_CV AND CUT.Ma_TT = TT.Ma AND CUT.Ma_User = U.Ma AND CV.Ma_LCV = LCV.Ma AND TT.Ma = CUT.Ma_TT AND LCV.Ma = @Ma_LCV AND MONTH(ThoiGianGui) = @Thang AND CUT.Ma_TT = @Ma_TT AND TenCV like '%' + @TenCV +'%' ORDER BY ThoiGianGui DESC ";
+            SqlConnection BaoVe = new SqlConnection("server=(local)\\SQLEXPRESS;uid=sa;pwd=123456;database=QuanLyCongVan");
+            DataTable ThungChua = new DataTable();
+            BaoVe.Open();
+            if (BaoVe.State == ConnectionState.Open)
+            {
+                SqlCommand Lenh = new SqlCommand(SelectSQL, BaoVe);
+                Lenh.Parameters.Add("@Ma_LCV", SqlDbType.Int).Value = Ma_LCV;
+                Lenh.Parameters.Add("@Ma_TT", SqlDbType.Int).Value = Ma_TT;
+                Lenh.Parameters.Add("@TenCV", SqlDbType.NVarChar).Value = TenCV;
+                Lenh.Parameters.Add("@Thang", SqlDbType.Int).Value = Thang;
                 SqlDataAdapter XeTai = new SqlDataAdapter(Lenh);
                 XeTai.Fill(ThungChua);
                 BaoVe.Close();
@@ -908,7 +1001,27 @@ namespace lanhnt
             DocDL = Lenh.ExecuteReader();
             if (DocDL.Read() == true)
             {
+                Ma = int.Parse(DocDL["Ma"].ToString());
                 TenUser = DocDL["TenUser"].ToString();
+                IsUser = bool.Parse(DocDL["IsUser"].ToString());
+                Ma_NV = int.Parse(DocDL["Ma_NV"].ToString());
+            }
+            BaoVe.Close();
+        }
+        public void LayMa()
+        {
+            SqlConnection BaoVe = new SqlConnection("server=(local)\\SQLEXPRESS;uid=sa;pwd=123456;database=QuanLyCongVan");
+            SqlCommand Lenh = new SqlCommand("UserN_LayMa", BaoVe);
+            Lenh.CommandType = CommandType.StoredProcedure;
+            SqlParameter ThamSo = new SqlParameter();
+            ThamSo = Lenh.Parameters.AddWithValue("@Ma_NV", Ma_NV);
+            ThamSo = Lenh.Parameters.AddWithValue("@TenUser", TenUser);
+            SqlDataReader DocDL;
+            BaoVe.Open();
+            DocDL = Lenh.ExecuteReader();
+            if (DocDL.Read() == true)
+            {
+                Ma = int.Parse(DocDL["Ma"].ToString());
             }
             BaoVe.Close();
         }
@@ -1087,8 +1200,6 @@ namespace lanhnt
                 Lenh.CommandType = CommandType.StoredProcedure;
                 SqlParameter ThamSo = new SqlParameter();
                 ThamSo = Lenh.Parameters.AddWithValue("@Ma", Ma);
-                ThamSo = Lenh.Parameters.AddWithValue("@Ma_NV", Ma_NV);
-                ThamSo = Lenh.Parameters.AddWithValue("@TenUser", TenUser);
                 ThamSo = Lenh.Parameters.AddWithValue("@IsUser", IsUser);
                 BaoVe.Open();
                 Lenh.ExecuteNonQuery();
@@ -1526,22 +1637,17 @@ namespace lanhnt
                     KetQua = "<ul id='nav'>";
                 }
                 else
-                     KetQua = "<ul>";
+                     KetQua += "<ul>";
                 while (DocDL.Read())
                 {
-                    KetQua += "<li><a href='" + DocDL["Link"] + "'><span>" + DocDL["TenMenu"] + "</span></a></li>";
+                    KetQua += "<li><a href='" + DocDL["Link"] + "'><span>" + DocDL["TenMenu"] + "</span></a>";
                     KetQua += LoadMenu(Convert.ToInt32(DocDL["Ma"]), level + 1);
+                    KetQua += "</li>";
                 }
                 KetQua += "</ul>";
                 BaoVe.Close();
             }
             return KetQua;
-            //SqlDataAdapter XeTai = new SqlDataAdapter("CongVan_DS", BaoVe);
-            //DataTable ThungChua = new DataTable();
-            //BaoVe.Open();
-            //XeTai.Fill(ThungChua);
-            //BaoVe.Close();
-            //return ThungChua;
         }
 
     }
