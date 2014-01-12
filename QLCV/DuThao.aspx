@@ -138,7 +138,8 @@
                                     </tr>
                                     <tr>
                                         <td colspan="3" style="text-align: center">
-                                            <asp:Button ID="btnTrinhDuyet" runat="server" Font-Bold="True" Height="32px" Text="Trình duy&#7879;t" Width="100px" OnClick="btnTrinhDuyet_Click" />
+                                            <asp:Button ID="btnGui" runat="server" Font-Bold="True" Height="32px" OnClick="btnGui_Click" Text="G&#7917;i" Width="100px" />
+                                            <asp:Button ID="btnTrinhDuyet" runat="server" Font-Bold="True" Height="32px" Text="Trình duy&#7879;t" Width="100px" OnClick="btnTrinhDuyet_Click" Visible="False" />
                                             <asp:Button ID="btnHuyDuThao" runat="server" Font-Bold="True" Height="32px" Text="H&#7911;y d&#7921; th&#7843;o" Width="100px" OnClick="btnHuyDuThao_Click" />
                                             <asp:Button ID="btnLuuDuThao" runat="server" Font-Bold="True" Height="32px" Text="L&#432;u d&#7921; th&#7843;o" Width="100px" OnClick="btnLuuDuThao_Click" />
                                             <asp:Button ID="btnThoat" runat="server" Font-Bold="True" Height="32px" Text="Thoát" Width="100px" OnClick="btnThoat_Click" />
