@@ -32,15 +32,15 @@ public partial class _Default : System.Web.UI.Page
     }
     protected void btnPheDuyet_Click(object sender, EventArgs e)
     {
-        if (SoLuongDaChon != 0)
+        if (SoLuongDaChon != 0)//Nếu chưa chọn người nhận thì xuống else, ngược lại thì thực hiện phê duyệt
         {
             cut.So = int.Parse(griChoDuyet.SelectedValue.ToString());
             cut.CT();
             cv.So = cut.So_CV;
             cv.YKienLD = txtYKienLD.Text;
-            cv.Sua_YKien();
+            cv.Sua_YKien();//Sửa ý kiến chỉ đạo nếu có
             cut.Ma_User = int.Parse(Session["Ma"].ToString());
-            for (int i = 0; i <= cblUser.Items.Count - 1; i++)
+            for (int i = 0; i <= cblUser.Items.Count - 1; i++)//Thực hiện tạo các bảng CUT ứng với mỗi người nhận
             {
                 if (cblUser.Items[i].Selected == true)
                 {
@@ -79,13 +79,14 @@ public partial class _Default : System.Web.UI.Page
         else
             msg.Show("Bạn chưa nhập người nhận.");
     }
+    //----------------------------------------------------------------------
     protected void griChoDuyet_SelectedIndexChanged(object sender, EventArgs e)
     {
-        if (Convert.ToInt16(Session["MaNhom"]) == 1)
+        if (Convert.ToInt16(Session["MaNhom"]) == 1)//Nếu người đăng nhập là nhóm lãnh đạo thì hiển thị nút phê duyệt, không duyệt
         {
             btnPheDuyet.Visible = true;
             btnKhongDuyet.Visible = true;
-            cblUser.DataSource = u.VT_CV_DS();
+            cblUser.DataSource = u.VT_CV_DS();//Sổ ra danh sách chuyên viên và văn thư
             cblUser.DataBind();
         }
         griChoDuyet.Visible = false;

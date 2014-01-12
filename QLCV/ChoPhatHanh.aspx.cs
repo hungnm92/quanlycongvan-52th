@@ -36,8 +36,8 @@ public partial class _Default : System.Web.UI.Page
     {
         if (SoLuongDaChon != 0)
         {
-                cut.So = int.Parse(griChoPhatHanh.SelectedValue.ToString());
-                cut.CT();
+                cut.So = int.Parse(griChoPhatHanh.SelectedValue.ToString());//Gán Số cho bảng CUT khi click vào griview
+                cut.CT();// Lấy ra chi tiết của bảng CUT để sử dụng cho việc thêm bảng mới
                 cv.So = cut.So_CV;
                 cv.Ma_LCV = int.Parse(droLCV.SelectedValue);
                 cut.Ma_User = int.Parse(Session["Ma"].ToString());
@@ -46,10 +46,10 @@ public partial class _Default : System.Web.UI.Page
                     if (cblUser.Items[i].Selected == true)
                     {
                         cut.Ma_UserNhan = Convert.ToInt32(cblUser.Items[i].Value);
-                        cv.Them_NgayPH();
-                        cv.Them_Ma();
+                        cv.Them_NgayPH();//Thêm giá trị ngày phát hành vào bảng công văn
+                        cv.Them_Ma();//Tự động đánh số cho công văn dựa vào loại công văn
                         cv.Sua();
-                        cut.PhatHanh();
+                        cut.PhatHanh();//Thêm bảng CUT với tình trạng là đã phát hành
                     }
                 }
                 msg.Show(cut.ThongBao);
@@ -65,7 +65,7 @@ public partial class _Default : System.Web.UI.Page
     }
     protected void griChoPhatHanh_SelectedIndexChanged(object sender, EventArgs e)
     {
-        if (Convert.ToInt16(Session["MaNhom"]) == 3)
+        if (Convert.ToInt16(Session["MaNhom"]) == 3)//Nếu user thuộc nhóm chuyên viên thì hiển thị nút phát hành.
         {
             btnPhatHanh.Visible = true;
             cblUser.DataSource = u.NhanVien_DS();
@@ -87,7 +87,7 @@ public partial class _Default : System.Web.UI.Page
         droLCV.SelectedValue = lcv.Ma.ToString();
         txtNgayPH.Text = cut.NgayPH;
         lnkbtnTaiVe.Text = cv.TenFile;
-        if (Convert.ToInt16(Session["Ma"]) == cut.Ma_UserNhan)
+        if (Convert.ToInt16(Session["Ma"]) == cut.Ma_UserNhan)// Nếu user đang đăng nhập là người nhận thì sẽ update thời gian đọc
         {
             string TimeDoc = cut.ThoiGianDoc;
             bool bThoiGianDoc = string.IsNullOrEmpty(TimeDoc);
