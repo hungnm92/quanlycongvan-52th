@@ -17,7 +17,8 @@ public partial class _Default : System.Web.UI.Page
         if (IsPostBack == false)
         {
             pnlChiTiet.Visible = false;
-            griTimTheoTen.DataSource = cv.TimTheoTen((Session["TenCV"].ToString()));
+            cv.TenCV = (Session["TenCV"].ToString());
+            griTimTheoTen.DataSource = cv.TimTheoTen1();
             griTimTheoTen.DataBind();
             droUserN.DataSource = u.DS();
             droUserN.DataBind();

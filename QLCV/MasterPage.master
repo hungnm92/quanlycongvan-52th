@@ -1,5 +1,7 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
 
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -22,6 +24,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
+        <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server"></asp:ToolkitScriptManager>
     <div>
         <table style="width:100%;">
             <tr>
@@ -41,9 +44,10 @@
                         <ul class="clear">
                           <li><a href="index.html">Home</a></li>
                              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
-                            <li ><asp:TextBox ID="TextBox1" runat="server" Width="247px" Height="17px"></asp:TextBox>
+                            <li ><asp:TextBox ID="txtTimKiem" runat="server" Width="247px" Height="17px"></asp:TextBox>
+                                <asp:AutoCompleteExtender ID="AutoCompleteExtender1" TargetControlID="txtTimKiem" ServicePath="~/WebService.asmx" ServiceMethod="GetTenCV" EnableCaching="false" MinimumPrefixLength="1" runat="server"></asp:AutoCompleteExtender>
                     &nbsp; 
-                    <asp:Label ID="Label1" runat="server" Text="Tìm ki&#7871;m"></asp:Label></li>
+                    <asp:ImageButton ID="btnTimKiem" ImageUrl="~/src/img/emp/google-web-search-xxl.png" runat="server" OnClick="btnTimKiem_Click" /></li>
                             <li><asp:Button ID="btnTimNangCao" runat="server" Text="TÌM NÂNG CAO" OnClick="btnTimNangCao_Click" Height="28px" Width="145px" BackColor="#0CA3D2" Font-Bold="True" ForeColor="White" /></li>
                             <li > <asp:Label ID="lblUser" runat="server"></asp:Label>
                             </li> 
