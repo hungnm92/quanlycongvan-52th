@@ -30,6 +30,8 @@ public partial class _Default : System.Web.UI.Page
    
     protected void griDuThao_SelectedIndexChanged(object sender, EventArgs e)
     {
+        if (int.Parse(Session["MaNhom"].ToString()) == 2)
+            btnTrinhDuyet.Visible = true;
         griDuThao.Visible = false;
         pnlChiTiet.Visible = true;
         cut.So = int.Parse(griDuThao.SelectedValue.ToString());
@@ -43,9 +45,12 @@ public partial class _Default : System.Web.UI.Page
         txtGopY.Text = cv.YKienCV;
         txtMaCV.Text = cv.Ma;
         txtSoCV.Text = cv.So;
-        u.Ma = cut.Ma_UserNhan;
-        cblUser.Items[u.Ma].Selected = true;
-        btnXong_Click(sender,e);
+        u.Ma = cut.Ma_UserNhan - 1;
+        if (u.Ma != -1)
+        {
+            cblUser.Items[u.Ma].Selected = true;
+            btnXong_Click(sender, e);
+        }
         lcv.Ma = cv.Ma_LCV;
         droLCV.SelectedValue = lcv.Ma.ToString();
         txtNgayPH.Text = cut.NgayPH;
@@ -183,7 +188,10 @@ public partial class _Default : System.Web.UI.Page
             cut.So = int.Parse(griDuThao.SelectedValue.ToString());
             cut.CT();
             cv.So = cut.So_CV;
-            cv.Ma = " ";
+            bool bTenCV = string.IsNullOrWhiteSpace(txtTenCV.Text);
+            if (bTenCV == true)
+                cv.TenCV = "  ";
+            else
             cv.TenCV = txtTenCV.Text;
             bool bTrichYeu = string.IsNullOrWhiteSpace(txtTomTat.Text);
             if (bTrichYeu == true)
@@ -195,11 +203,6 @@ public partial class _Default : System.Web.UI.Page
                 cv.YKienCV = " ";
             else
                 cv.YKienCV = txtGopY.Text;
-            bool bYKienLD = string.IsNullOrWhiteSpace(txtYKienLD.Text);
-            if (bYKienLD == true)
-                cv.YKienLD = " ";
-            else
-                cv.YKienLD = txtYKienLD.Text;
             cv.Ma_LCV = int.Parse(droLCV.SelectedValue);
             string DuongDan = "";
             string ReName = DateTime.Now.ToString().Replace("/", "").Replace(":", "").Replace(" ", "-");
@@ -207,15 +210,14 @@ public partial class _Default : System.Web.UI.Page
             DuongDan = DuongDan + ReName + fileTep.FileName;
             fileTep.SaveAs(DuongDan);
             cv.TenFile = ReName + fileTep.FileName;
-            cut.Ma_User = int.Parse(Session["Ma"].ToString());
             if (SoLuongDaChon != 0)
                 for (int i = 0; i <= cblUser.Items.Count - 1; i++)
                 {
                     if (cblUser.Items[i].Selected == true)
                     {
                         cut.Ma_UserNhan = Convert.ToInt32(cblUser.Items[i].Value);
-                        cv.Sua();
-                        cut.LuuDuThao();
+                        cv.Sua();//Sửa công văn dưới mọi hình thức
+                        cut.LuuDuThao();//Lấy Số và Update mã user nhận
                     }
                 }
             else
@@ -239,9 +241,12 @@ public partial class _Default : System.Web.UI.Page
             cut.So = int.Parse(griDuThao.SelectedValue.ToString());
             cut.CT();
             cv.So = cut.So_CV;
-            cv.CT();
-            cv.Ma = " ";
-            string temp = cv.TenFile.ToString();
+            cv.CT();//gọi chi tiết để lấy ra tên file cũ
+            string temp = cv.TenFile.ToString();//gán tạm bằng tên file cũ
+            bool bTenCV = string.IsNullOrWhiteSpace(txtTenCV.Text);
+            if (bTenCV == true)
+                cv.TenCV = " ";
+            else
             cv.TenCV = txtTenCV.Text;
             bool bTrichYeu = string.IsNullOrWhiteSpace(txtTomTat.Text);
             if (bTrichYeu == true)
@@ -253,14 +258,8 @@ public partial class _Default : System.Web.UI.Page
                 cv.YKienCV = " ";
             else
                 cv.YKienCV = txtGopY.Text;
-            bool bYKienLD = string.IsNullOrWhiteSpace(txtYKienLD.Text);
-            if (bYKienLD == true)
-                cv.YKienLD = " ";
-            else
-                cv.YKienLD = txtYKienLD.Text;
             cv.Ma_LCV = int.Parse(droLCV.SelectedValue);
             cv.TenFile = temp;
-            cut.Ma_User = int.Parse(Session["Ma"].ToString());
             if (SoLuongDaChon != 0)
                 for (int i = 0; i <= cblUser.Items.Count - 1; i++)
                 {
@@ -326,5 +325,114 @@ public partial class _Default : System.Web.UI.Page
         Response.AppendHeader("content-disposition", "filename=" + lnkbtnTaiVe.Text);
         Response.TransmitFile(Server.MapPath("~/src/products/") + lnkbtnTaiVe.Text);
         Response.End();    
+    }
+    protected void btnGui_Click(object sender, EventArgs e)
+    {
+        if (fileTep.HasFile == true)
+        {
+            cut.So = int.Parse(griDuThao.SelectedValue.ToString());
+            cut.CT();// Gọi chi tiết để lấy số công văn
+            cv.So = cut.So_CV;
+            cv.TenCV = txtTenCV.Text;
+            bool bTrichYeu = string.IsNullOrWhiteSpace(txtTomTat.Text);
+            if (bTrichYeu == true)
+                cv.TrichYeu = " ";
+            else
+                cv.TrichYeu = txtTomTat.Text;
+            bool bYKienCV = string.IsNullOrWhiteSpace(txtGopY.Text);
+            if (bYKienCV == true)
+                cv.YKienCV = " ";
+            else
+                cv.YKienCV = txtGopY.Text;
+            bool bYKienLD = string.IsNullOrWhiteSpace(txtYKienLD.Text);
+            if (bYKienLD == true)
+                cv.YKienLD = " ";
+            else
+                cv.YKienLD = txtYKienLD.Text;
+            cv.Ma_LCV = 10;//Gán loại công văn là văn bản bình thường
+            string DuongDan = "";
+            string ReName = DateTime.Now.ToString().Replace("/", "").Replace(":", "").Replace(" ", "-");
+            DuongDan = Server.MapPath("~/src/products/");
+            DuongDan = DuongDan + ReName + fileTep.FileName;
+            fileTep.SaveAs(DuongDan);
+            cv.TenFile = ReName + fileTep.FileName;//gán tên file là getdate() + tên file
+            cut.Ma_User = int.Parse(Session["Ma"].ToString());
+            if (SoLuongDaChon != 0)
+                for (int i = 0; i <= cblUser.Items.Count - 1; i++)
+                {
+                    if (cblUser.Items[i].Selected == true)
+                    {
+                        cut.Ma_UserNhan = Convert.ToInt32(cblUser.Items[i].Value);
+                        cv.Sua();
+                        cut.Gui();
+                    }
+                }
+            else
+            {
+                cut.Ma_UserNhan = 0;
+                cv.Sua();
+                cut.LuuDuThao();
+            }
+            msg.Show(cut.ThongBao);
+            SoLuongDaChon = 0;
+            txtTenCV.Text = "";
+            txtTomTat.Text = "";
+            txtGopY.Text = "";
+            txtMaCV.Text = "";
+            txtSoCV.Text = "";
+            txtNgayPH.Text = "";
+            Response.Redirect("~/DuThao.aspx");
+        }
+        else
+        {
+            cut.So = int.Parse(griDuThao.SelectedValue.ToString());
+            cut.CT();
+            cv.So = cut.So_CV;
+            cv.CT();//gọi chi tiết để lấy ra tên file cũ
+            string temp = cv.TenFile.ToString();// Gán tạm bằng tên file cũ
+            cv.TenCV = txtTenCV.Text;
+            bool bTrichYeu = string.IsNullOrWhiteSpace(txtTomTat.Text);
+            if (bTrichYeu == true)
+                cv.TrichYeu = " ";
+            else
+                cv.TrichYeu = txtTomTat.Text;
+            bool bYKienCV = string.IsNullOrWhiteSpace(txtGopY.Text);
+            if (bYKienCV == true)
+                cv.YKienCV = " ";
+            else
+                cv.YKienCV = txtGopY.Text;
+            bool bYKienLD = string.IsNullOrWhiteSpace(txtYKienLD.Text);
+            if (bYKienLD == true)
+                cv.YKienLD = " ";
+            else
+                cv.YKienLD = txtYKienLD.Text;
+            cv.Ma_LCV = 10;//Gán loại công văn là văn bản bình thường
+            cv.TenFile = temp;//Gán tên file là tên file cũ
+            cut.Ma_User = int.Parse(Session["Ma"].ToString());
+            if (SoLuongDaChon != 0)
+                for (int i = 0; i <= cblUser.Items.Count - 1; i++)
+                {
+                    if (cblUser.Items[i].Selected == true)
+                    {
+                        cut.Ma_UserNhan = Convert.ToInt32(cblUser.Items[i].Value);
+                        cv.Sua();
+                        cut.Gui();//Tạo ra bảng CUT mới với tình trạng là gửi
+                        cut.Xoa();//Xóa thư trong dự thảo, vì nó đã được gửi
+                    }
+                }
+            else
+            {
+                msg.ShowAndRedirect("Vui lòng chọn người nhận.");
+            }
+            msg.Show(cut.ThongBao);
+            SoLuongDaChon = 0;
+            txtTenCV.Text = "";
+            txtTomTat.Text = "";
+            txtGopY.Text = "";
+            txtMaCV.Text = "";
+            txtSoCV.Text = "";
+            txtNgayPH.Text = "";
+            Response.Redirect("~/DuThao.aspx");
+        }
     }
 }
