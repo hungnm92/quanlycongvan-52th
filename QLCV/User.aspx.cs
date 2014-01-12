@@ -39,6 +39,7 @@ public partial class _Default : System.Web.UI.Page
         {
             btnXoa.Visible = true;
             btnSua.Visible = true;
+            btnThem.Visible = false;
             lblTB.Visible = false;
             lbtThemMoi.Visible = false;
         }
@@ -148,6 +149,7 @@ public partial class _Default : System.Web.UI.Page
                 txtDienThoai.Text = "";
                 pnlCapNhat.Visible = false;
                 lbtThemMoi.Visible = true;
+                btnThem.Visible = false;
             }
             else
                 if (fileAnhNV.HasFile == false)
@@ -170,7 +172,6 @@ public partial class _Default : System.Web.UI.Page
             if (u.IsUser == false)
             {
                 u.Xoa();
-                //nv.Ma = u.Ma_NV;
                 nv.Xoa();
             }
             else
@@ -320,7 +321,7 @@ public partial class _Default : System.Web.UI.Page
                 txtDiaChi.Text = "";
                 txtDienThoai.Text = "";
                 pnlCapNhat.Visible = false;
-                lbtThemMoi.Visible = true;
+                lbtThemMoi.Visible = false;
             }
             else
             {
