@@ -912,6 +912,21 @@ namespace lanhnt
             }
             return ThungChua;
         }
+        public DataTable TimTheoTen1()
+        {
+            SqlConnection BaoVe = new SqlConnection("server=(local)\\Sqlexpress;uid=sa;pwd=123456;database=QuanLyCongVan");
+            SqlCommand Lenh = new SqlCommand("CongVan_TimTheoTen", BaoVe);
+            Lenh.CommandType = CommandType.StoredProcedure;
+            SqlParameter ThamSo = new SqlParameter();
+            ThamSo = Lenh.Parameters.AddWithValue("@TenCV", TenCV);
+            DataTable ThungChua = new DataTable();
+            SqlDataReader DocDL;
+            BaoVe.Open();//mở kết nối đến CSDL
+            DocDL = Lenh.ExecuteReader(CommandBehavior.CloseConnection);
+            ThungChua.Load(DocDL);
+            BaoVe.Close();
+            return ThungChua;
+        }
         public DataTable TimTinhTrang(int Ma_TT)
         {
             string SelectSQL = "SELECT CV.Ma,CUT.So, TenCV,TrichYeu, TenFile, NgayPH,YKienLD, YKienCV, TenTT, TenLCV, TenUser AS NguoiGui, ThoiGianGui, ThoiGianDoc, ThoiGianSoan,(SELECT u.TenUser FROM CV_UserN_TT CT, UserN U WHERE CT.So = CUT.So and  U.Ma = CUT.Ma_UserNhan) AS NguoiNhan	FROM CongVan CV, TinhTrang TT, UserN U, CV_UserN_TT CUT, LoaiCV LCV	WHERE CV.So = CUT.So_CV AND CUT.Ma_TT = TT.Ma AND CUT.Ma_User = U.Ma AND CV.Ma_LCV = LCV.Ma AND TT.Ma = CUT.Ma_TT AND CUT.Ma_TT = @Ma_TT ORDER BY ThoiGianGui DESC ";

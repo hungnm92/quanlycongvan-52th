@@ -48,8 +48,7 @@
                     <SortedDescendingHeaderStyle BackColor="#4870BE" />
                 </asp:GridView>
                 <br />
-                <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
-                </asp:ToolkitScriptManager>
+                
                 <br />
                 <asp:Panel ID="pnlChiTiet" runat="server">
                     <table style="width:100%;">

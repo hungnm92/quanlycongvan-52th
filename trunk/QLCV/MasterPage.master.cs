@@ -90,4 +90,10 @@ public partial class MasterPage : System.Web.UI.MasterPage
         Session["MaLCV"] = droLCV.SelectedValue;
         Response.Redirect("~/TimTongHop.aspx");
     }
+    protected void btnTimKiem_Click(object sender, ImageClickEventArgs e)
+    {
+        Session["TenCV"] = txtTimKiem.Text;
+        Response.Redirect("~/TimTheoTen.aspx");
+        pnlTimKiem.Visible = false;
+    }
 }
