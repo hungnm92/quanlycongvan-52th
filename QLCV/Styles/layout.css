@@ -29,14 +29,16 @@ div.wrapper{display:block; width:100%; text-align:left;}
 
 /*----------------------------------------------Generalise-------------------------------------*/
 
-#header, #topnav{display:block; width:90%; margin:0 auto 0 20px;}
-#right { margin:0 20px 0 940px;}
+#header, #topnav{display:block; width:100%; margin:0 auto 0 20px;}
+#right { margin:0 20px 0 100%;}
 #header{padding:10px 0 15px;}
 
 #header hgroup{float:left;}
-#header hgroup h1, #header hgroup h2{display:inline; font-weight:normal; font-style:normal; text-transform:none;}
+#header hgroup h1, #header hgroup h2, #header hgroup h3{display:inline; font-weight:normal; font-style:normal; text-transform:none;}
 #header hgroup h1{font-size:36px;}
 #header hgroup h1 span{font-size:26px; text-transform:uppercase;}
 #header hgroup h1 a{color:#666666; background-color:#FFFFFF;}
 #header hgroup h2{display:inline-block; margin-left:10px; padding-left:10px; border-left:1px solid #999999; color:#999999; background-color:#FFFFFF; font-size:12px; text-transform:uppercase;}
-
+#header hgroup h3{font-size:36px;}
+#header hgroup h3 span{font-size:26px; text-transform:uppercase;}
+#header hgroup h3 a{color:#666666; background-color:#FFFFFF;}

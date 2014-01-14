@@ -35,8 +35,9 @@
                           <h1><a href="#"><img src="src/img/emp/Logo_seasoft.png" /></a></h1>
                           <h2>52CNTT - NTU<br>
                             Website by ASP.NET</h2>
+                            <h3><img src ="src/img/emp/xmas12cv1fg8.gif" style =" height:100px; width: 70%;" /></h3>
                         </hgroup>
-
+                          
                       </header>
                     </div>
                     <div class="wrapper row2">
@@ -161,7 +162,7 @@
     </div>
 </td>
 
-                <td class="auto-style2" style="vertical-align: top; ">
+                <td class="auto-style2" style="vertical-align: top;  background-color: #669999;">
                     <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
                        
                           
@@ -174,7 +175,7 @@
             </tr>
             <tr>
                 <td colspan="2" style="text-align: center; color: #FFFFFF; font-size: large; font-weight: bolder; background-color: #008000;">
-                    acb</td>
+                    Nhóm thực tập lớp 52TH - Trường Đại học Nha Trang tại công ty TNHH SEASOFT</td>
             </tr>
             <tr>
                 
