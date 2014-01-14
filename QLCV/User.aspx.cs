@@ -119,6 +119,12 @@ public partial class _Default : System.Web.UI.Page
                     nv.LayMa();
                     u.Ma_NV = nv.Ma;
                     u.Them();
+                    //thêm mã nhóm là 4
+                    u.TenUser = nv.TenUser;
+                    u.LayMa();
+                    nu.Ma_User = u.Ma;
+                    nu.Ma = 4;
+                    nu.Them();
                 }
                 else
                 {
