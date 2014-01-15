@@ -135,7 +135,7 @@
                                     <tr>
                                         <td colspan="3" style="text-align: center">
                                             <asp:Button ID="btnTraLoi" runat="server" Font-Bold="True" Height="32px" Text="Tr&#7843; l&#7901;i" Width="100px" OnClick="btnTraLoi_Click" />
-                                            <asp:Button ID="btnLuuDuThao" runat="server" Font-Bold="True" Height="32px" OnClick="btnLuuDuThao_Click" Text="L&#432;u d&#7921; th&#7843;o" Visible="False" Width="100px" />
+                                            <asp:Button ID="btnLuuDuThao" runat="server" Font-Bold="True" Height="32px" OnClick="btnLuuDuThao_Click" Text="L&#432;u d&#7921; th&#7843;o" Width="100px" />
                                             <asp:Button ID="btnThoat" runat="server" Font-Bold="True" Height="32px" OnClick="btnThoat_Click" Text="Thoát" Width="100px" />
                                         </td>
                                     </tr>
